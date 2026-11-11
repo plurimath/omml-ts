@@ -1,0 +1,32 @@
+[
+  {
+    "id": "run",
+    "model": "Omml::Models::OMath",
+    "input": "<m:oMath xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\"><m:r><m:t>x</m:t></m:r></m:oMath>",
+    "expected": "<m:oMath xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\">\n  <m:r>\n    <m:t>x</m:t>\n  </m:r>\n</m:oMath>"
+  },
+  {
+    "id": "paragraph",
+    "model": "Omml::Models::OMathPara",
+    "input": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\"><m:oMath><m:r><m:t>y</m:t></m:r></m:oMath></m:oMathPara>",
+    "expected": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\">\n  <m:oMath>\n    <m:r>\n      <m:t>y</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>"
+  },
+  {
+    "id": "unicode",
+    "model": "Omml::Models::OMath",
+    "input": "<m:oMath xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\"><m:r><m:t>α ∑ 🧮</m:t></m:r></m:oMath>",
+    "expected": "<m:oMath xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\">\n  <m:r>\n    <m:t>α ∑ 🧮</m:t>\n  </m:r>\n</m:oMath>"
+  },
+  {
+    "id": "fraction",
+    "model": "Omml::Models::OMath",
+    "input": "<m:oMath xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\"><m:f><m:num><m:r><m:t>a</m:t></m:r></m:num><m:den><m:r><m:t>b</m:t></m:r></m:den></m:f></m:oMath>",
+    "expected": "<m:oMath xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\">\n  <m:f>\n    <m:num>\n      <m:r>\n        <m:t>a</m:t>\n      </m:r>\n    </m:num>\n    <m:den>\n      <m:r>\n        <m:t>b</m:t>\n      </m:r>\n    </m:den>\n  </m:f>\n</m:oMath>"
+  },
+  {
+    "id": "sequence",
+    "model": "Omml::Models::OMath",
+    "input": "<m:oMath xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\"><m:r><m:t>x</m:t></m:r><m:sSup><m:e><m:r><m:t>y</m:t></m:r></m:e><m:sup><m:r><m:t>2</m:t></m:r></m:sup></m:sSup><m:r><m:t>+1</m:t></m:r></m:oMath>",
+    "expected": "<m:oMath xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\">\n  <m:r>\n    <m:t>x</m:t>\n  </m:r>\n  <m:sSup>\n    <m:e>\n      <m:r>\n        <m:t>y</m:t>\n      </m:r>\n    </m:e>\n    <m:sup>\n      <m:r>\n        <m:t>2</m:t>\n      </m:r>\n    </m:sup>\n  </m:sSup>\n  <m:r>\n    <m:t>+1</m:t>\n  </m:r>\n</m:oMath>"
+  }
+]
