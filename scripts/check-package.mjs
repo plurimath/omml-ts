@@ -7,7 +7,7 @@ await mkdir(join(root,".build/packages"),{recursive:true});
 const packed=JSON.parse(execFileSync("npm",["pack","--json","--pack-destination",".build/packages"],{cwd:root,encoding:"utf8",shell:process.platform==="win32"}))[0];
 const paths=packed.files.map(x=>x.path);
 if(paths.some(x=>/(^|\/)(AGENTS\.md|CLAUDE\.md|node_modules|test|\.codex-context)(\/|$)/.test(x)))throw new Error("unexpected package surface");
-for(const required of ["LICENSE.md","NOTICE","dist/index.js","dist/artifacts.js"])if(!paths.includes(required))throw new Error("missing from package: "+required);
+for(const required of ["NOTICE","dist/index.js","dist/artifacts.js"])if(!paths.includes(required))throw new Error("missing from package: "+required);
 const consumer=await mkdtemp(join(root,".build/consumer-"));
 await writeFile(join(consumer,"package.json"),JSON.stringify({private:true,type:"module",dependencies:{"@plurimath/omml-ts":`file:${join(root,".build/packages",packed.filename)}`}}));
 execFileSync("npm",["install","--cache",join(root,".build/npm-cache"),"--no-audit","--no-fund"],{cwd:consumer,stdio:"pipe",shell:process.platform==="win32"});

@@ -24,8 +24,7 @@
     "dist",
     "model",
     "README.md",
-    "NOTICE",
-    "LICENSE.md"
+    "NOTICE"
   ],
   "scripts": {
     "build": "tsc -p tsconfig.json",
