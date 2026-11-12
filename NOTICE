@@ -1,0 +1,5 @@
+Source candidate; npm publication is not authorized.
+Generated models originate from the plurimath/omml source declaration graph.
+The code generator and contracts originate from lutaml/lutaml-ts.
+Exact source revisions and artifact hashes are listed in model/provenance.json.
+License: BSD-2-Clause, as declared in package.json and in the upstream plurimath/omml omml.gemspec (line 17) at fc426cf6143e9dee24b723ca76b6e6107b58e77d. The upstream repository has no license file, so none is included here; copyright ownership is unresolved.
