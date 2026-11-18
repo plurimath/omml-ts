@@ -47,23 +47,31 @@ function recordAttributes(node: Node, path: string, out: Map<string, Set<string>
 
 /** The root's start tag in the (well-formed) input: the text up to the first '>' outside quotes. */
 function rootStartTag(input: string, qname: string): string {
-  const open = new RegExp("<" + qname.replace(/[.]/g, "\\.") + "[\\s/>]").exec(input);
-  if (open === null) return "";
+  let start = -1;
+  for (let at = input.indexOf("<" + qname); at >= 0; at = input.indexOf("<" + qname, at + 1)) {
+    if (/[\s/>]/.test(input.charAt(at + qname.length + 1))) {
+      start = at;
+      break;
+    }
+  }
+  if (start < 0) return "";
   let quote: string | null = null;
-  for (let i = open.index; i < input.length; i++) {
+  for (let i = start; i < input.length; i++) {
     const c = input[i];
     if (quote !== null) {
       if (c === quote) quote = null;
     } else if (c === '"' || c === "'") quote = c;
-    else if (c === ">") return input.slice(open.index, i + 1);
+    else if (c === ">") return input.slice(start, i + 1);
   }
   return "";
 }
 
+const escapeRegExp = (text: string) => text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
 /** The root's declarations in input order (moxml-ts does not report them in document order). */
 function inputRootNamespaces(input: string, root: Node): NamespaceBinding[] {
   const tag = rootStartTag(input, root.qualifiedName() ?? "");
-  const at = (d: NamespaceBinding) => new RegExp("\\sxmlns" + (d.prefix === "" ? "" : ":" + d.prefix) + "\\s*=").exec(tag)?.index ?? -1;
+  const at = (d: NamespaceBinding) => new RegExp("\\sxmlns" + (d.prefix === "" ? "" : ":" + escapeRegExp(d.prefix)) + "\\s*=").exec(tag)?.index ?? -1;
   return [...(root.declaredNamespaces() ?? [])].sort((a, b) => at(a) - at(b));
 }
 
