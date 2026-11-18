@@ -14,6 +14,10 @@
 // Lutaml attributes the generated models do not expose. The ledger is
 // append-only: a row whose id has an -r2 sibling is superseded by it and only
 // the sibling runs, as in the Ruby gem's replay. Any failing row fails.
+//
+// KNOWN_REFUSALS lists rows whose input is not well-formed XML. The gem's
+// lenient parser accepts them; this package stays W3C-strict and refuses
+// them, so such a row passes only when it is refused.
 import { readFileSync, writeFileSync } from "node:fs";
 import { isDeepStrictEqual, parseArgs } from "node:util";
 import { parse as parseXml } from "moxml-ts";
@@ -60,6 +64,13 @@ async function xmlTree(xml) {
   }
 }
 
+const KNOWN_REFUSALS = new Map([
+  ["omml-equation-arrays-007.model-roundtrip", "bare '&' in text is not well-formed"],
+  ["omml-matrices-017.model-roundtrip", "'&nbsp;' is not an XML entity"],
+  ["omml-unclosed-para.model-roundtrip", "m:oMathPara is never closed"],
+  ["omml-crossed-close.model-roundtrip", "end tag m:r crosses the open m:t"],
+]);
+
 // What Omml.parse(input).to_xml does.
 const roundtrip = async (input) => stringifyOmml(await parseOmml(input));
 
@@ -71,6 +82,7 @@ async function failure(row) {
   } catch (e) {
     error = e;
   }
+  if (KNOWN_REFUSALS.has(row.id)) return error ? null : ["known-refusal-accepted", actual];
   if (row.expected.refusal) return error ? null : ["accepted", actual];
   if (error) return ["refused", String(error?.message ?? error)];
   const expected = row.expected.output.str;
@@ -83,6 +95,7 @@ async function failure(row) {
 }
 
 const ids = new Set(corpus.cases.map((row) => row.id));
+for (const [id, reason] of KNOWN_REFUSALS) if (!ids.has(id)) throw new Error(`known refusal ${id} (${reason}) is not in the corpus`);
 const superseded = new Set([...ids].filter((id) => id.includes("-r2")).map((id) => id.replace("-r2", "")));
 const outcomes = [];
 const kinds = {};
@@ -103,6 +116,7 @@ const report = {
   superseded: superseded.size,
   failed: failed.length,
   kinds,
+  known_refusals: [...KNOWN_REFUSALS].map(([id, reason]) => ({ id, reason })),
   outcomes,
 };
 if (args.report) writeFileSync(args.report, JSON.stringify(report, null, 2));
