@@ -10,9 +10,10 @@ const sdk = resolve(sdkArg), source = resolve(sourceArg);
 const root = fileURLToPath(new URL("../", import.meta.url));
 const manifest = JSON.parse(readFileSync(join(root, "model/provenance.json")));
 const head = (repo) => execFileSync("git", ["-C", repo, "rev-parse", "HEAD"], { encoding: "utf8" }).trim();
-// TEMPORARY: model/provenance.json source.lutaml_ts is 1c3d340 on suleman-uzair/lutaml-ts
-// (feat/sequence-write-order, stacked on add5775, the lutaml-ts#3 head). Pin to lutaml merge
-// commit once lutaml-rs#10 / lutaml-ts#3 (and the sequence-write-order follow-up) land.
+// TEMPORARY: model/provenance.json source.lutaml_ts is a05320c on suleman-uzair/lutaml-ts
+// (feat/xml-comment-pi-write: the lutaml-ts#3 head add5775, the sequence-write-order fix and
+// comment/PI writing). Pin to the lutaml merge commit once lutaml-rs#10 / lutaml-ts#3 and these
+// follow-ups land.
 if (head(sdk) !== manifest.source.lutaml_ts) throw new Error("LutaML source revision mismatch");
 execFileSync("git", ["-C", source, "cat-file", "-e", manifest.source.omml + "^{commit}"]);
 const sdkStatus = execFileSync("git", ["-C", sdk, "status", "--porcelain", "--", "src"], { encoding: "utf8" });
