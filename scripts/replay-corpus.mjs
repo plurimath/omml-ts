@@ -10,8 +10,8 @@
 // oMath or oMathPara model, as Omml.parse does), and the written XML must equal the row's expected to_xml output
 // byte for byte; a row the gem refuses must be refused. A failing output is
 // classed as output-bytes (same element tree, different bytes) or output-tree.
-// The expected Ruby model wire is not compared: it names Ruby classes and
-// Lutaml attributes the generated models do not expose. The ledger is
+// The parsed model must also equal the row's expected Ruby model wire
+// (scripts/model-wire.mjs), or the row fails as model-wire. The ledger is
 // append-only: a row whose id has an -r2 sibling is superseded by it and only
 // the sibling runs, as in the Ruby gem's replay. Any failing row fails.
 //
@@ -22,6 +22,7 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { isDeepStrictEqual, parseArgs } from "node:util";
 import { parse as parseXml } from "moxml-ts";
 import { parseOmml, stringifyOmml } from "../dist/index.js";
+import { normalizeExpected, profileCounts, wire } from "./model-wire.mjs";
 
 const { values: args, positionals } = parseArgs({
   allowPositionals: true,
@@ -71,14 +72,32 @@ const KNOWN_REFUSALS = new Map([
   ["omml-crossed-close.model-roundtrip", "end tag m:r crosses the open m:t"],
 ]);
 
-// What Omml.parse(input).to_xml does.
-const roundtrip = async (input) => stringifyOmml(await parseOmml(input));
+// What Omml.parse(input) and its to_xml do.
+const roundtrip = async (input) => {
+  const model = await parseOmml(input);
+  return [await stringifyOmml(model), model];
+};
+
+function firstDifference(actual, expected, path) {
+  if (isDeepStrictEqual(actual, expected)) return null;
+  if (actual !== null && expected !== null && typeof actual === "object" && typeof expected === "object") {
+    const at = `${path}${actual.node ? `/${actual.node.replace("Omml::Models::", "")}` : ""}`;
+    if (Array.isArray(actual) && Array.isArray(expected) && actual.length !== expected.length) {
+      return `${at}: ${actual.length} entries, expected ${expected.length}: ${JSON.stringify(actual)}`;
+    }
+    for (const key of new Set([...Object.keys(actual), ...Object.keys(expected)])) {
+      const found = firstDifference(actual[key], expected[key], Array.isArray(actual) && actual[key]?.[0] ? `${at}/${actual[key][0]}` : at);
+      if (found) return found;
+    }
+  }
+  return `${path}: ${JSON.stringify(actual)}, expected ${JSON.stringify(expected)}`;
+}
 
 async function failure(row) {
   if (row.options && Object.keys(row.options).length > 0) throw new Error(`${row.id}: unsupported options`);
-  let actual, error;
+  let actual, model, error;
   try {
-    actual = await roundtrip(row.input.str);
+    [actual, model] = await roundtrip(row.input.str);
   } catch (e) {
     error = e;
   }
@@ -86,7 +105,11 @@ async function failure(row) {
   if (row.expected.refusal) return error ? null : ["accepted", actual];
   if (error) return ["refused", String(error?.message ?? error)];
   const expected = row.expected.output.str;
-  if (actual === expected) return null;
+  if (actual === expected) {
+    const { normalized } = normalizeExpected(row.expected.model);
+    const difference = firstDifference(wire(model), normalized, "");
+    return difference === null ? null : ["model-wire", difference];
+  }
   let at = 0;
   while (actual[at] === expected[at]) at++;
   const left = await xmlTree(actual);
@@ -116,10 +139,12 @@ const report = {
   superseded: superseded.size,
   failed: failed.length,
   kinds,
+  model_wire_profiles: profileCounts(),
   known_refusals: [...KNOWN_REFUSALS].map(([id, reason]) => ({ id, reason })),
   outcomes,
 };
 if (args.report) writeFileSync(args.report, JSON.stringify(report, null, 2));
 console.log(`${outcomes.length} rows executed, ${superseded.size} superseded, ${failed.length} failed ${JSON.stringify(kinds)}`);
+console.log(`model wire normalizations (rows): ${JSON.stringify(profileCounts())}`);
 for (const o of failed.slice(0, 20)) console.log(`${o.id} [${o.kind}] ${o.failure}`);
 if (failed.length > 0) process.exitCode = 1;
