@@ -120,7 +120,7 @@ export function readOmmlModelsCTAnchor_omml(el: x.El): m.OmmlModelsCTAnchor_omml
 }
 
 const WSPEC_OmmlModelsCTAnchor_omml: x.WSpec = {
-  id: "Omml::Models::CTAnchor@omml", ordered: false, refusal: "unsupported XML writer mapping: the sequence compositor is not written by this emitter",
+  id: "Omml::Models::CTAnchor@omml", ordered: false, refusal: null,
   attrs: [
     { to: "dist_t", name: "distT", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: (v) => x.eBound(v, _b0_format), nil: "omit", empty: "omit" },
     { to: "dist_b", name: "distB", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: (v) => x.eBound(v, _b0_format), nil: "omit", empty: "omit" },
@@ -865,7 +865,7 @@ export function readOmmlModelsCTCustomXmlRun_omml(el: x.El): m.OmmlModelsCTCusto
 }
 
 const WSPEC_OmmlModelsCTCustomXmlRun_omml: x.WSpec = {
-  id: "Omml::Models::CTCustomXmlRun@omml", ordered: false, refusal: "unsupported XML writer mapping: the sequence compositor is not written by this emitter",
+  id: "Omml::Models::CTCustomXmlRun@omml", ordered: false, refusal: null,
   attrs: [
     { to: "uri", name: "uri", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: x.eStr, nil: "omit", empty: "omit" },
     { to: "element", name: "element", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: x.eStr, nil: "omit", empty: "omit" },
@@ -4260,7 +4260,7 @@ export function readOmmlModelsCTRPR_omml(el: x.El): m.OmmlModelsCTRPR_omml {
 }
 
 const WSPEC_OmmlModelsCTRPR_omml: x.WSpec = {
-  id: "Omml::Models::CTRPR@omml", ordered: false, refusal: "unsupported XML writer mapping: the sequence compositor is not written by this emitter",
+  id: "Omml::Models::CTRPR@omml", ordered: false, refusal: null,
   attrs: [
   ],
   any: null,
@@ -5732,7 +5732,7 @@ export function readOmmlModelsCTSimpleField_omml(el: x.El): m.OmmlModelsCTSimple
 }
 
 const WSPEC_OmmlModelsCTSimpleField_omml: x.WSpec = {
-  id: "Omml::Models::CTSimpleField@omml", ordered: false, refusal: "unsupported XML writer mapping: the sequence compositor is not written by this emitter",
+  id: "Omml::Models::CTSimpleField@omml", ordered: false, refusal: null,
   attrs: [
     { to: "instr", name: "instr", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: x.eStr, nil: "omit", empty: "omit" },
     { to: "fld_lock", name: "fldLock", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: x.eStr, nil: "omit", empty: "omit" },
@@ -5865,7 +5865,7 @@ export function readOmmlModelsCTSmartTagRun_omml(el: x.El): m.OmmlModelsCTSmartT
 }
 
 const WSPEC_OmmlModelsCTSmartTagRun_omml: x.WSpec = {
-  id: "Omml::Models::CTSmartTagRun@omml", ordered: false, refusal: "unsupported XML writer mapping: the sequence compositor is not written by this emitter",
+  id: "Omml::Models::CTSmartTagRun@omml", ordered: false, refusal: null,
   attrs: [
     { to: "uri", name: "uri", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: x.eStr, nil: "omit", empty: "omit" },
     { to: "element", name: "element", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: x.eStr, nil: "omit", empty: "omit" },

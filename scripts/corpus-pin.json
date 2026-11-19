@@ -1,0 +1,15 @@
+{
+  "repository": "https://github.com/plurimath/plurimath-testsuite",
+  "revision": "9767c37a8d7bb21a0694780ecfcbc4f1fbd9eb39",
+  "language": "omml",
+  "generation": 2,
+  "path": "stages/omml/generations/000002",
+  "snapshot_digest": "sha256:1d8307a72fa48acfae8fd3e5f5bebecb941e02282aa265f3e9c168b96761d439",
+  "provenance_sha256": "7decbf033e04370bc32a340e7d214db9b34a0cf548e73c7338526ea1be64ca88",
+  "boundaries": {
+    "model-roundtrip": {
+      "rows": 199,
+      "ids_sha256": "9c8c1706e64daaf6887696d419032862cee05f933fe0cc5a9e32bba44759e77f"
+    }
+  }
+}
