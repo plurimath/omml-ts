@@ -4,14 +4,16 @@ import type { Node } from "moxml-ts";
 import * as m from "../models.js";
 import * as x from "./runtime.js";
 import { formatUnsignedIntXml as _b0_format, parseUnsignedIntXml as _b0_parse } from "../integer.js";
-import { formatUnsignedLongXml as _b1_format, parseUnsignedLongXml as _b1_parse } from "../integer.js";
-import { formatSTCoordinateXml as _b2_format, parseSTCoordinateXml as _b2_parse } from "../coordinate.js";
-import { formatTokenXml as _b3_format, parseTokenXml as _b3_parse } from "../token.js";
-import { formatSTInteger255Xml as _b4_format, parseSTInteger255Xml as _b4_parse } from "../integer.js";
-import { formatSTInteger2Xml as _b5_format, parseSTInteger2Xml as _b5_parse } from "../integer.js";
-import { formatSTPositiveCoordinateXml as _b6_format, parseSTPositiveCoordinateXml as _b6_parse } from "../coordinate.js";
-import { formatSTSpacingRuleXml as _b7_format, parseSTSpacingRuleXml as _b7_parse } from "../integer.js";
-import { formatSTTextScaleXml as _b8_format, parseSTTextScaleXml as _b8_parse } from "../integer.js";
+import { formatHexBinaryXml as _b1_format, parseHexBinaryXml as _b1_parse } from "../plain-string.js";
+import { formatUnsignedLongXml as _b2_format, parseUnsignedLongXml as _b2_parse } from "../integer.js";
+import { formatSTCoordinateXml as _b3_format, parseSTCoordinateXml as _b3_parse } from "../coordinate.js";
+import { formatTokenXml as _b4_format, parseTokenXml as _b4_parse } from "../token.js";
+import { formatSTInteger255Xml as _b5_format, parseSTInteger255Xml as _b5_parse } from "../integer.js";
+import { formatSTInteger2Xml as _b6_format, parseSTInteger2Xml as _b6_parse } from "../integer.js";
+import { formatSTLangXml as _b7_format, parseSTLangXml as _b7_parse } from "../plain-string.js";
+import { formatSTPositiveCoordinateXml as _b8_format, parseSTPositiveCoordinateXml as _b8_parse } from "../coordinate.js";
+import { formatSTSpacingRuleXml as _b9_format, parseSTSpacingRuleXml as _b9_parse } from "../integer.js";
+import { formatSTTextScaleXml as _b10_format, parseSTTextScaleXml as _b10_parse } from "../integer.js";
 
 const RSPEC_OmmlModelsCTAcc_omml: x.ModelSpec = {
   id: "Omml::Models::CTAcc@omml", root: "CT_Acc", ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], ordered: false, mixed: false, tokens: false,
@@ -19,8 +21,8 @@ const RSPEC_OmmlModelsCTAcc_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "acc_pr", names: ["accPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTAccPr_omml },
-    { to: "e", names: ["e"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTOMathArg_omml },
+    { to: "acc_pr", names: ["accPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTAccPr_omml },
+    { to: "e", names: ["e"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTOMathArg_omml },
   ],
   content: null,
 };
@@ -41,7 +43,7 @@ const WSPEC_OmmlModelsCTAcc_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTAcc_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTAcc_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTAcc_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTAcc_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTAcc_omml, v, name, ns, host);
 }
 
@@ -53,8 +55,8 @@ const RSPEC_OmmlModelsCTAccPr_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "chr", names: ["chr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTChar_omml },
-    { to: "ctrl_pr", names: ["ctrlPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTCtrlPr_omml },
+    { to: "chr", names: ["chr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTChar_omml },
+    { to: "ctrl_pr", names: ["ctrlPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTCtrlPr_omml },
   ],
   content: null,
 };
@@ -75,7 +77,7 @@ const WSPEC_OmmlModelsCTAccPr_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTAccPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTAccPr_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTAccPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTAccPr_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTAccPr_omml, v, name, ns, host);
 }
 
@@ -98,19 +100,19 @@ const RSPEC_OmmlModelsCTAnchor_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "simple_pos", names: ["simplePos"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: x.leaf(x.orNil(x.dBool)) },
-    { to: "position_h", names: ["positionH"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTPosH_omml },
-    { to: "position_v", names: ["positionV"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTPosV_omml },
-    { to: "extent", names: ["extent"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTPositiveSize2D_omml },
-    { to: "effect_extent", names: ["effectExtent"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTEffectExtent_omml },
-    { to: "doc_pr", names: ["docPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTNonVisualDrawingProps_omml, absentList: true },
-    { to: "c_nv_graphic_frame_pr", names: ["cNvGraphicFramePr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTNonVisualGraphicFrameProperties_omml },
-    { to: "graphic", names: ["graphic"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTGraphicalObject_omml, absentList: true },
-    { to: "wrap_none", names: ["wrapNone"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTWrapNone_omml, absentList: true },
-    { to: "wrap_square", names: ["wrapSquare"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTWrapSquare_omml, absentList: true },
-    { to: "wrap_tight", names: ["wrapTight"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTWrapTight_omml, absentList: true },
-    { to: "wrap_through", names: ["wrapThrough"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTWrapThrough_omml, absentList: true },
-    { to: "wrap_top_and_bottom", names: ["wrapTopAndBottom"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTWrapTopBottom_omml, absentList: true },
+    { to: "simple_pos", names: ["simplePos"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: true, dec: x.leaf(x.orNil(x.dBool)) },
+    { to: "position_h", names: ["positionH"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTPosH_omml },
+    { to: "position_v", names: ["positionV"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTPosV_omml },
+    { to: "extent", names: ["extent"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTPositiveSize2D_omml },
+    { to: "effect_extent", names: ["effectExtent"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTEffectExtent_omml },
+    { to: "doc_pr", names: ["docPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTNonVisualDrawingProps_omml, absentList: true },
+    { to: "c_nv_graphic_frame_pr", names: ["cNvGraphicFramePr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTNonVisualGraphicFrameProperties_omml },
+    { to: "graphic", names: ["graphic"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTGraphicalObject_omml, absentList: true },
+    { to: "wrap_none", names: ["wrapNone"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTWrapNone_omml, absentList: true },
+    { to: "wrap_square", names: ["wrapSquare"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTWrapSquare_omml, absentList: true },
+    { to: "wrap_tight", names: ["wrapTight"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTWrapTight_omml, absentList: true },
+    { to: "wrap_through", names: ["wrapThrough"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTWrapThrough_omml, absentList: true },
+    { to: "wrap_top_and_bottom", names: ["wrapTopAndBottom"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTWrapTopBottom_omml, absentList: true },
   ],
   content: null,
 };
@@ -153,7 +155,7 @@ const WSPEC_OmmlModelsCTAnchor_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTAnchor_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTAnchor_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTAnchor_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTAnchor_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTAnchor_omml, v, name, ns, host);
 }
 
@@ -189,7 +191,7 @@ const WSPEC_OmmlModelsCTAttr_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTAttr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTAttr_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTAttr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTAttr_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTAttr_omml, v, name, ns, host);
 }
 
@@ -201,8 +203,8 @@ const RSPEC_OmmlModelsCTBar_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "bar_pr", names: ["barPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTBarPr_omml },
-    { to: "e", names: ["e"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTOMathArg_omml },
+    { to: "bar_pr", names: ["barPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTBarPr_omml },
+    { to: "e", names: ["e"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTOMathArg_omml },
   ],
   content: null,
 };
@@ -223,7 +225,7 @@ const WSPEC_OmmlModelsCTBar_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTBar_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTBar_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTBar_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTBar_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTBar_omml, v, name, ns, host);
 }
 
@@ -235,8 +237,8 @@ const RSPEC_OmmlModelsCTBarPr_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "pos", names: ["pos"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTTopBot_omml },
-    { to: "ctrl_pr", names: ["ctrlPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTCtrlPr_omml },
+    { to: "pos", names: ["pos"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTTopBot_omml },
+    { to: "ctrl_pr", names: ["ctrlPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTCtrlPr_omml },
   ],
   content: null,
 };
@@ -257,7 +259,7 @@ const WSPEC_OmmlModelsCTBarPr_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTBarPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTBarPr_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTBarPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTBarPr_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTBarPr_omml, v, name, ns, host);
 }
 
@@ -297,7 +299,7 @@ const WSPEC_OmmlModelsCTBookmark_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTBookmark_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTBookmark_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTBookmark_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTBookmark_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTBookmark_omml, v, name, ns, host);
 }
 
@@ -309,10 +311,10 @@ const RSPEC_OmmlModelsCTBorder_omml: x.ModelSpec = {
     { to: "val", names: ["val"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: x.dStr },
     { to: "color", names: ["color"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: x.dStr },
     { to: "theme_color", names: ["themeColor"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: x.dStr },
-    { to: "theme_tint", names: ["themeTint"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: x.dStr },
-    { to: "theme_shade", names: ["themeShade"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: x.dStr },
-    { to: "sz", names: ["sz"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: (s) => x.dBound(s, _b1_parse) },
-    { to: "space", names: ["space"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: (s) => x.dBound(s, _b1_parse) },
+    { to: "theme_tint", names: ["themeTint"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: (s) => x.dBound(s, _b1_parse) },
+    { to: "theme_shade", names: ["themeShade"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: (s) => x.dBound(s, _b1_parse) },
+    { to: "sz", names: ["sz"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: (s) => x.dBound(s, _b2_parse) },
+    { to: "space", names: ["space"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: (s) => x.dBound(s, _b2_parse) },
     { to: "shadow", names: ["shadow"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: x.dStr },
     { to: "frame", names: ["frame"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: x.dStr },
   ],
@@ -332,10 +334,10 @@ const WSPEC_OmmlModelsCTBorder_omml: x.WSpec = {
     { to: "val", name: "val", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: x.eStr, nil: "omit", empty: "omit" },
     { to: "color", name: "color", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: x.eStr, nil: "omit", empty: "omit" },
     { to: "theme_color", name: "themeColor", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: x.eStr, nil: "omit", empty: "omit" },
-    { to: "theme_tint", name: "themeTint", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: x.eStr, nil: "omit", empty: "omit" },
-    { to: "theme_shade", name: "themeShade", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: x.eStr, nil: "omit", empty: "omit" },
-    { to: "sz", name: "sz", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: (v) => x.eBound(v, _b1_format), nil: "omit", empty: "omit" },
-    { to: "space", name: "space", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: (v) => x.eBound(v, _b1_format), nil: "omit", empty: "omit" },
+    { to: "theme_tint", name: "themeTint", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: (v) => x.eBound(v, _b1_format), nil: "omit", empty: "omit" },
+    { to: "theme_shade", name: "themeShade", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: (v) => x.eBound(v, _b1_format), nil: "omit", empty: "omit" },
+    { to: "sz", name: "sz", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: (v) => x.eBound(v, _b2_format), nil: "omit", empty: "omit" },
+    { to: "space", name: "space", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: (v) => x.eBound(v, _b2_format), nil: "omit", empty: "omit" },
     { to: "shadow", name: "shadow", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: x.eStr, nil: "omit", empty: "omit" },
     { to: "frame", name: "frame", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: x.eStr, nil: "omit", empty: "omit" },
   ],
@@ -345,7 +347,7 @@ const WSPEC_OmmlModelsCTBorder_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTBorder_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTBorder_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTBorder_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTBorder_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTBorder_omml, v, name, ns, host);
 }
 
@@ -357,8 +359,8 @@ const RSPEC_OmmlModelsCTBorderBox_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "border_box_pr", names: ["borderBoxPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTBorderBoxPr_omml },
-    { to: "e", names: ["e"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTOMathArg_omml },
+    { to: "border_box_pr", names: ["borderBoxPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTBorderBoxPr_omml },
+    { to: "e", names: ["e"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTOMathArg_omml },
   ],
   content: null,
 };
@@ -379,7 +381,7 @@ const WSPEC_OmmlModelsCTBorderBox_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTBorderBox_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTBorderBox_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTBorderBox_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTBorderBox_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTBorderBox_omml, v, name, ns, host);
 }
 
@@ -391,15 +393,15 @@ const RSPEC_OmmlModelsCTBorderBoxPr_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "hide_top", names: ["hideTop"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTOnOff_omml },
-    { to: "hide_bot", names: ["hideBot"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTOnOff_omml },
-    { to: "hide_left", names: ["hideLeft"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTOnOff_omml },
-    { to: "hide_right", names: ["hideRight"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTOnOff_omml },
-    { to: "strike_h", names: ["strikeH"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTOnOff_omml },
-    { to: "strike_v", names: ["strikeV"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTOnOff_omml },
-    { to: "strike_bltr", names: ["strikeBLTR"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTOnOff_omml },
-    { to: "strike_tlbr", names: ["strikeTLBR"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTOnOff_omml },
-    { to: "ctrl_pr", names: ["ctrlPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTCtrlPr_omml },
+    { to: "hide_top", names: ["hideTop"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTOnOff_omml },
+    { to: "hide_bot", names: ["hideBot"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTOnOff_omml },
+    { to: "hide_left", names: ["hideLeft"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTOnOff_omml },
+    { to: "hide_right", names: ["hideRight"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTOnOff_omml },
+    { to: "strike_h", names: ["strikeH"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTOnOff_omml },
+    { to: "strike_v", names: ["strikeV"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTOnOff_omml },
+    { to: "strike_bltr", names: ["strikeBLTR"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTOnOff_omml },
+    { to: "strike_tlbr", names: ["strikeTLBR"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTOnOff_omml },
+    { to: "ctrl_pr", names: ["ctrlPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTCtrlPr_omml },
   ],
   content: null,
 };
@@ -427,7 +429,7 @@ const WSPEC_OmmlModelsCTBorderBoxPr_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTBorderBoxPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTBorderBoxPr_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTBorderBoxPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTBorderBoxPr_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTBorderBoxPr_omml, v, name, ns, host);
 }
 
@@ -439,8 +441,8 @@ const RSPEC_OmmlModelsCTBox_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "box_pr", names: ["boxPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTBoxPr_omml },
-    { to: "e", names: ["e"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTOMathArg_omml },
+    { to: "box_pr", names: ["boxPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTBoxPr_omml },
+    { to: "e", names: ["e"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTOMathArg_omml },
   ],
   content: null,
 };
@@ -461,7 +463,7 @@ const WSPEC_OmmlModelsCTBox_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTBox_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTBox_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTBox_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTBox_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTBox_omml, v, name, ns, host);
 }
 
@@ -473,12 +475,12 @@ const RSPEC_OmmlModelsCTBoxPr_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "op_emu", names: ["opEmu"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTOnOff_omml },
-    { to: "no_break", names: ["noBreak"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTOnOff_omml },
-    { to: "diff", names: ["diff"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTOnOff_omml },
-    { to: "brk", names: ["brk"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTManualBreak_omml },
-    { to: "aln", names: ["aln"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTOnOff_omml },
-    { to: "ctrl_pr", names: ["ctrlPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTCtrlPr_omml },
+    { to: "op_emu", names: ["opEmu"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTOnOff_omml },
+    { to: "no_break", names: ["noBreak"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTOnOff_omml },
+    { to: "diff", names: ["diff"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTOnOff_omml },
+    { to: "brk", names: ["brk"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTManualBreak_omml },
+    { to: "aln", names: ["aln"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTOnOff_omml },
+    { to: "ctrl_pr", names: ["ctrlPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTCtrlPr_omml },
   ],
   content: null,
 };
@@ -503,7 +505,7 @@ const WSPEC_OmmlModelsCTBoxPr_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTBoxPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTBoxPr_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTBoxPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTBoxPr_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTBoxPr_omml, v, name, ns, host);
 }
 
@@ -537,7 +539,7 @@ const WSPEC_OmmlModelsCTBr_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTBr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTBr_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTBr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTBr_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTBr_omml, v, name, ns, host);
 }
 
@@ -569,7 +571,7 @@ const WSPEC_OmmlModelsCTBreakBin_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTBreakBin_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTBreakBin_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTBreakBin_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTBreakBin_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTBreakBin_omml, v, name, ns, host);
 }
 
@@ -601,7 +603,7 @@ const WSPEC_OmmlModelsCTBreakBinSub_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTBreakBinSub_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTBreakBinSub_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTBreakBinSub_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTBreakBinSub_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTBreakBinSub_omml, v, name, ns, host);
 }
 
@@ -633,7 +635,7 @@ const WSPEC_OmmlModelsCTCalendarType_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTCalendarType_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTCalendarType_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTCalendarType_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTCalendarType_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTCalendarType_omml, v, name, ns, host);
 }
 
@@ -665,7 +667,7 @@ const WSPEC_OmmlModelsCTChar_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTChar_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTChar_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTChar_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTChar_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTChar_omml, v, name, ns, host);
 }
 
@@ -676,8 +678,8 @@ const RSPEC_OmmlModelsCTColor_omml: x.ModelSpec = {
   attrs: [
     { to: "val", names: ["val"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: x.dStr },
     { to: "theme_color", names: ["themeColor"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: x.dStr },
-    { to: "theme_tint", names: ["themeTint"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: x.dStr },
-    { to: "theme_shade", names: ["themeShade"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: x.dStr },
+    { to: "theme_tint", names: ["themeTint"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: (s) => x.dBound(s, _b1_parse) },
+    { to: "theme_shade", names: ["themeShade"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: (s) => x.dBound(s, _b1_parse) },
   ],
   any: null,
   elems: [
@@ -694,8 +696,8 @@ const WSPEC_OmmlModelsCTColor_omml: x.WSpec = {
   attrs: [
     { to: "val", name: "val", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: x.eStr, nil: "omit", empty: "omit" },
     { to: "theme_color", name: "themeColor", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: x.eStr, nil: "omit", empty: "omit" },
-    { to: "theme_tint", name: "themeTint", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: x.eStr, nil: "omit", empty: "omit" },
-    { to: "theme_shade", name: "themeShade", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: x.eStr, nil: "omit", empty: "omit" },
+    { to: "theme_tint", name: "themeTint", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: (v) => x.eBound(v, _b1_format), nil: "omit", empty: "omit" },
+    { to: "theme_shade", name: "themeShade", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: (v) => x.eBound(v, _b1_format), nil: "omit", empty: "omit" },
   ],
   any: null,
   elems: [
@@ -703,7 +705,7 @@ const WSPEC_OmmlModelsCTColor_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTColor_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTColor_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTColor_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTColor_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTColor_omml, v, name, ns, host);
 }
 
@@ -739,7 +741,7 @@ const WSPEC_OmmlModelsCTControl_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTControl_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTControl_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTControl_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTControl_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTControl_omml, v, name, ns, host);
 }
 
@@ -751,9 +753,9 @@ const RSPEC_OmmlModelsCTCtrlPr_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "ins", names: ["ins"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: false, dec: readOmmlModelsCTRPrChange_omml },
-    { to: "del", names: ["del"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: false, dec: readOmmlModelsCTRPrChange_omml },
-    { to: "r_pr", names: ["rPr"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTRPr_omml },
+    { to: "ins", names: ["ins"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: false, leaf: false, dec: readOmmlModelsCTRPrChange_omml },
+    { to: "del", names: ["del"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: false, leaf: false, dec: readOmmlModelsCTRPrChange_omml },
+    { to: "r_pr", names: ["rPr"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTRPr_omml },
   ],
   content: null,
 };
@@ -775,7 +777,7 @@ const WSPEC_OmmlModelsCTCtrlPr_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTCtrlPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTCtrlPr_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTCtrlPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTCtrlPr_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTCtrlPr_omml, v, name, ns, host);
 }
 
@@ -787,8 +789,8 @@ const RSPEC_OmmlModelsCTCustomXmlPr_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "placeholder", names: ["placeholder"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTString_omml },
-    { to: "attr", names: ["attr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTAttr_omml },
+    { to: "placeholder", names: ["placeholder"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTString_omml },
+    { to: "attr", names: ["attr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTAttr_omml },
   ],
   content: null,
 };
@@ -809,7 +811,7 @@ const WSPEC_OmmlModelsCTCustomXmlPr_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTCustomXmlPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTCustomXmlPr_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTCustomXmlPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTCustomXmlPr_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTCustomXmlPr_omml, v, name, ns, host);
 }
 
@@ -823,39 +825,39 @@ const RSPEC_OmmlModelsCTCustomXmlRun_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "custom_xml_pr", names: ["customXmlPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTCustomXmlPr_omml },
-    { to: "fld_simple", names: ["fldSimple"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTSimpleField_omml },
-    { to: "hyperlink", names: ["hyperlink"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTHyperlink_omml },
-    { to: "sub_doc", names: ["subDoc"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTRel_omml },
-    { to: "custom_xml", names: ["customXml"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTCustomXmlRun_omml },
-    { to: "smart_tag", names: ["smartTag"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTSmartTagRun_omml },
-    { to: "sdt", names: ["sdt"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTSdtRun_omml },
-    { to: "r", names: ["r"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTR_omml },
-    { to: "proof_err", names: ["proofErr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTProofErr_omml },
-    { to: "perm_start", names: ["permStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTPermStart_omml },
-    { to: "perm_end", names: ["permEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTPerm_omml },
-    { to: "ins", names: ["ins"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTRunTrackChange_omml },
-    { to: "del", names: ["del"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTRunTrackChange_omml },
-    { to: "move_from", names: ["moveFrom"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTRunTrackChange_omml },
-    { to: "move_to", names: ["moveTo"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTRunTrackChange_omml },
-    { to: "bookmark_start", names: ["bookmarkStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTBookmark_omml },
-    { to: "bookmark_end", names: ["bookmarkEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkupRange_omml },
-    { to: "move_from_range_start", names: ["moveFromRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMoveBookmark_omml },
-    { to: "move_from_range_end", names: ["moveFromRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkupRange_omml },
-    { to: "move_to_range_start", names: ["moveToRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMoveBookmark_omml },
-    { to: "move_to_range_end", names: ["moveToRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkupRange_omml },
-    { to: "comment_range_start", names: ["commentRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkupRange_omml },
-    { to: "comment_range_end", names: ["commentRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkupRange_omml },
-    { to: "custom_xml_ins_range_start", names: ["customXmlInsRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTTrackChange_omml },
-    { to: "custom_xml_ins_range_end", names: ["customXmlInsRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkup_omml },
-    { to: "custom_xml_del_range_start", names: ["customXmlDelRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTTrackChange_omml },
-    { to: "custom_xml_del_range_end", names: ["customXmlDelRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkup_omml },
-    { to: "custom_xml_move_from_range_start", names: ["customXmlMoveFromRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTTrackChange_omml },
-    { to: "custom_xml_move_from_range_end", names: ["customXmlMoveFromRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkup_omml },
-    { to: "custom_xml_move_to_range_start", names: ["customXmlMoveToRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTTrackChange_omml },
-    { to: "custom_xml_move_to_range_end", names: ["customXmlMoveToRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkup_omml },
-    { to: "o_math_para", names: ["oMathPara"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTOMathPara_omml },
-    { to: "o_math", names: ["oMath"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTOMath_omml },
+    { to: "custom_xml_pr", names: ["customXmlPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTCustomXmlPr_omml },
+    { to: "fld_simple", names: ["fldSimple"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTSimpleField_omml },
+    { to: "hyperlink", names: ["hyperlink"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTHyperlink_omml },
+    { to: "sub_doc", names: ["subDoc"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTRel_omml },
+    { to: "custom_xml", names: ["customXml"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTCustomXmlRun_omml },
+    { to: "smart_tag", names: ["smartTag"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTSmartTagRun_omml },
+    { to: "sdt", names: ["sdt"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTSdtRun_omml },
+    { to: "r", names: ["r"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTR_omml },
+    { to: "proof_err", names: ["proofErr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTProofErr_omml },
+    { to: "perm_start", names: ["permStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTPermStart_omml },
+    { to: "perm_end", names: ["permEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTPerm_omml },
+    { to: "ins", names: ["ins"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTRunTrackChange_omml },
+    { to: "del", names: ["del"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTRunTrackChange_omml },
+    { to: "move_from", names: ["moveFrom"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTRunTrackChange_omml },
+    { to: "move_to", names: ["moveTo"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTRunTrackChange_omml },
+    { to: "bookmark_start", names: ["bookmarkStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTBookmark_omml },
+    { to: "bookmark_end", names: ["bookmarkEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkupRange_omml },
+    { to: "move_from_range_start", names: ["moveFromRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMoveBookmark_omml },
+    { to: "move_from_range_end", names: ["moveFromRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkupRange_omml },
+    { to: "move_to_range_start", names: ["moveToRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMoveBookmark_omml },
+    { to: "move_to_range_end", names: ["moveToRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkupRange_omml },
+    { to: "comment_range_start", names: ["commentRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkupRange_omml },
+    { to: "comment_range_end", names: ["commentRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkupRange_omml },
+    { to: "custom_xml_ins_range_start", names: ["customXmlInsRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTTrackChange_omml },
+    { to: "custom_xml_ins_range_end", names: ["customXmlInsRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkup_omml },
+    { to: "custom_xml_del_range_start", names: ["customXmlDelRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTTrackChange_omml },
+    { to: "custom_xml_del_range_end", names: ["customXmlDelRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkup_omml },
+    { to: "custom_xml_move_from_range_start", names: ["customXmlMoveFromRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTTrackChange_omml },
+    { to: "custom_xml_move_from_range_end", names: ["customXmlMoveFromRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkup_omml },
+    { to: "custom_xml_move_to_range_start", names: ["customXmlMoveToRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTTrackChange_omml },
+    { to: "custom_xml_move_to_range_end", names: ["customXmlMoveToRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkup_omml },
+    { to: "o_math_para", names: ["oMathPara"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTOMathPara_omml },
+    { to: "o_math", names: ["oMath"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTOMath_omml },
   ],
   content: null,
 };
@@ -909,7 +911,7 @@ const WSPEC_OmmlModelsCTCustomXmlRun_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTCustomXmlRun_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTCustomXmlRun_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTCustomXmlRun_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTCustomXmlRun_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTCustomXmlRun_omml, v, name, ns, host);
 }
 
@@ -921,8 +923,8 @@ const RSPEC_OmmlModelsCTD_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "d_pr", names: ["dPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTDPr_omml },
-    { to: "e", names: ["e"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTOMathArg_omml, absentList: true },
+    { to: "d_pr", names: ["dPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTDPr_omml },
+    { to: "e", names: ["e"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTOMathArg_omml, absentList: true },
   ],
   content: null,
 };
@@ -943,7 +945,7 @@ const WSPEC_OmmlModelsCTD_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTD_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTD_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTD_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTD_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTD_omml, v, name, ns, host);
 }
 
@@ -955,13 +957,13 @@ const RSPEC_OmmlModelsCTDPr_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "beg_chr", names: ["begChr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTChar_omml },
-    { to: "sep_chr", names: ["sepChr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTChar_omml },
-    { to: "end_chr", names: ["endChr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTChar_omml },
-    { to: "grow", names: ["grow"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTOnOff_omml },
-    { to: "shp", names: ["shp"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTShp_omml },
-    { to: "ctrl_pr", names: ["ctrlPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTCtrlPr_omml },
-    { to: "word_r_pr", names: ["rPr"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTRPr_omml },
+    { to: "beg_chr", names: ["begChr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTChar_omml },
+    { to: "sep_chr", names: ["sepChr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTChar_omml },
+    { to: "end_chr", names: ["endChr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTChar_omml },
+    { to: "grow", names: ["grow"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTOnOff_omml },
+    { to: "shp", names: ["shp"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTShp_omml },
+    { to: "ctrl_pr", names: ["ctrlPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTCtrlPr_omml },
+    { to: "word_r_pr", names: ["rPr"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTRPr_omml },
   ],
   content: null,
 };
@@ -987,7 +989,7 @@ const WSPEC_OmmlModelsCTDPr_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTDPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTDPr_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTDPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTDPr_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTDPr_omml, v, name, ns, host);
 }
 
@@ -1023,7 +1025,7 @@ const WSPEC_OmmlModelsCTDataBinding_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTDataBinding_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTDataBinding_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTDataBinding_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTDataBinding_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTDataBinding_omml, v, name, ns, host);
 }
 
@@ -1055,7 +1057,7 @@ const WSPEC_OmmlModelsCTDecimalNumber_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTDecimalNumber_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTDecimalNumber_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTDecimalNumber_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTDecimalNumber_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTDecimalNumber_omml, v, name, ns, host);
 }
 
@@ -1067,8 +1069,8 @@ const RSPEC_OmmlModelsCTDrawing_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "anchor", names: ["anchor"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTAnchor_omml },
-    { to: "inline", names: ["inline"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTInline_omml },
+    { to: "anchor", names: ["anchor"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTAnchor_omml },
+    { to: "inline", names: ["inline"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTInline_omml },
   ],
   content: null,
 };
@@ -1089,7 +1091,7 @@ const WSPEC_OmmlModelsCTDrawing_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTDrawing_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTDrawing_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTDrawing_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTDrawing_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTDrawing_omml, v, name, ns, host);
 }
 
@@ -1129,7 +1131,7 @@ const WSPEC_OmmlModelsCTEastAsianLayout_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTEastAsianLayout_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTEastAsianLayout_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTEastAsianLayout_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTEastAsianLayout_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTEastAsianLayout_omml, v, name, ns, host);
 }
 
@@ -1138,10 +1140,10 @@ export const codecOmmlModelsCTEastAsianLayout_omml = x.xmlCodec<m.OmmlModelsCTEa
 const RSPEC_OmmlModelsCTEffectExtent_omml: x.ModelSpec = {
   id: "Omml::Models::CTEffectExtent@omml", root: "CT_EffectExtent", ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], ordered: false, mixed: false, tokens: false,
   attrs: [
-    { to: "l", names: ["l"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: (s) => x.dBound(s, _b2_parse) },
-    { to: "t", names: ["t"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: (s) => x.dBound(s, _b2_parse) },
-    { to: "r", names: ["r"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: (s) => x.dBound(s, _b2_parse) },
-    { to: "b", names: ["b"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: (s) => x.dBound(s, _b2_parse) },
+    { to: "l", names: ["l"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: (s) => x.dBound(s, _b3_parse) },
+    { to: "t", names: ["t"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: (s) => x.dBound(s, _b3_parse) },
+    { to: "r", names: ["r"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: (s) => x.dBound(s, _b3_parse) },
+    { to: "b", names: ["b"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: (s) => x.dBound(s, _b3_parse) },
   ],
   any: null,
   elems: [
@@ -1156,10 +1158,10 @@ export function readOmmlModelsCTEffectExtent_omml(el: x.El): m.OmmlModelsCTEffec
 const WSPEC_OmmlModelsCTEffectExtent_omml: x.WSpec = {
   id: "Omml::Models::CTEffectExtent@omml", ordered: false, refusal: null,
   attrs: [
-    { to: "l", name: "l", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: (v) => x.eBound(v, _b2_format), nil: "omit", empty: "omit" },
-    { to: "t", name: "t", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: (v) => x.eBound(v, _b2_format), nil: "omit", empty: "omit" },
-    { to: "r", name: "r", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: (v) => x.eBound(v, _b2_format), nil: "omit", empty: "omit" },
-    { to: "b", name: "b", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: (v) => x.eBound(v, _b2_format), nil: "omit", empty: "omit" },
+    { to: "l", name: "l", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: (v) => x.eBound(v, _b3_format), nil: "omit", empty: "omit" },
+    { to: "t", name: "t", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: (v) => x.eBound(v, _b3_format), nil: "omit", empty: "omit" },
+    { to: "r", name: "r", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: (v) => x.eBound(v, _b3_format), nil: "omit", empty: "omit" },
+    { to: "b", name: "b", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: (v) => x.eBound(v, _b3_format), nil: "omit", empty: "omit" },
   ],
   any: null,
   elems: [
@@ -1167,7 +1169,7 @@ const WSPEC_OmmlModelsCTEffectExtent_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTEffectExtent_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTEffectExtent_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTEffectExtent_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTEffectExtent_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTEffectExtent_omml, v, name, ns, host);
 }
 
@@ -1199,7 +1201,7 @@ const WSPEC_OmmlModelsCTEm_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTEm_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTEm_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTEm_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTEm_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTEm_omml, v, name, ns, host);
 }
 
@@ -1229,7 +1231,7 @@ const WSPEC_OmmlModelsCTEmpty_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTEmpty_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTEmpty_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTEmpty_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTEmpty_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTEmpty_omml, v, name, ns, host);
 }
 
@@ -1241,8 +1243,8 @@ const RSPEC_OmmlModelsCTEqArr_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "eq_arr_pr", names: ["eqArrPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTEqArrPr_omml },
-    { to: "e", names: ["e"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTOMathArg_omml, absentList: true },
+    { to: "eq_arr_pr", names: ["eqArrPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTEqArrPr_omml },
+    { to: "e", names: ["e"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTOMathArg_omml, absentList: true },
   ],
   content: null,
 };
@@ -1263,7 +1265,7 @@ const WSPEC_OmmlModelsCTEqArr_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTEqArr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTEqArr_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTEqArr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTEqArr_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTEqArr_omml, v, name, ns, host);
 }
 
@@ -1275,12 +1277,12 @@ const RSPEC_OmmlModelsCTEqArrPr_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "base_jc", names: ["baseJc"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTYAlign_omml },
-    { to: "max_dist", names: ["maxDist"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTOnOff_omml },
-    { to: "obj_dist", names: ["objDist"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTOnOff_omml },
-    { to: "r_sp_rule", names: ["rSpRule"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTSpacingRule_omml },
-    { to: "r_sp", names: ["rSp"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTUnSignedInteger_omml },
-    { to: "ctrl_pr", names: ["ctrlPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTCtrlPr_omml },
+    { to: "base_jc", names: ["baseJc"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTYAlign_omml },
+    { to: "max_dist", names: ["maxDist"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTOnOff_omml },
+    { to: "obj_dist", names: ["objDist"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTOnOff_omml },
+    { to: "r_sp_rule", names: ["rSpRule"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTSpacingRule_omml },
+    { to: "r_sp", names: ["rSp"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTUnSignedInteger_omml },
+    { to: "ctrl_pr", names: ["ctrlPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTCtrlPr_omml },
   ],
   content: null,
 };
@@ -1305,7 +1307,7 @@ const WSPEC_OmmlModelsCTEqArrPr_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTEqArrPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTEqArrPr_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTEqArrPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTEqArrPr_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTEqArrPr_omml, v, name, ns, host);
 }
 
@@ -1317,9 +1319,9 @@ const RSPEC_OmmlModelsCTF_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "f_pr", names: ["fPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTFPr_omml },
-    { to: "num", names: ["num"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTOMathArg_omml },
-    { to: "den", names: ["den"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTOMathArg_omml },
+    { to: "f_pr", names: ["fPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTFPr_omml },
+    { to: "num", names: ["num"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTOMathArg_omml },
+    { to: "den", names: ["den"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTOMathArg_omml },
   ],
   content: null,
 };
@@ -1341,7 +1343,7 @@ const WSPEC_OmmlModelsCTF_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTF_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTF_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTF_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTF_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTF_omml, v, name, ns, host);
 }
 
@@ -1353,10 +1355,10 @@ const RSPEC_OmmlModelsCTFFCheckBox_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "size", names: ["size"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTHpsMeasure_omml },
-    { to: "size_auto", names: ["sizeAuto"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTOnOff_omml },
-    { to: "default", names: ["default"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTOnOff_omml },
-    { to: "checked", names: ["checked"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTOnOff_omml },
+    { to: "size", names: ["size"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTHpsMeasure_omml },
+    { to: "size_auto", names: ["sizeAuto"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTOnOff_omml },
+    { to: "default", names: ["default"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTOnOff_omml },
+    { to: "checked", names: ["checked"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTOnOff_omml },
   ],
   content: null,
 };
@@ -1379,7 +1381,7 @@ const WSPEC_OmmlModelsCTFFCheckBox_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTFFCheckBox_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTFFCheckBox_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTFFCheckBox_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTFFCheckBox_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTFFCheckBox_omml, v, name, ns, host);
 }
 
@@ -1391,9 +1393,9 @@ const RSPEC_OmmlModelsCTFFDDList_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "result", names: ["result"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTDecimalNumber_omml },
-    { to: "default", names: ["default"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTDecimalNumber_omml },
-    { to: "list_entry", names: ["listEntry"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTString_omml },
+    { to: "result", names: ["result"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTDecimalNumber_omml },
+    { to: "default", names: ["default"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTDecimalNumber_omml },
+    { to: "list_entry", names: ["listEntry"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTString_omml },
   ],
   content: null,
 };
@@ -1415,7 +1417,7 @@ const WSPEC_OmmlModelsCTFFDDList_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTFFDDList_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTFFDDList_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTFFDDList_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTFFDDList_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTFFDDList_omml, v, name, ns, host);
 }
 
@@ -1427,16 +1429,16 @@ const RSPEC_OmmlModelsCTFFData_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "name", names: ["name"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTFFName_omml },
-    { to: "enabled", names: ["enabled"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTOnOff_omml },
-    { to: "calc_on_exit", names: ["calcOnExit"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTOnOff_omml },
-    { to: "entry_macro", names: ["entryMacro"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTMacroName_omml },
-    { to: "exit_macro", names: ["exitMacro"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTMacroName_omml },
-    { to: "help_text", names: ["helpText"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTFFHelpText_omml },
-    { to: "status_text", names: ["statusText"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTFFStatusText_omml },
-    { to: "check_box", names: ["checkBox"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTFFCheckBox_omml },
-    { to: "dd_list", names: ["ddList"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTFFDDList_omml },
-    { to: "text_input", names: ["textInput"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTFFTextInput_omml },
+    { to: "name", names: ["name"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTFFName_omml },
+    { to: "enabled", names: ["enabled"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTOnOff_omml },
+    { to: "calc_on_exit", names: ["calcOnExit"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTOnOff_omml },
+    { to: "entry_macro", names: ["entryMacro"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTMacroName_omml },
+    { to: "exit_macro", names: ["exitMacro"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTMacroName_omml },
+    { to: "help_text", names: ["helpText"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTFFHelpText_omml },
+    { to: "status_text", names: ["statusText"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTFFStatusText_omml },
+    { to: "check_box", names: ["checkBox"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTFFCheckBox_omml },
+    { to: "dd_list", names: ["ddList"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTFFDDList_omml },
+    { to: "text_input", names: ["textInput"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTFFTextInput_omml },
   ],
   content: null,
 };
@@ -1465,7 +1467,7 @@ const WSPEC_OmmlModelsCTFFData_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTFFData_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTFFData_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTFFData_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTFFData_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTFFData_omml, v, name, ns, host);
 }
 
@@ -1499,7 +1501,7 @@ const WSPEC_OmmlModelsCTFFHelpText_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTFFHelpText_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTFFHelpText_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTFFHelpText_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTFFHelpText_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTFFHelpText_omml, v, name, ns, host);
 }
 
@@ -1531,7 +1533,7 @@ const WSPEC_OmmlModelsCTFFName_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTFFName_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTFFName_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTFFName_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTFFName_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTFFName_omml, v, name, ns, host);
 }
 
@@ -1565,7 +1567,7 @@ const WSPEC_OmmlModelsCTFFStatusText_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTFFStatusText_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTFFStatusText_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTFFStatusText_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTFFStatusText_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTFFStatusText_omml, v, name, ns, host);
 }
 
@@ -1577,10 +1579,10 @@ const RSPEC_OmmlModelsCTFFTextInput_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "type", names: ["type"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTFFTextType_omml },
-    { to: "default", names: ["default"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTString_omml },
-    { to: "max_length", names: ["maxLength"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTDecimalNumber_omml },
-    { to: "format", names: ["format"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTString_omml },
+    { to: "type", names: ["type"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTFFTextType_omml },
+    { to: "default", names: ["default"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTString_omml },
+    { to: "max_length", names: ["maxLength"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTDecimalNumber_omml },
+    { to: "format", names: ["format"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTString_omml },
   ],
   content: null,
 };
@@ -1603,7 +1605,7 @@ const WSPEC_OmmlModelsCTFFTextInput_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTFFTextInput_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTFFTextInput_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTFFTextInput_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTFFTextInput_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTFFTextInput_omml, v, name, ns, host);
 }
 
@@ -1635,7 +1637,7 @@ const WSPEC_OmmlModelsCTFFTextType_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTFFTextType_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTFFTextType_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTFFTextType_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTFFTextType_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTFFTextType_omml, v, name, ns, host);
 }
 
@@ -1647,8 +1649,8 @@ const RSPEC_OmmlModelsCTFPr_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "type", names: ["type"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTFType_omml },
-    { to: "ctrl_pr", names: ["ctrlPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTCtrlPr_omml },
+    { to: "type", names: ["type"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTFType_omml },
+    { to: "ctrl_pr", names: ["ctrlPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTCtrlPr_omml },
   ],
   content: null,
 };
@@ -1669,7 +1671,7 @@ const WSPEC_OmmlModelsCTFPr_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTFPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTFPr_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTFPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTFPr_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTFPr_omml, v, name, ns, host);
 }
 
@@ -1701,7 +1703,7 @@ const WSPEC_OmmlModelsCTFType_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTFType_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTFType_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTFType_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTFType_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTFType_omml, v, name, ns, host);
 }
 
@@ -1735,7 +1737,7 @@ const WSPEC_OmmlModelsCTFitText_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTFitText_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTFitText_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTFitText_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTFitText_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTFitText_omml, v, name, ns, host);
 }
 
@@ -1750,9 +1752,9 @@ const RSPEC_OmmlModelsCTFldChar_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "fld_data", names: ["fldData"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTText_omml },
-    { to: "ff_data", names: ["ffData"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTFFData_omml },
-    { to: "numbering_change", names: ["numberingChange"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTTrackChangeNumbering_omml },
+    { to: "fld_data", names: ["fldData"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTText_omml },
+    { to: "ff_data", names: ["ffData"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTFFData_omml },
+    { to: "numbering_change", names: ["numberingChange"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTTrackChangeNumbering_omml },
   ],
   content: null,
 };
@@ -1777,7 +1779,7 @@ const WSPEC_OmmlModelsCTFldChar_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTFldChar_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTFldChar_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTFldChar_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTFldChar_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTFldChar_omml, v, name, ns, host);
 }
 
@@ -1825,7 +1827,7 @@ const WSPEC_OmmlModelsCTFonts_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTFonts_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTFonts_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTFonts_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTFonts_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTFonts_omml, v, name, ns, host);
 }
 
@@ -1859,7 +1861,7 @@ const WSPEC_OmmlModelsCTFtnEdnRef_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTFtnEdnRef_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTFtnEdnRef_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTFtnEdnRef_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTFtnEdnRef_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTFtnEdnRef_omml, v, name, ns, host);
 }
 
@@ -1871,9 +1873,9 @@ const RSPEC_OmmlModelsCTFunc_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "func_pr", names: ["funcPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTFuncPr_omml },
-    { to: "f_name", names: ["fName"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTOMathArg_omml },
-    { to: "e", names: ["e"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTOMathArg_omml },
+    { to: "func_pr", names: ["funcPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTFuncPr_omml },
+    { to: "f_name", names: ["fName"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTOMathArg_omml },
+    { to: "e", names: ["e"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTOMathArg_omml },
   ],
   content: null,
 };
@@ -1895,7 +1897,7 @@ const WSPEC_OmmlModelsCTFunc_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTFunc_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTFunc_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTFunc_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTFunc_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTFunc_omml, v, name, ns, host);
 }
 
@@ -1907,7 +1909,7 @@ const RSPEC_OmmlModelsCTFuncPr_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "ctrl_pr", names: ["ctrlPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTCtrlPr_omml },
+    { to: "ctrl_pr", names: ["ctrlPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTCtrlPr_omml },
   ],
   content: null,
 };
@@ -1927,7 +1929,7 @@ const WSPEC_OmmlModelsCTFuncPr_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTFuncPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTFuncPr_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTFuncPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTFuncPr_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTFuncPr_omml, v, name, ns, host);
 }
 
@@ -1939,7 +1941,7 @@ const RSPEC_OmmlModelsCTGraphicalObject_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "graphic_data", names: ["graphicData"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTGraphicalObjectData_omml },
+    { to: "graphic_data", names: ["graphicData"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTGraphicalObjectData_omml },
   ],
   content: null,
 };
@@ -1959,7 +1961,7 @@ const WSPEC_OmmlModelsCTGraphicalObject_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTGraphicalObject_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTGraphicalObject_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTGraphicalObject_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTGraphicalObject_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTGraphicalObject_omml, v, name, ns, host);
 }
 
@@ -1968,7 +1970,7 @@ export const codecOmmlModelsCTGraphicalObject_omml = x.xmlCodec<m.OmmlModelsCTGr
 const RSPEC_OmmlModelsCTGraphicalObjectData_omml: x.ModelSpec = {
   id: "Omml::Models::CTGraphicalObjectData@omml", root: "CT_GraphicalObjectData", ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], ordered: false, mixed: false, tokens: false,
   attrs: [
-    { to: "uri", names: ["uri"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: (s) => x.dBound(s, _b3_parse) },
+    { to: "uri", names: ["uri"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: (s) => x.dBound(s, _b4_parse) },
   ],
   any: null,
   elems: [
@@ -1983,7 +1985,7 @@ export function readOmmlModelsCTGraphicalObjectData_omml(el: x.El): m.OmmlModels
 const WSPEC_OmmlModelsCTGraphicalObjectData_omml: x.WSpec = {
   id: "Omml::Models::CTGraphicalObjectData@omml", ordered: false, refusal: null,
   attrs: [
-    { to: "uri", name: "uri", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: (v) => x.eBound(v, _b3_format), nil: "omit", empty: "omit" },
+    { to: "uri", name: "uri", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: (v) => x.eBound(v, _b4_format), nil: "omit", empty: "omit" },
   ],
   any: null,
   elems: [
@@ -1991,7 +1993,7 @@ const WSPEC_OmmlModelsCTGraphicalObjectData_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTGraphicalObjectData_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTGraphicalObjectData_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTGraphicalObjectData_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTGraphicalObjectData_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTGraphicalObjectData_omml, v, name, ns, host);
 }
 
@@ -2009,7 +2011,7 @@ const RSPEC_OmmlModelsCTGraphicalObjectFrameLocking_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "ext_lst", names: ["extLst"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTOfficeArtExtensionList_omml },
+    { to: "ext_lst", names: ["extLst"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTOfficeArtExtensionList_omml },
   ],
   content: null,
 };
@@ -2035,7 +2037,7 @@ const WSPEC_OmmlModelsCTGraphicalObjectFrameLocking_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTGraphicalObjectFrameLocking_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTGraphicalObjectFrameLocking_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTGraphicalObjectFrameLocking_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTGraphicalObjectFrameLocking_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTGraphicalObjectFrameLocking_omml, v, name, ns, host);
 }
 
@@ -2047,8 +2049,8 @@ const RSPEC_OmmlModelsCTGroupChr_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "group_chr_pr", names: ["groupChrPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTGroupChrPr_omml },
-    { to: "e", names: ["e"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTOMathArg_omml },
+    { to: "group_chr_pr", names: ["groupChrPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTGroupChrPr_omml },
+    { to: "e", names: ["e"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTOMathArg_omml },
   ],
   content: null,
 };
@@ -2069,7 +2071,7 @@ const WSPEC_OmmlModelsCTGroupChr_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTGroupChr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTGroupChr_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTGroupChr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTGroupChr_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTGroupChr_omml, v, name, ns, host);
 }
 
@@ -2081,10 +2083,10 @@ const RSPEC_OmmlModelsCTGroupChrPr_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "chr", names: ["chr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTChar_omml },
-    { to: "pos", names: ["pos"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTTopBot_omml },
-    { to: "vert_jc", names: ["vertJc"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTTopBot_omml },
-    { to: "ctrl_pr", names: ["ctrlPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTCtrlPr_omml },
+    { to: "chr", names: ["chr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTChar_omml },
+    { to: "pos", names: ["pos"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTTopBot_omml },
+    { to: "vert_jc", names: ["vertJc"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTTopBot_omml },
+    { to: "ctrl_pr", names: ["ctrlPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTCtrlPr_omml },
   ],
   content: null,
 };
@@ -2107,7 +2109,7 @@ const WSPEC_OmmlModelsCTGroupChrPr_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTGroupChrPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTGroupChrPr_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTGroupChrPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTGroupChrPr_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTGroupChrPr_omml, v, name, ns, host);
 }
 
@@ -2139,7 +2141,7 @@ const WSPEC_OmmlModelsCTHighlight_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTHighlight_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTHighlight_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTHighlight_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTHighlight_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTHighlight_omml, v, name, ns, host);
 }
 
@@ -2148,7 +2150,7 @@ export const codecOmmlModelsCTHighlight_omml = x.xmlCodec<m.OmmlModelsCTHighligh
 const RSPEC_OmmlModelsCTHpsMeasure_omml: x.ModelSpec = {
   id: "Omml::Models::CTHpsMeasure@omml", root: "CT_HpsMeasure", ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], ordered: false, mixed: false, tokens: false,
   attrs: [
-    { to: "val", names: ["val"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: (s) => x.dBound(s, _b1_parse) },
+    { to: "val", names: ["val"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: (s) => x.dBound(s, _b2_parse) },
   ],
   any: null,
   elems: [
@@ -2163,7 +2165,7 @@ export function readOmmlModelsCTHpsMeasure_omml(el: x.El): m.OmmlModelsCTHpsMeas
 const WSPEC_OmmlModelsCTHpsMeasure_omml: x.WSpec = {
   id: "Omml::Models::CTHpsMeasure@omml", ordered: false, refusal: null,
   attrs: [
-    { to: "val", name: "val", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: (v) => x.eBound(v, _b1_format), nil: "omit", empty: "omit" },
+    { to: "val", name: "val", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: (v) => x.eBound(v, _b2_format), nil: "omit", empty: "omit" },
   ],
   any: null,
   elems: [
@@ -2171,7 +2173,7 @@ const WSPEC_OmmlModelsCTHpsMeasure_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTHpsMeasure_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTHpsMeasure_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTHpsMeasure_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTHpsMeasure_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTHpsMeasure_omml, v, name, ns, host);
 }
 
@@ -2213,7 +2215,7 @@ const WSPEC_OmmlModelsCTHyperlink_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTHyperlink_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTHyperlink_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTHyperlink_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTHyperlink_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTHyperlink_omml, v, name, ns, host);
 }
 
@@ -2229,11 +2231,11 @@ const RSPEC_OmmlModelsCTInline_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "extent", names: ["extent"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTPositiveSize2D_omml },
-    { to: "effect_extent", names: ["effectExtent"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTEffectExtent_omml },
-    { to: "doc_pr", names: ["docPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTNonVisualDrawingProps_omml, absentList: true },
-    { to: "c_nv_graphic_frame_pr", names: ["cNvGraphicFramePr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTNonVisualGraphicFrameProperties_omml },
-    { to: "graphic", names: ["graphic"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTGraphicalObject_omml, absentList: true },
+    { to: "extent", names: ["extent"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTPositiveSize2D_omml },
+    { to: "effect_extent", names: ["effectExtent"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTEffectExtent_omml },
+    { to: "doc_pr", names: ["docPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTNonVisualDrawingProps_omml, absentList: true },
+    { to: "c_nv_graphic_frame_pr", names: ["cNvGraphicFramePr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTNonVisualGraphicFrameProperties_omml },
+    { to: "graphic", names: ["graphic"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTGraphicalObject_omml, absentList: true },
   ],
   content: null,
 };
@@ -2261,7 +2263,7 @@ const WSPEC_OmmlModelsCTInline_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTInline_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTInline_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTInline_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTInline_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTInline_omml, v, name, ns, host);
 }
 
@@ -2270,7 +2272,7 @@ export const codecOmmlModelsCTInline_omml = x.xmlCodec<m.OmmlModelsCTInline_omml
 const RSPEC_OmmlModelsCTInteger255_omml: x.ModelSpec = {
   id: "Omml::Models::CTInteger255@omml", root: "CT_Integer255", ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], ordered: false, mixed: false, tokens: false,
   attrs: [
-    { to: "val", names: ["val"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: (s) => x.dBound(s, _b4_parse) },
+    { to: "val", names: ["val"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: (s) => x.dBound(s, _b5_parse) },
   ],
   any: null,
   elems: [
@@ -2285,7 +2287,7 @@ export function readOmmlModelsCTInteger255_omml(el: x.El): m.OmmlModelsCTInteger
 const WSPEC_OmmlModelsCTInteger255_omml: x.WSpec = {
   id: "Omml::Models::CTInteger255@omml", ordered: false, refusal: null,
   attrs: [
-    { to: "val", name: "val", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: (v) => x.eBound(v, _b4_format), nil: "omit", empty: "omit" },
+    { to: "val", name: "val", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: (v) => x.eBound(v, _b5_format), nil: "omit", empty: "omit" },
   ],
   any: null,
   elems: [
@@ -2293,7 +2295,7 @@ const WSPEC_OmmlModelsCTInteger255_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTInteger255_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTInteger255_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTInteger255_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTInteger255_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTInteger255_omml, v, name, ns, host);
 }
 
@@ -2302,7 +2304,7 @@ export const codecOmmlModelsCTInteger255_omml = x.xmlCodec<m.OmmlModelsCTInteger
 const RSPEC_OmmlModelsCTInteger2_omml: x.ModelSpec = {
   id: "Omml::Models::CTInteger2@omml", root: "CT_Integer2", ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], ordered: false, mixed: false, tokens: false,
   attrs: [
-    { to: "val", names: ["val"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: (s) => x.dBound(s, _b5_parse) },
+    { to: "val", names: ["val"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: (s) => x.dBound(s, _b6_parse) },
   ],
   any: null,
   elems: [
@@ -2317,7 +2319,7 @@ export function readOmmlModelsCTInteger2_omml(el: x.El): m.OmmlModelsCTInteger2_
 const WSPEC_OmmlModelsCTInteger2_omml: x.WSpec = {
   id: "Omml::Models::CTInteger2@omml", ordered: false, refusal: null,
   attrs: [
-    { to: "val", name: "val", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: (v) => x.eBound(v, _b5_format), nil: "omit", empty: "omit" },
+    { to: "val", name: "val", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: (v) => x.eBound(v, _b6_format), nil: "omit", empty: "omit" },
   ],
   any: null,
   elems: [
@@ -2325,7 +2327,7 @@ const WSPEC_OmmlModelsCTInteger2_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTInteger2_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTInteger2_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTInteger2_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTInteger2_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTInteger2_omml, v, name, ns, host);
 }
 
@@ -2334,7 +2336,7 @@ export const codecOmmlModelsCTInteger2_omml = x.xmlCodec<m.OmmlModelsCTInteger2_
 const RSPEC_OmmlModelsCTLang_omml: x.ModelSpec = {
   id: "Omml::Models::CTLang@omml", root: "CT_Lang", ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], ordered: false, mixed: false, tokens: false,
   attrs: [
-    { to: "val", names: ["val"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: x.dStr },
+    { to: "val", names: ["val"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: (s) => x.dBound(s, _b7_parse) },
   ],
   any: null,
   elems: [
@@ -2349,7 +2351,7 @@ export function readOmmlModelsCTLang_omml(el: x.El): m.OmmlModelsCTLang_omml {
 const WSPEC_OmmlModelsCTLang_omml: x.WSpec = {
   id: "Omml::Models::CTLang@omml", ordered: false, refusal: null,
   attrs: [
-    { to: "val", name: "val", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: x.eStr, nil: "omit", empty: "omit" },
+    { to: "val", name: "val", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: (v) => x.eBound(v, _b7_format), nil: "omit", empty: "omit" },
   ],
   any: null,
   elems: [
@@ -2357,7 +2359,7 @@ const WSPEC_OmmlModelsCTLang_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTLang_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTLang_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTLang_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTLang_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTLang_omml, v, name, ns, host);
 }
 
@@ -2366,9 +2368,9 @@ export const codecOmmlModelsCTLang_omml = x.xmlCodec<m.OmmlModelsCTLang_omml>(RS
 const RSPEC_OmmlModelsCTLanguage_omml: x.ModelSpec = {
   id: "Omml::Models::CTLanguage@omml", root: "CT_Language", ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], ordered: false, mixed: false, tokens: false,
   attrs: [
-    { to: "val", names: ["val"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: x.dStr },
-    { to: "east_asia", names: ["eastAsia"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: x.dStr },
-    { to: "bidi", names: ["bidi"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: x.dStr },
+    { to: "val", names: ["val"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: (s) => x.dBound(s, _b7_parse) },
+    { to: "east_asia", names: ["eastAsia"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: (s) => x.dBound(s, _b7_parse) },
+    { to: "bidi", names: ["bidi"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: (s) => x.dBound(s, _b7_parse) },
   ],
   any: null,
   elems: [
@@ -2383,9 +2385,9 @@ export function readOmmlModelsCTLanguage_omml(el: x.El): m.OmmlModelsCTLanguage_
 const WSPEC_OmmlModelsCTLanguage_omml: x.WSpec = {
   id: "Omml::Models::CTLanguage@omml", ordered: false, refusal: null,
   attrs: [
-    { to: "val", name: "val", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: x.eStr, nil: "omit", empty: "omit" },
-    { to: "east_asia", name: "eastAsia", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: x.eStr, nil: "omit", empty: "omit" },
-    { to: "bidi", name: "bidi", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: x.eStr, nil: "omit", empty: "omit" },
+    { to: "val", name: "val", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: (v) => x.eBound(v, _b7_format), nil: "omit", empty: "omit" },
+    { to: "east_asia", name: "eastAsia", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: (v) => x.eBound(v, _b7_format), nil: "omit", empty: "omit" },
+    { to: "bidi", name: "bidi", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: (v) => x.eBound(v, _b7_format), nil: "omit", empty: "omit" },
   ],
   any: null,
   elems: [
@@ -2393,7 +2395,7 @@ const WSPEC_OmmlModelsCTLanguage_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTLanguage_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTLanguage_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTLanguage_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTLanguage_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTLanguage_omml, v, name, ns, host);
 }
 
@@ -2425,7 +2427,7 @@ const WSPEC_OmmlModelsCTLimLoc_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTLimLoc_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTLimLoc_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTLimLoc_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTLimLoc_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTLimLoc_omml, v, name, ns, host);
 }
 
@@ -2437,9 +2439,9 @@ const RSPEC_OmmlModelsCTLimLow_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "lim_low_pr", names: ["limLowPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTLimLowPr_omml },
-    { to: "e", names: ["e"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTOMathArg_omml },
-    { to: "lim", names: ["lim"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTOMathArg_omml },
+    { to: "lim_low_pr", names: ["limLowPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTLimLowPr_omml },
+    { to: "e", names: ["e"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTOMathArg_omml },
+    { to: "lim", names: ["lim"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTOMathArg_omml },
   ],
   content: null,
 };
@@ -2461,7 +2463,7 @@ const WSPEC_OmmlModelsCTLimLow_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTLimLow_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTLimLow_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTLimLow_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTLimLow_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTLimLow_omml, v, name, ns, host);
 }
 
@@ -2473,7 +2475,7 @@ const RSPEC_OmmlModelsCTLimLowPr_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "ctrl_pr", names: ["ctrlPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTCtrlPr_omml },
+    { to: "ctrl_pr", names: ["ctrlPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTCtrlPr_omml },
   ],
   content: null,
 };
@@ -2493,7 +2495,7 @@ const WSPEC_OmmlModelsCTLimLowPr_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTLimLowPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTLimLowPr_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTLimLowPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTLimLowPr_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTLimLowPr_omml, v, name, ns, host);
 }
 
@@ -2505,9 +2507,9 @@ const RSPEC_OmmlModelsCTLimUpp_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "lim_upp_pr", names: ["limUppPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTLimUppPr_omml },
-    { to: "e", names: ["e"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTOMathArg_omml },
-    { to: "lim", names: ["lim"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTOMathArg_omml },
+    { to: "lim_upp_pr", names: ["limUppPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTLimUppPr_omml },
+    { to: "e", names: ["e"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTOMathArg_omml },
+    { to: "lim", names: ["lim"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTOMathArg_omml },
   ],
   content: null,
 };
@@ -2529,7 +2531,7 @@ const WSPEC_OmmlModelsCTLimUpp_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTLimUpp_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTLimUpp_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTLimUpp_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTLimUpp_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTLimUpp_omml, v, name, ns, host);
 }
 
@@ -2541,7 +2543,7 @@ const RSPEC_OmmlModelsCTLimUppPr_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "ctrl_pr", names: ["ctrlPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTCtrlPr_omml },
+    { to: "ctrl_pr", names: ["ctrlPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTCtrlPr_omml },
   ],
   content: null,
 };
@@ -2561,7 +2563,7 @@ const WSPEC_OmmlModelsCTLimUppPr_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTLimUppPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTLimUppPr_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTLimUppPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTLimUppPr_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTLimUppPr_omml, v, name, ns, host);
 }
 
@@ -2593,7 +2595,7 @@ const WSPEC_OmmlModelsCTLock_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTLock_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTLock_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTLock_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTLock_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTLock_omml, v, name, ns, host);
 }
 
@@ -2605,8 +2607,8 @@ const RSPEC_OmmlModelsCTM_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "m_pr", names: ["mPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTMPr_omml },
-    { to: "mr", names: ["mr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTMR_omml, absentList: true },
+    { to: "m_pr", names: ["mPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTMPr_omml },
+    { to: "mr", names: ["mr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTMR_omml, absentList: true },
   ],
   content: null,
 };
@@ -2627,7 +2629,7 @@ const WSPEC_OmmlModelsCTM_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTM_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTM_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTM_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTM_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTM_omml, v, name, ns, host);
 }
 
@@ -2639,7 +2641,7 @@ const RSPEC_OmmlModelsCTMC_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "mc_pr", names: ["mcPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTMCPr_omml },
+    { to: "mc_pr", names: ["mcPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTMCPr_omml },
   ],
   content: null,
 };
@@ -2659,7 +2661,7 @@ const WSPEC_OmmlModelsCTMC_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTMC_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTMC_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTMC_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTMC_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTMC_omml, v, name, ns, host);
 }
 
@@ -2671,8 +2673,8 @@ const RSPEC_OmmlModelsCTMCPr_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "count", names: ["count"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTInteger255_omml },
-    { to: "mc_jc", names: ["mcJc"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTXAlign_omml },
+    { to: "count", names: ["count"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTInteger255_omml },
+    { to: "mc_jc", names: ["mcJc"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTXAlign_omml },
   ],
   content: null,
 };
@@ -2693,7 +2695,7 @@ const WSPEC_OmmlModelsCTMCPr_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTMCPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTMCPr_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTMCPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTMCPr_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTMCPr_omml, v, name, ns, host);
 }
 
@@ -2705,7 +2707,7 @@ const RSPEC_OmmlModelsCTMCS_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "mc", names: ["mc"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTMC_omml, absentList: true },
+    { to: "mc", names: ["mc"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTMC_omml, absentList: true },
   ],
   content: null,
 };
@@ -2725,7 +2727,7 @@ const WSPEC_OmmlModelsCTMCS_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTMCS_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTMCS_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTMCS_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTMCS_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTMCS_omml, v, name, ns, host);
 }
 
@@ -2737,15 +2739,15 @@ const RSPEC_OmmlModelsCTMPr_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "base_jc", names: ["baseJc"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTYAlign_omml },
-    { to: "plc_hide", names: ["plcHide"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTOnOff_omml },
-    { to: "r_sp_rule", names: ["rSpRule"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTSpacingRule_omml },
-    { to: "c_gp_rule", names: ["cGpRule"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTSpacingRule_omml },
-    { to: "r_sp", names: ["rSp"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTUnSignedInteger_omml },
-    { to: "c_sp", names: ["cSp"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTUnSignedInteger_omml },
-    { to: "c_gp", names: ["cGp"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTUnSignedInteger_omml },
-    { to: "mcs", names: ["mcs"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTMCS_omml },
-    { to: "ctrl_pr", names: ["ctrlPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTCtrlPr_omml },
+    { to: "base_jc", names: ["baseJc"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTYAlign_omml },
+    { to: "plc_hide", names: ["plcHide"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTOnOff_omml },
+    { to: "r_sp_rule", names: ["rSpRule"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTSpacingRule_omml },
+    { to: "c_gp_rule", names: ["cGpRule"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTSpacingRule_omml },
+    { to: "r_sp", names: ["rSp"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTUnSignedInteger_omml },
+    { to: "c_sp", names: ["cSp"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTUnSignedInteger_omml },
+    { to: "c_gp", names: ["cGp"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTUnSignedInteger_omml },
+    { to: "mcs", names: ["mcs"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTMCS_omml },
+    { to: "ctrl_pr", names: ["ctrlPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTCtrlPr_omml },
   ],
   content: null,
 };
@@ -2773,7 +2775,7 @@ const WSPEC_OmmlModelsCTMPr_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTMPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTMPr_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTMPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTMPr_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTMPr_omml, v, name, ns, host);
 }
 
@@ -2785,7 +2787,7 @@ const RSPEC_OmmlModelsCTMR_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "e", names: ["e"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTOMathArg_omml, absentList: true },
+    { to: "e", names: ["e"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTOMathArg_omml, absentList: true },
   ],
   content: null,
 };
@@ -2805,7 +2807,7 @@ const WSPEC_OmmlModelsCTMR_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTMR_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTMR_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTMR_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTMR_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTMR_omml, v, name, ns, host);
 }
 
@@ -2837,7 +2839,7 @@ const WSPEC_OmmlModelsCTMacroName_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTMacroName_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTMacroName_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTMacroName_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTMacroName_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTMacroName_omml, v, name, ns, host);
 }
 
@@ -2846,7 +2848,7 @@ export const codecOmmlModelsCTMacroName_omml = x.xmlCodec<m.OmmlModelsCTMacroNam
 const RSPEC_OmmlModelsCTManualBreak_omml: x.ModelSpec = {
   id: "Omml::Models::CTManualBreak@omml", root: "CT_ManualBreak", ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], ordered: false, mixed: false, tokens: false,
   attrs: [
-    { to: "aln_at", names: ["alnAt"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: (s) => x.dBound(s, _b4_parse) },
+    { to: "aln_at", names: ["alnAt"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: (s) => x.dBound(s, _b5_parse) },
   ],
   any: null,
   elems: [
@@ -2861,7 +2863,7 @@ export function readOmmlModelsCTManualBreak_omml(el: x.El): m.OmmlModelsCTManual
 const WSPEC_OmmlModelsCTManualBreak_omml: x.WSpec = {
   id: "Omml::Models::CTManualBreak@omml", ordered: false, refusal: null,
   attrs: [
-    { to: "aln_at", name: "alnAt", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: (v) => x.eBound(v, _b4_format), nil: "omit", empty: "omit" },
+    { to: "aln_at", name: "alnAt", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: (v) => x.eBound(v, _b5_format), nil: "omit", empty: "omit" },
   ],
   any: null,
   elems: [
@@ -2869,7 +2871,7 @@ const WSPEC_OmmlModelsCTManualBreak_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTManualBreak_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTManualBreak_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTManualBreak_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTManualBreak_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTManualBreak_omml, v, name, ns, host);
 }
 
@@ -2901,7 +2903,7 @@ const WSPEC_OmmlModelsCTMarkup_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTMarkup_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTMarkup_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTMarkup_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTMarkup_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTMarkup_omml, v, name, ns, host);
 }
 
@@ -2935,7 +2937,7 @@ const WSPEC_OmmlModelsCTMarkupRange_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTMarkupRange_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTMarkupRange_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTMarkupRange_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTMarkupRange_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTMarkupRange_omml, v, name, ns, host);
 }
 
@@ -2947,22 +2949,22 @@ const RSPEC_OmmlModelsCTMathPr_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "math_font", names: ["mathFont"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTString_omml },
-    { to: "brk_bin", names: ["brkBin"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTBreakBin_omml },
-    { to: "brk_bin_sub", names: ["brkBinSub"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTBreakBinSub_omml },
-    { to: "small_frac", names: ["smallFrac"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTOnOff_omml },
-    { to: "disp_def", names: ["dispDef"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTOnOff_omml },
-    { to: "l_margin", names: ["lMargin"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTTwipsMeasure_omml },
-    { to: "r_margin", names: ["rMargin"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTTwipsMeasure_omml },
-    { to: "def_jc", names: ["defJc"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTOMathJc_omml },
-    { to: "pre_sp", names: ["preSp"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTTwipsMeasure_omml },
-    { to: "post_sp", names: ["postSp"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTTwipsMeasure_omml },
-    { to: "inter_sp", names: ["interSp"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTTwipsMeasure_omml },
-    { to: "intra_sp", names: ["intraSp"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTTwipsMeasure_omml },
-    { to: "wrap_indent", names: ["wrapIndent"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTTwipsMeasure_omml },
-    { to: "wrap_right", names: ["wrapRight"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTOnOff_omml },
-    { to: "int_lim", names: ["intLim"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTLimLoc_omml },
-    { to: "nary_lim", names: ["naryLim"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTLimLoc_omml },
+    { to: "math_font", names: ["mathFont"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTString_omml },
+    { to: "brk_bin", names: ["brkBin"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTBreakBin_omml },
+    { to: "brk_bin_sub", names: ["brkBinSub"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTBreakBinSub_omml },
+    { to: "small_frac", names: ["smallFrac"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTOnOff_omml },
+    { to: "disp_def", names: ["dispDef"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTOnOff_omml },
+    { to: "l_margin", names: ["lMargin"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTTwipsMeasure_omml },
+    { to: "r_margin", names: ["rMargin"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTTwipsMeasure_omml },
+    { to: "def_jc", names: ["defJc"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTOMathJc_omml },
+    { to: "pre_sp", names: ["preSp"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTTwipsMeasure_omml },
+    { to: "post_sp", names: ["postSp"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTTwipsMeasure_omml },
+    { to: "inter_sp", names: ["interSp"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTTwipsMeasure_omml },
+    { to: "intra_sp", names: ["intraSp"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTTwipsMeasure_omml },
+    { to: "wrap_indent", names: ["wrapIndent"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTTwipsMeasure_omml },
+    { to: "wrap_right", names: ["wrapRight"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTOnOff_omml },
+    { to: "int_lim", names: ["intLim"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTLimLoc_omml },
+    { to: "nary_lim", names: ["naryLim"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTLimLoc_omml },
   ],
   content: null,
 };
@@ -2997,7 +2999,7 @@ const WSPEC_OmmlModelsCTMathPr_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTMathPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTMathPr_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTMathPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTMathPr_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTMathPr_omml, v, name, ns, host);
 }
 
@@ -3041,7 +3043,7 @@ const WSPEC_OmmlModelsCTMoveBookmark_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTMoveBookmark_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTMoveBookmark_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTMoveBookmark_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTMoveBookmark_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTMoveBookmark_omml, v, name, ns, host);
 }
 
@@ -3053,10 +3055,10 @@ const RSPEC_OmmlModelsCTNary_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "nary_pr", names: ["naryPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTNaryPr_omml },
-    { to: "sub", names: ["sub"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTOMathArg_omml },
-    { to: "sup", names: ["sup"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTOMathArg_omml },
-    { to: "e", names: ["e"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTOMathArg_omml },
+    { to: "nary_pr", names: ["naryPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTNaryPr_omml },
+    { to: "sub", names: ["sub"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTOMathArg_omml },
+    { to: "sup", names: ["sup"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTOMathArg_omml },
+    { to: "e", names: ["e"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTOMathArg_omml },
   ],
   content: null,
 };
@@ -3079,7 +3081,7 @@ const WSPEC_OmmlModelsCTNary_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTNary_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTNary_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTNary_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTNary_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTNary_omml, v, name, ns, host);
 }
 
@@ -3091,12 +3093,12 @@ const RSPEC_OmmlModelsCTNaryPr_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "chr", names: ["chr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTChar_omml },
-    { to: "lim_loc", names: ["limLoc"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTLimLoc_omml },
-    { to: "grow", names: ["grow"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTOnOff_omml },
-    { to: "sub_hide", names: ["subHide"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTOnOff_omml },
-    { to: "sup_hide", names: ["supHide"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTOnOff_omml },
-    { to: "ctrl_pr", names: ["ctrlPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTCtrlPr_omml },
+    { to: "chr", names: ["chr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTChar_omml },
+    { to: "lim_loc", names: ["limLoc"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTLimLoc_omml },
+    { to: "grow", names: ["grow"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTOnOff_omml },
+    { to: "sub_hide", names: ["subHide"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTOnOff_omml },
+    { to: "sup_hide", names: ["supHide"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTOnOff_omml },
+    { to: "ctrl_pr", names: ["ctrlPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTCtrlPr_omml },
   ],
   content: null,
 };
@@ -3121,7 +3123,7 @@ const WSPEC_OmmlModelsCTNaryPr_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTNaryPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTNaryPr_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTNaryPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTNaryPr_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTNaryPr_omml, v, name, ns, host);
 }
 
@@ -3137,9 +3139,9 @@ const RSPEC_OmmlModelsCTNonVisualDrawingProps_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "hlink_click", names: ["hlinkClick"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTHyperlink_omml },
-    { to: "hlink_hover", names: ["hlinkHover"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTHyperlink_omml },
-    { to: "ext_lst", names: ["extLst"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTOfficeArtExtensionList_omml },
+    { to: "hlink_click", names: ["hlinkClick"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTHyperlink_omml },
+    { to: "hlink_hover", names: ["hlinkHover"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTHyperlink_omml },
+    { to: "ext_lst", names: ["extLst"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTOfficeArtExtensionList_omml },
   ],
   content: null,
 };
@@ -3165,7 +3167,7 @@ const WSPEC_OmmlModelsCTNonVisualDrawingProps_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTNonVisualDrawingProps_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTNonVisualDrawingProps_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTNonVisualDrawingProps_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTNonVisualDrawingProps_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTNonVisualDrawingProps_omml, v, name, ns, host);
 }
 
@@ -3177,8 +3179,8 @@ const RSPEC_OmmlModelsCTNonVisualGraphicFrameProperties_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "graphic_frame_locks", names: ["graphicFrameLocks"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTGraphicalObjectFrameLocking_omml },
-    { to: "ext_lst", names: ["extLst"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTOfficeArtExtensionList_omml },
+    { to: "graphic_frame_locks", names: ["graphicFrameLocks"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTGraphicalObjectFrameLocking_omml },
+    { to: "ext_lst", names: ["extLst"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTOfficeArtExtensionList_omml },
   ],
   content: null,
 };
@@ -3199,7 +3201,7 @@ const WSPEC_OmmlModelsCTNonVisualGraphicFrameProperties_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTNonVisualGraphicFrameProperties_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTNonVisualGraphicFrameProperties_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTNonVisualGraphicFrameProperties_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTNonVisualGraphicFrameProperties_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTNonVisualGraphicFrameProperties_omml, v, name, ns, host);
 }
 
@@ -3211,51 +3213,51 @@ const RSPEC_OmmlModelsCTOMath_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "acc", names: ["acc"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTAcc_omml, absentList: true },
-    { to: "bar", names: ["bar"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTBar_omml, absentList: true },
-    { to: "box", names: ["box"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTBox_omml, absentList: true },
-    { to: "border_box", names: ["borderBox"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTBorderBox_omml, absentList: true },
-    { to: "d", names: ["d"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTD_omml, absentList: true },
-    { to: "eq_arr", names: ["eqArr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTEqArr_omml, absentList: true },
-    { to: "f", names: ["f"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTF_omml, absentList: true },
-    { to: "func", names: ["func"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTFunc_omml, absentList: true },
-    { to: "group_chr", names: ["groupChr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTGroupChr_omml, absentList: true },
-    { to: "lim_low", names: ["limLow"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTLimLow_omml, absentList: true },
-    { to: "lim_upp", names: ["limUpp"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTLimUpp_omml, absentList: true },
-    { to: "m", names: ["m"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTM_omml, absentList: true },
-    { to: "nary", names: ["nary"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTNary_omml, absentList: true },
-    { to: "phant", names: ["phant"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTPhant_omml, absentList: true },
-    { to: "rad", names: ["rad"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTRad_omml, absentList: true },
-    { to: "s_pre", names: ["sPre"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTSPre_omml, absentList: true },
-    { to: "s_sub", names: ["sSub"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTSSub_omml, absentList: true },
-    { to: "s_sub_sup", names: ["sSubSup"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTSSubSup_omml, absentList: true },
-    { to: "s_sup", names: ["sSup"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTSSup_omml, absentList: true },
-    { to: "r", names: ["r"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTR_omml, absentList: true },
-    { to: "proof_err", names: ["proofErr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTProofErr_omml },
-    { to: "perm_start", names: ["permStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTPermStart_omml },
-    { to: "perm_end", names: ["permEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTPerm_omml },
-    { to: "ins", names: ["ins"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTRunTrackChange_omml },
-    { to: "del", names: ["del"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTRunTrackChange_omml },
-    { to: "move_from", names: ["moveFrom"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTRunTrackChange_omml },
-    { to: "move_to", names: ["moveTo"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTRunTrackChange_omml },
-    { to: "bookmark_start", names: ["bookmarkStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTBookmark_omml },
-    { to: "bookmark_end", names: ["bookmarkEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkupRange_omml },
-    { to: "move_from_range_start", names: ["moveFromRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMoveBookmark_omml },
-    { to: "move_from_range_end", names: ["moveFromRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkupRange_omml },
-    { to: "move_to_range_start", names: ["moveToRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMoveBookmark_omml },
-    { to: "move_to_range_end", names: ["moveToRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkupRange_omml },
-    { to: "comment_range_start", names: ["commentRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkupRange_omml },
-    { to: "comment_range_end", names: ["commentRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkupRange_omml },
-    { to: "custom_xml_ins_range_start", names: ["customXmlInsRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTTrackChange_omml },
-    { to: "custom_xml_ins_range_end", names: ["customXmlInsRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkup_omml },
-    { to: "custom_xml_del_range_start", names: ["customXmlDelRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTTrackChange_omml },
-    { to: "custom_xml_del_range_end", names: ["customXmlDelRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkup_omml },
-    { to: "custom_xml_move_from_range_start", names: ["customXmlMoveFromRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTTrackChange_omml },
-    { to: "custom_xml_move_from_range_end", names: ["customXmlMoveFromRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkup_omml },
-    { to: "custom_xml_move_to_range_start", names: ["customXmlMoveToRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTTrackChange_omml },
-    { to: "custom_xml_move_to_range_end", names: ["customXmlMoveToRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkup_omml },
-    { to: "o_math_para", names: ["oMathPara"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTOMathPara_omml },
-    { to: "o_math", names: ["oMath"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTOMath_omml },
+    { to: "acc", names: ["acc"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTAcc_omml, absentList: true },
+    { to: "bar", names: ["bar"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTBar_omml, absentList: true },
+    { to: "box", names: ["box"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTBox_omml, absentList: true },
+    { to: "border_box", names: ["borderBox"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTBorderBox_omml, absentList: true },
+    { to: "d", names: ["d"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTD_omml, absentList: true },
+    { to: "eq_arr", names: ["eqArr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTEqArr_omml, absentList: true },
+    { to: "f", names: ["f"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTF_omml, absentList: true },
+    { to: "func", names: ["func"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTFunc_omml, absentList: true },
+    { to: "group_chr", names: ["groupChr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTGroupChr_omml, absentList: true },
+    { to: "lim_low", names: ["limLow"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTLimLow_omml, absentList: true },
+    { to: "lim_upp", names: ["limUpp"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTLimUpp_omml, absentList: true },
+    { to: "m", names: ["m"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTM_omml, absentList: true },
+    { to: "nary", names: ["nary"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTNary_omml, absentList: true },
+    { to: "phant", names: ["phant"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTPhant_omml, absentList: true },
+    { to: "rad", names: ["rad"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTRad_omml, absentList: true },
+    { to: "s_pre", names: ["sPre"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTSPre_omml, absentList: true },
+    { to: "s_sub", names: ["sSub"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTSSub_omml, absentList: true },
+    { to: "s_sub_sup", names: ["sSubSup"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTSSubSup_omml, absentList: true },
+    { to: "s_sup", names: ["sSup"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTSSup_omml, absentList: true },
+    { to: "r", names: ["r"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTR_omml, absentList: true },
+    { to: "proof_err", names: ["proofErr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTProofErr_omml },
+    { to: "perm_start", names: ["permStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTPermStart_omml },
+    { to: "perm_end", names: ["permEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTPerm_omml },
+    { to: "ins", names: ["ins"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTRunTrackChange_omml },
+    { to: "del", names: ["del"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTRunTrackChange_omml },
+    { to: "move_from", names: ["moveFrom"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTRunTrackChange_omml },
+    { to: "move_to", names: ["moveTo"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTRunTrackChange_omml },
+    { to: "bookmark_start", names: ["bookmarkStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTBookmark_omml },
+    { to: "bookmark_end", names: ["bookmarkEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkupRange_omml },
+    { to: "move_from_range_start", names: ["moveFromRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMoveBookmark_omml },
+    { to: "move_from_range_end", names: ["moveFromRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkupRange_omml },
+    { to: "move_to_range_start", names: ["moveToRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMoveBookmark_omml },
+    { to: "move_to_range_end", names: ["moveToRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkupRange_omml },
+    { to: "comment_range_start", names: ["commentRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkupRange_omml },
+    { to: "comment_range_end", names: ["commentRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkupRange_omml },
+    { to: "custom_xml_ins_range_start", names: ["customXmlInsRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTTrackChange_omml },
+    { to: "custom_xml_ins_range_end", names: ["customXmlInsRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkup_omml },
+    { to: "custom_xml_del_range_start", names: ["customXmlDelRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTTrackChange_omml },
+    { to: "custom_xml_del_range_end", names: ["customXmlDelRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkup_omml },
+    { to: "custom_xml_move_from_range_start", names: ["customXmlMoveFromRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTTrackChange_omml },
+    { to: "custom_xml_move_from_range_end", names: ["customXmlMoveFromRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkup_omml },
+    { to: "custom_xml_move_to_range_start", names: ["customXmlMoveToRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTTrackChange_omml },
+    { to: "custom_xml_move_to_range_end", names: ["customXmlMoveToRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkup_omml },
+    { to: "o_math_para", names: ["oMathPara"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTOMathPara_omml },
+    { to: "o_math", names: ["oMath"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTOMath_omml },
   ],
   content: null,
 };
@@ -3319,7 +3321,7 @@ const WSPEC_OmmlModelsCTOMath_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTOMath_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTOMath_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTOMath_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTOMath_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTOMath_omml, v, name, ns, host);
 }
 
@@ -3331,54 +3333,54 @@ const RSPEC_OmmlModelsCTOMathArg_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "arg_pr", names: ["argPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTOMathArgPr_omml },
-    { to: "t", names: ["t"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTText_omml, absentList: true },
-    { to: "ctrl_pr", names: ["ctrlPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTCtrlPr_omml },
-    { to: "acc", names: ["acc"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTAcc_omml, absentList: true },
-    { to: "bar", names: ["bar"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTBar_omml, absentList: true },
-    { to: "box", names: ["box"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTBox_omml, absentList: true },
-    { to: "border_box", names: ["borderBox"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTBorderBox_omml, absentList: true },
-    { to: "d", names: ["d"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTD_omml, absentList: true },
-    { to: "eq_arr", names: ["eqArr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTEqArr_omml, absentList: true },
-    { to: "f", names: ["f"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTF_omml, absentList: true },
-    { to: "func", names: ["func"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTFunc_omml, absentList: true },
-    { to: "group_chr", names: ["groupChr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTGroupChr_omml, absentList: true },
-    { to: "lim_low", names: ["limLow"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTLimLow_omml, absentList: true },
-    { to: "lim_upp", names: ["limUpp"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTLimUpp_omml, absentList: true },
-    { to: "m", names: ["m"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTM_omml, absentList: true },
-    { to: "nary", names: ["nary"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTNary_omml, absentList: true },
-    { to: "phant", names: ["phant"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTPhant_omml, absentList: true },
-    { to: "rad", names: ["rad"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTRad_omml, absentList: true },
-    { to: "s_pre", names: ["sPre"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTSPre_omml, absentList: true },
-    { to: "s_sub", names: ["sSub"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTSSub_omml, absentList: true },
-    { to: "s_sub_sup", names: ["sSubSup"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTSSubSup_omml, absentList: true },
-    { to: "s_sup", names: ["sSup"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTSSup_omml, absentList: true },
-    { to: "r", names: ["r"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTR_omml, absentList: true },
-    { to: "proof_err", names: ["proofErr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTProofErr_omml },
-    { to: "perm_start", names: ["permStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTPermStart_omml },
-    { to: "perm_end", names: ["permEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTPerm_omml },
-    { to: "ins", names: ["ins"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTRunTrackChange_omml },
-    { to: "del", names: ["del"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTRunTrackChange_omml },
-    { to: "move_from", names: ["moveFrom"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTRunTrackChange_omml },
-    { to: "move_to", names: ["moveTo"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTRunTrackChange_omml },
-    { to: "bookmark_start", names: ["bookmarkStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTBookmark_omml },
-    { to: "bookmark_end", names: ["bookmarkEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkupRange_omml },
-    { to: "move_from_range_start", names: ["moveFromRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMoveBookmark_omml },
-    { to: "move_from_range_end", names: ["moveFromRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkupRange_omml },
-    { to: "move_to_range_start", names: ["moveToRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMoveBookmark_omml },
-    { to: "move_to_range_end", names: ["moveToRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkupRange_omml },
-    { to: "comment_range_start", names: ["commentRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkupRange_omml },
-    { to: "comment_range_end", names: ["commentRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkupRange_omml },
-    { to: "custom_xml_ins_range_start", names: ["customXmlInsRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTTrackChange_omml },
-    { to: "custom_xml_ins_range_end", names: ["customXmlInsRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkup_omml },
-    { to: "custom_xml_del_range_start", names: ["customXmlDelRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTTrackChange_omml },
-    { to: "custom_xml_del_range_end", names: ["customXmlDelRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkup_omml },
-    { to: "custom_xml_move_from_range_start", names: ["customXmlMoveFromRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTTrackChange_omml },
-    { to: "custom_xml_move_from_range_end", names: ["customXmlMoveFromRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkup_omml },
-    { to: "custom_xml_move_to_range_start", names: ["customXmlMoveToRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTTrackChange_omml },
-    { to: "custom_xml_move_to_range_end", names: ["customXmlMoveToRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkup_omml },
-    { to: "o_math_para", names: ["oMathPara"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTOMathPara_omml },
-    { to: "o_math", names: ["oMath"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTOMath_omml },
+    { to: "arg_pr", names: ["argPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTOMathArgPr_omml },
+    { to: "t", names: ["t"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTText_omml, absentList: true },
+    { to: "ctrl_pr", names: ["ctrlPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTCtrlPr_omml },
+    { to: "acc", names: ["acc"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTAcc_omml, absentList: true },
+    { to: "bar", names: ["bar"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTBar_omml, absentList: true },
+    { to: "box", names: ["box"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTBox_omml, absentList: true },
+    { to: "border_box", names: ["borderBox"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTBorderBox_omml, absentList: true },
+    { to: "d", names: ["d"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTD_omml, absentList: true },
+    { to: "eq_arr", names: ["eqArr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTEqArr_omml, absentList: true },
+    { to: "f", names: ["f"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTF_omml, absentList: true },
+    { to: "func", names: ["func"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTFunc_omml, absentList: true },
+    { to: "group_chr", names: ["groupChr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTGroupChr_omml, absentList: true },
+    { to: "lim_low", names: ["limLow"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTLimLow_omml, absentList: true },
+    { to: "lim_upp", names: ["limUpp"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTLimUpp_omml, absentList: true },
+    { to: "m", names: ["m"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTM_omml, absentList: true },
+    { to: "nary", names: ["nary"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTNary_omml, absentList: true },
+    { to: "phant", names: ["phant"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTPhant_omml, absentList: true },
+    { to: "rad", names: ["rad"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTRad_omml, absentList: true },
+    { to: "s_pre", names: ["sPre"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTSPre_omml, absentList: true },
+    { to: "s_sub", names: ["sSub"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTSSub_omml, absentList: true },
+    { to: "s_sub_sup", names: ["sSubSup"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTSSubSup_omml, absentList: true },
+    { to: "s_sup", names: ["sSup"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTSSup_omml, absentList: true },
+    { to: "r", names: ["r"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTR_omml, absentList: true },
+    { to: "proof_err", names: ["proofErr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTProofErr_omml },
+    { to: "perm_start", names: ["permStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTPermStart_omml },
+    { to: "perm_end", names: ["permEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTPerm_omml },
+    { to: "ins", names: ["ins"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTRunTrackChange_omml },
+    { to: "del", names: ["del"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTRunTrackChange_omml },
+    { to: "move_from", names: ["moveFrom"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTRunTrackChange_omml },
+    { to: "move_to", names: ["moveTo"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTRunTrackChange_omml },
+    { to: "bookmark_start", names: ["bookmarkStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTBookmark_omml },
+    { to: "bookmark_end", names: ["bookmarkEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkupRange_omml },
+    { to: "move_from_range_start", names: ["moveFromRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMoveBookmark_omml },
+    { to: "move_from_range_end", names: ["moveFromRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkupRange_omml },
+    { to: "move_to_range_start", names: ["moveToRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMoveBookmark_omml },
+    { to: "move_to_range_end", names: ["moveToRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkupRange_omml },
+    { to: "comment_range_start", names: ["commentRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkupRange_omml },
+    { to: "comment_range_end", names: ["commentRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkupRange_omml },
+    { to: "custom_xml_ins_range_start", names: ["customXmlInsRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTTrackChange_omml },
+    { to: "custom_xml_ins_range_end", names: ["customXmlInsRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkup_omml },
+    { to: "custom_xml_del_range_start", names: ["customXmlDelRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTTrackChange_omml },
+    { to: "custom_xml_del_range_end", names: ["customXmlDelRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkup_omml },
+    { to: "custom_xml_move_from_range_start", names: ["customXmlMoveFromRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTTrackChange_omml },
+    { to: "custom_xml_move_from_range_end", names: ["customXmlMoveFromRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkup_omml },
+    { to: "custom_xml_move_to_range_start", names: ["customXmlMoveToRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTTrackChange_omml },
+    { to: "custom_xml_move_to_range_end", names: ["customXmlMoveToRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkup_omml },
+    { to: "o_math_para", names: ["oMathPara"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTOMathPara_omml },
+    { to: "o_math", names: ["oMath"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTOMath_omml },
   ],
   content: null,
 };
@@ -3445,7 +3447,7 @@ const WSPEC_OmmlModelsCTOMathArg_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTOMathArg_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTOMathArg_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTOMathArg_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTOMathArg_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTOMathArg_omml, v, name, ns, host);
 }
 
@@ -3457,7 +3459,7 @@ const RSPEC_OmmlModelsCTOMathArgPr_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "arg_sz", names: ["argSz"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTInteger2_omml },
+    { to: "arg_sz", names: ["argSz"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTInteger2_omml },
   ],
   content: null,
 };
@@ -3477,7 +3479,7 @@ const WSPEC_OmmlModelsCTOMathArgPr_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTOMathArgPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTOMathArgPr_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTOMathArgPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTOMathArgPr_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTOMathArgPr_omml, v, name, ns, host);
 }
 
@@ -3509,7 +3511,7 @@ const WSPEC_OmmlModelsCTOMathJc_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTOMathJc_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTOMathJc_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTOMathJc_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTOMathJc_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTOMathJc_omml, v, name, ns, host);
 }
 
@@ -3521,9 +3523,9 @@ const RSPEC_OmmlModelsCTOMathPara_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "o_math_para_pr", names: ["oMathParaPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTOMathParaPr_omml },
-    { to: "o_math", names: ["oMath"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTOMath_omml, absentList: true },
-    { to: "r", names: ["r"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTR_omml, absentList: true },
+    { to: "o_math_para_pr", names: ["oMathParaPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTOMathParaPr_omml },
+    { to: "o_math", names: ["oMath"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTOMath_omml, absentList: true },
+    { to: "r", names: ["r"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTR_omml, absentList: true },
   ],
   content: null,
 };
@@ -3545,7 +3547,7 @@ const WSPEC_OmmlModelsCTOMathPara_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTOMathPara_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTOMathPara_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTOMathPara_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTOMathPara_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTOMathPara_omml, v, name, ns, host);
 }
 
@@ -3557,7 +3559,7 @@ const RSPEC_OmmlModelsCTOMathParaPr_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "jc", names: ["jc"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTOMathJc_omml },
+    { to: "jc", names: ["jc"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTOMathJc_omml },
   ],
   content: null,
 };
@@ -3577,7 +3579,7 @@ const WSPEC_OmmlModelsCTOMathParaPr_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTOMathParaPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTOMathParaPr_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTOMathParaPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTOMathParaPr_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTOMathParaPr_omml, v, name, ns, host);
 }
 
@@ -3591,7 +3593,7 @@ const RSPEC_OmmlModelsCTObject_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "control", names: ["control"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTControl_omml },
+    { to: "control", names: ["control"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTControl_omml },
   ],
   content: null,
 };
@@ -3613,7 +3615,7 @@ const WSPEC_OmmlModelsCTObject_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTObject_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTObject_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTObject_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTObject_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTObject_omml, v, name, ns, host);
 }
 
@@ -3622,7 +3624,7 @@ export const codecOmmlModelsCTObject_omml = x.xmlCodec<m.OmmlModelsCTObject_omml
 const RSPEC_OmmlModelsCTOfficeArtExtension_omml: x.ModelSpec = {
   id: "Omml::Models::CTOfficeArtExtension@omml", root: "CT_OfficeArtExtension", ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], ordered: false, mixed: false, tokens: false,
   attrs: [
-    { to: "uri", names: ["uri"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: (s) => x.dBound(s, _b3_parse) },
+    { to: "uri", names: ["uri"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: (s) => x.dBound(s, _b4_parse) },
   ],
   any: null,
   elems: [
@@ -3637,7 +3639,7 @@ export function readOmmlModelsCTOfficeArtExtension_omml(el: x.El): m.OmmlModelsC
 const WSPEC_OmmlModelsCTOfficeArtExtension_omml: x.WSpec = {
   id: "Omml::Models::CTOfficeArtExtension@omml", ordered: false, refusal: null,
   attrs: [
-    { to: "uri", name: "uri", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: (v) => x.eBound(v, _b3_format), nil: "omit", empty: "omit" },
+    { to: "uri", name: "uri", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: (v) => x.eBound(v, _b4_format), nil: "omit", empty: "omit" },
   ],
   any: null,
   elems: [
@@ -3645,7 +3647,7 @@ const WSPEC_OmmlModelsCTOfficeArtExtension_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTOfficeArtExtension_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTOfficeArtExtension_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTOfficeArtExtension_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTOfficeArtExtension_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTOfficeArtExtension_omml, v, name, ns, host);
 }
 
@@ -3657,7 +3659,7 @@ const RSPEC_OmmlModelsCTOfficeArtExtensionList_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "ext", names: ["ext"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTOfficeArtExtension_omml },
+    { to: "ext", names: ["ext"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTOfficeArtExtension_omml },
   ],
   content: null,
 };
@@ -3677,7 +3679,7 @@ const WSPEC_OmmlModelsCTOfficeArtExtensionList_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTOfficeArtExtensionList_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTOfficeArtExtensionList_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTOfficeArtExtensionList_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTOfficeArtExtensionList_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTOfficeArtExtensionList_omml, v, name, ns, host);
 }
 
@@ -3701,7 +3703,7 @@ export function readOmmlModelsCTOnOff_omml(el: x.El): m.OmmlModelsCTOnOff_omml {
 const WSPEC_OmmlModelsCTOnOff_omml: x.WSpec = {
   id: "Omml::Models::CTOnOff@omml", ordered: false, refusal: null,
   attrs: [
-    { to: "val", name: "val", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: x.eStr, nil: "omit", empty: "omit" },
+    { to: "val", name: "val", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: x.eStr, nil: "omit", empty: "omit", skipApplied: true },
   ],
   any: null,
   elems: [
@@ -3709,7 +3711,7 @@ const WSPEC_OmmlModelsCTOnOff_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTOnOff_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTOnOff_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTOnOff_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTOnOff_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTOnOff_omml, v, name, ns, host);
 }
 
@@ -3745,7 +3747,7 @@ const WSPEC_OmmlModelsCTPTab_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTPTab_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTPTab_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTPTab_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTPTab_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTPTab_omml, v, name, ns, host);
 }
 
@@ -3779,7 +3781,7 @@ const WSPEC_OmmlModelsCTPerm_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTPerm_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTPerm_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTPerm_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTPerm_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTPerm_omml, v, name, ns, host);
 }
 
@@ -3821,7 +3823,7 @@ const WSPEC_OmmlModelsCTPermStart_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTPermStart_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTPermStart_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTPermStart_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTPermStart_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTPermStart_omml, v, name, ns, host);
 }
 
@@ -3833,8 +3835,8 @@ const RSPEC_OmmlModelsCTPhant_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "phant_pr", names: ["phantPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTPhantPr_omml },
-    { to: "e", names: ["e"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTOMathArg_omml },
+    { to: "phant_pr", names: ["phantPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTPhantPr_omml },
+    { to: "e", names: ["e"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTOMathArg_omml },
   ],
   content: null,
 };
@@ -3855,7 +3857,7 @@ const WSPEC_OmmlModelsCTPhant_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTPhant_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTPhant_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTPhant_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTPhant_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTPhant_omml, v, name, ns, host);
 }
 
@@ -3867,12 +3869,12 @@ const RSPEC_OmmlModelsCTPhantPr_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "show", names: ["show"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTOnOff_omml },
-    { to: "zero_wid", names: ["zeroWid"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTOnOff_omml },
-    { to: "zero_asc", names: ["zeroAsc"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTOnOff_omml },
-    { to: "zero_desc", names: ["zeroDesc"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTOnOff_omml },
-    { to: "transp", names: ["transp"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTOnOff_omml },
-    { to: "ctrl_pr", names: ["ctrlPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTCtrlPr_omml },
+    { to: "show", names: ["show"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTOnOff_omml },
+    { to: "zero_wid", names: ["zeroWid"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTOnOff_omml },
+    { to: "zero_asc", names: ["zeroAsc"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTOnOff_omml },
+    { to: "zero_desc", names: ["zeroDesc"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTOnOff_omml },
+    { to: "transp", names: ["transp"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTOnOff_omml },
+    { to: "ctrl_pr", names: ["ctrlPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTCtrlPr_omml },
   ],
   content: null,
 };
@@ -3897,7 +3899,7 @@ const WSPEC_OmmlModelsCTPhantPr_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTPhantPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTPhantPr_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTPhantPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTPhantPr_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTPhantPr_omml, v, name, ns, host);
 }
 
@@ -3909,8 +3911,8 @@ const RSPEC_OmmlModelsCTPicture_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "movie", names: ["movie"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTRel_omml },
-    { to: "control", names: ["control"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTControl_omml },
+    { to: "movie", names: ["movie"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTRel_omml },
+    { to: "control", names: ["control"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTControl_omml },
   ],
   content: null,
 };
@@ -3931,7 +3933,7 @@ const WSPEC_OmmlModelsCTPicture_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTPicture_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTPicture_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTPicture_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTPicture_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTPicture_omml, v, name, ns, host);
 }
 
@@ -3943,7 +3945,7 @@ const RSPEC_OmmlModelsCTPlaceholder_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "doc_part", names: ["docPart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTString_omml },
+    { to: "doc_part", names: ["docPart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTString_omml },
   ],
   content: null,
 };
@@ -3963,7 +3965,7 @@ const WSPEC_OmmlModelsCTPlaceholder_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTPlaceholder_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTPlaceholder_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTPlaceholder_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTPlaceholder_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTPlaceholder_omml, v, name, ns, host);
 }
 
@@ -3972,8 +3974,8 @@ export const codecOmmlModelsCTPlaceholder_omml = x.xmlCodec<m.OmmlModelsCTPlaceh
 const RSPEC_OmmlModelsCTPoint2D_omml: x.ModelSpec = {
   id: "Omml::Models::CTPoint2D@omml", root: "CT_Point2D", ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], ordered: false, mixed: false, tokens: false,
   attrs: [
-    { to: "x", names: ["x"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: (s) => x.dBound(s, _b2_parse) },
-    { to: "y", names: ["y"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: (s) => x.dBound(s, _b2_parse) },
+    { to: "x", names: ["x"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: (s) => x.dBound(s, _b3_parse) },
+    { to: "y", names: ["y"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: (s) => x.dBound(s, _b3_parse) },
   ],
   any: null,
   elems: [
@@ -3988,8 +3990,8 @@ export function readOmmlModelsCTPoint2D_omml(el: x.El): m.OmmlModelsCTPoint2D_om
 const WSPEC_OmmlModelsCTPoint2D_omml: x.WSpec = {
   id: "Omml::Models::CTPoint2D@omml", ordered: false, refusal: null,
   attrs: [
-    { to: "x", name: "x", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: (v) => x.eBound(v, _b2_format), nil: "omit", empty: "omit" },
-    { to: "y", name: "y", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: (v) => x.eBound(v, _b2_format), nil: "omit", empty: "omit" },
+    { to: "x", name: "x", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: (v) => x.eBound(v, _b3_format), nil: "omit", empty: "omit" },
+    { to: "y", name: "y", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: (v) => x.eBound(v, _b3_format), nil: "omit", empty: "omit" },
   ],
   any: null,
   elems: [
@@ -3997,7 +3999,7 @@ const WSPEC_OmmlModelsCTPoint2D_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTPoint2D_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTPoint2D_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTPoint2D_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTPoint2D_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTPoint2D_omml, v, name, ns, host);
 }
 
@@ -4010,8 +4012,8 @@ const RSPEC_OmmlModelsCTPosH_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "align", names: ["align"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: x.leaf(x.dStr), absentList: true },
-    { to: "pos_offset", names: ["posOffset"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: x.leaf(x.orNil(x.dInt)), absentList: true },
+    { to: "align", names: ["align"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: true, dec: x.leaf(x.dStr), absentList: true },
+    { to: "pos_offset", names: ["posOffset"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: true, dec: x.leaf(x.orNil(x.dInt)), absentList: true },
   ],
   content: null,
 };
@@ -4033,7 +4035,7 @@ const WSPEC_OmmlModelsCTPosH_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTPosH_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTPosH_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTPosH_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTPosH_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTPosH_omml, v, name, ns, host);
 }
 
@@ -4046,8 +4048,8 @@ const RSPEC_OmmlModelsCTPosV_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "align", names: ["align"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: x.leaf(x.dStr), absentList: true },
-    { to: "pos_offset", names: ["posOffset"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: x.leaf(x.orNil(x.dInt)), absentList: true },
+    { to: "align", names: ["align"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: true, dec: x.leaf(x.dStr), absentList: true },
+    { to: "pos_offset", names: ["posOffset"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: true, dec: x.leaf(x.orNil(x.dInt)), absentList: true },
   ],
   content: null,
 };
@@ -4069,7 +4071,7 @@ const WSPEC_OmmlModelsCTPosV_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTPosV_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTPosV_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTPosV_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTPosV_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTPosV_omml, v, name, ns, host);
 }
 
@@ -4078,8 +4080,8 @@ export const codecOmmlModelsCTPosV_omml = x.xmlCodec<m.OmmlModelsCTPosV_omml>(RS
 const RSPEC_OmmlModelsCTPositiveSize2D_omml: x.ModelSpec = {
   id: "Omml::Models::CTPositiveSize2D@omml", root: "CT_PositiveSize2D", ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], ordered: false, mixed: false, tokens: false,
   attrs: [
-    { to: "cx", names: ["cx"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: (s) => x.dBound(s, _b6_parse) },
-    { to: "cy", names: ["cy"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: (s) => x.dBound(s, _b6_parse) },
+    { to: "cx", names: ["cx"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: (s) => x.dBound(s, _b8_parse) },
+    { to: "cy", names: ["cy"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: (s) => x.dBound(s, _b8_parse) },
   ],
   any: null,
   elems: [
@@ -4094,8 +4096,8 @@ export function readOmmlModelsCTPositiveSize2D_omml(el: x.El): m.OmmlModelsCTPos
 const WSPEC_OmmlModelsCTPositiveSize2D_omml: x.WSpec = {
   id: "Omml::Models::CTPositiveSize2D@omml", ordered: false, refusal: null,
   attrs: [
-    { to: "cx", name: "cx", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: (v) => x.eBound(v, _b6_format), nil: "omit", empty: "omit" },
-    { to: "cy", name: "cy", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: (v) => x.eBound(v, _b6_format), nil: "omit", empty: "omit" },
+    { to: "cx", name: "cx", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: (v) => x.eBound(v, _b8_format), nil: "omit", empty: "omit" },
+    { to: "cy", name: "cy", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: (v) => x.eBound(v, _b8_format), nil: "omit", empty: "omit" },
   ],
   any: null,
   elems: [
@@ -4103,7 +4105,7 @@ const WSPEC_OmmlModelsCTPositiveSize2D_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTPositiveSize2D_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTPositiveSize2D_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTPositiveSize2D_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTPositiveSize2D_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTPositiveSize2D_omml, v, name, ns, host);
 }
 
@@ -4135,7 +4137,7 @@ const WSPEC_OmmlModelsCTProofErr_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTProofErr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTProofErr_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTProofErr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTProofErr_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTProofErr_omml, v, name, ns, host);
 }
 
@@ -4147,40 +4149,40 @@ const RSPEC_OmmlModelsCTR_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "r_pr", names: ["rPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTRPR_omml },
-    { to: "word_r_pr", names: ["rPr"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTRPr_omml },
-    { to: "br", names: ["br"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTBr_omml, absentList: true },
-    { to: "del_text", names: ["delText"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingText_omml, absentList: true },
-    { to: "instr_text", names: ["instrText"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingText_omml, absentList: true },
-    { to: "del_instr_text", names: ["delInstrText"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingText_omml, absentList: true },
-    { to: "no_break_hyphen", names: ["noBreakHyphen"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingEmpty_omml, absentList: true },
-    { to: "soft_hyphen", names: ["softHyphen"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingEmpty_omml },
-    { to: "day_short", names: ["dayShort"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingEmpty_omml },
-    { to: "month_short", names: ["monthShort"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingEmpty_omml },
-    { to: "year_short", names: ["yearShort"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingEmpty_omml },
-    { to: "day_long", names: ["dayLong"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingEmpty_omml },
-    { to: "month_long", names: ["monthLong"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingEmpty_omml },
-    { to: "year_long", names: ["yearLong"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingEmpty_omml },
-    { to: "annotation_ref", names: ["annotationRef"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingEmpty_omml },
-    { to: "footnote_ref", names: ["footnoteRef"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingEmpty_omml },
-    { to: "endnote_ref", names: ["endnoteRef"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingEmpty_omml },
-    { to: "separator", names: ["separator"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingEmpty_omml },
-    { to: "continuation_separator", names: ["continuationSeparator"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingEmpty_omml },
-    { to: "sym", names: ["sym"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTSym_omml },
-    { to: "pg_num", names: ["pgNum"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingEmpty_omml },
-    { to: "cr", names: ["cr"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingEmpty_omml },
-    { to: "tab", names: ["tab"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingEmpty_omml },
-    { to: "object", names: ["object"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTObject_omml, absentList: true },
-    { to: "pict", names: ["pict"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTPicture_omml, absentList: true },
-    { to: "fld_char", names: ["fldChar"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTFldChar_omml, absentList: true },
-    { to: "ruby", names: ["ruby"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTRuby_omml, absentList: true },
-    { to: "footnote_reference", names: ["footnoteReference"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTFtnEdnRef_omml, absentList: true },
-    { to: "endnote_reference", names: ["endnoteReference"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTFtnEdnRef_omml, absentList: true },
-    { to: "comment_reference", names: ["commentReference"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTMarkup_omml, absentList: true },
-    { to: "drawing", names: ["drawing"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTDrawing_omml, absentList: true },
-    { to: "ptab", names: ["ptab"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTPTab_omml },
-    { to: "last_rendered_page_break", names: ["lastRenderedPageBreak"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingEmpty_omml },
-    { to: "t", names: ["t"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTText_omml, absentList: true },
+    { to: "r_pr", names: ["rPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTRPR_omml },
+    { to: "word_r_pr", names: ["rPr"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTRPr_omml },
+    { to: "br", names: ["br"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTBr_omml, absentList: true },
+    { to: "del_text", names: ["delText"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingText_omml, absentList: true },
+    { to: "instr_text", names: ["instrText"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingText_omml, absentList: true },
+    { to: "del_instr_text", names: ["delInstrText"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingText_omml, absentList: true },
+    { to: "no_break_hyphen", names: ["noBreakHyphen"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingEmpty_omml, absentList: true },
+    { to: "soft_hyphen", names: ["softHyphen"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingEmpty_omml },
+    { to: "day_short", names: ["dayShort"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingEmpty_omml },
+    { to: "month_short", names: ["monthShort"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingEmpty_omml },
+    { to: "year_short", names: ["yearShort"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingEmpty_omml },
+    { to: "day_long", names: ["dayLong"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingEmpty_omml },
+    { to: "month_long", names: ["monthLong"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingEmpty_omml },
+    { to: "year_long", names: ["yearLong"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingEmpty_omml },
+    { to: "annotation_ref", names: ["annotationRef"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingEmpty_omml },
+    { to: "footnote_ref", names: ["footnoteRef"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingEmpty_omml },
+    { to: "endnote_ref", names: ["endnoteRef"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingEmpty_omml },
+    { to: "separator", names: ["separator"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingEmpty_omml },
+    { to: "continuation_separator", names: ["continuationSeparator"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingEmpty_omml },
+    { to: "sym", names: ["sym"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTSym_omml },
+    { to: "pg_num", names: ["pgNum"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingEmpty_omml },
+    { to: "cr", names: ["cr"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingEmpty_omml },
+    { to: "tab", names: ["tab"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingEmpty_omml },
+    { to: "object", names: ["object"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTObject_omml, absentList: true },
+    { to: "pict", names: ["pict"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTPicture_omml, absentList: true },
+    { to: "fld_char", names: ["fldChar"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTFldChar_omml, absentList: true },
+    { to: "ruby", names: ["ruby"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTRuby_omml, absentList: true },
+    { to: "footnote_reference", names: ["footnoteReference"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTFtnEdnRef_omml, absentList: true },
+    { to: "endnote_reference", names: ["endnoteReference"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTFtnEdnRef_omml, absentList: true },
+    { to: "comment_reference", names: ["commentReference"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTMarkup_omml, absentList: true },
+    { to: "drawing", names: ["drawing"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTDrawing_omml, absentList: true },
+    { to: "ptab", names: ["ptab"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTPTab_omml },
+    { to: "last_rendered_page_break", names: ["lastRenderedPageBreak"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingEmpty_omml },
+    { to: "t", names: ["t"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTText_omml, absentList: true },
   ],
   content: null,
 };
@@ -4233,7 +4235,7 @@ const WSPEC_OmmlModelsCTR_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTR_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTR_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTR_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTR_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTR_omml, v, name, ns, host);
 }
 
@@ -4245,12 +4247,12 @@ const RSPEC_OmmlModelsCTRPR_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "lit", names: ["lit"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTOnOff_omml },
-    { to: "nor", names: ["nor"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTOnOff_omml },
-    { to: "brk", names: ["brk"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTManualBreak_omml },
-    { to: "aln", names: ["aln"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTOnOff_omml },
-    { to: "scr", names: ["scr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTScript_omml },
-    { to: "sty", names: ["sty"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTStyle_omml },
+    { to: "lit", names: ["lit"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTOnOff_omml },
+    { to: "nor", names: ["nor"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTOnOff_omml },
+    { to: "brk", names: ["brk"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTManualBreak_omml },
+    { to: "aln", names: ["aln"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTOnOff_omml },
+    { to: "scr", names: ["scr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTScript_omml },
+    { to: "sty", names: ["sty"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTStyle_omml },
   ],
   content: null,
 };
@@ -4275,7 +4277,7 @@ const WSPEC_OmmlModelsCTRPR_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTRPR_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTRPR_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTRPR_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTRPR_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTRPR_omml, v, name, ns, host);
 }
 
@@ -4287,46 +4289,46 @@ const RSPEC_OmmlModelsCTRPr_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "r_pr_change", names: ["rPrChange"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTRPrChange_omml },
-    { to: "r_style", names: ["rStyle"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTString_omml },
-    { to: "r_fonts", names: ["rFonts"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTFonts_omml },
-    { to: "b", names: ["b"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
-    { to: "b_cs", names: ["bCs"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
-    { to: "i", names: ["i"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
-    { to: "i_cs", names: ["iCs"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
-    { to: "caps", names: ["caps"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
-    { to: "small_caps", names: ["smallCaps"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
-    { to: "strike", names: ["strike"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
-    { to: "dstrike", names: ["dstrike"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
-    { to: "outline", names: ["outline"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
-    { to: "shadow", names: ["shadow"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
-    { to: "emboss", names: ["emboss"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
-    { to: "imprint", names: ["imprint"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
-    { to: "no_proof", names: ["noProof"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
-    { to: "snap_to_grid", names: ["snapToGrid"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
-    { to: "vanish", names: ["vanish"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
-    { to: "web_hidden", names: ["webHidden"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
-    { to: "color", names: ["color"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTColor_omml },
-    { to: "spacing", names: ["spacing"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTSignedTwipsMeasure_omml },
-    { to: "w", names: ["w"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTTextScale_omml },
-    { to: "kern", names: ["kern"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTHpsMeasure_omml },
-    { to: "position", names: ["position"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTSignedHpsMeasure_omml },
-    { to: "sz", names: ["sz"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTHpsMeasure_omml },
-    { to: "sz_cs", names: ["szCs"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTHpsMeasure_omml },
-    { to: "highlight", names: ["highlight"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTHighlight_omml },
-    { to: "u", names: ["u"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTUnderline_omml },
-    { to: "effect", names: ["effect"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTTextEffect_omml },
-    { to: "bdr", names: ["bdr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTBorder_omml },
-    { to: "shd", names: ["shd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTShd_omml },
-    { to: "fit_text", names: ["fitText"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTFitText_omml },
-    { to: "vert_align", names: ["vertAlign"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTVerticalAlignRun_omml },
-    { to: "rtl", names: ["rtl"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
-    { to: "cs", names: ["cs"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
-    { to: "em", names: ["em"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTEm_omml },
-    { to: "lang", names: ["lang"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTLanguage_omml },
-    { to: "east_asian_layout", names: ["eastAsianLayout"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTEastAsianLayout_omml },
-    { to: "spec_vanish", names: ["specVanish"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
-    { to: "o_math", names: ["oMath"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
+    { to: "r_pr_change", names: ["rPrChange"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTRPrChange_omml },
+    { to: "r_style", names: ["rStyle"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTString_omml },
+    { to: "r_fonts", names: ["rFonts"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTFonts_omml },
+    { to: "b", names: ["b"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
+    { to: "b_cs", names: ["bCs"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
+    { to: "i", names: ["i"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
+    { to: "i_cs", names: ["iCs"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
+    { to: "caps", names: ["caps"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
+    { to: "small_caps", names: ["smallCaps"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
+    { to: "strike", names: ["strike"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
+    { to: "dstrike", names: ["dstrike"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
+    { to: "outline", names: ["outline"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
+    { to: "shadow", names: ["shadow"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
+    { to: "emboss", names: ["emboss"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
+    { to: "imprint", names: ["imprint"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
+    { to: "no_proof", names: ["noProof"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
+    { to: "snap_to_grid", names: ["snapToGrid"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
+    { to: "vanish", names: ["vanish"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
+    { to: "web_hidden", names: ["webHidden"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
+    { to: "color", names: ["color"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTColor_omml },
+    { to: "spacing", names: ["spacing"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTSignedTwipsMeasure_omml },
+    { to: "w", names: ["w"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTTextScale_omml },
+    { to: "kern", names: ["kern"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTHpsMeasure_omml },
+    { to: "position", names: ["position"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTSignedHpsMeasure_omml },
+    { to: "sz", names: ["sz"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTHpsMeasure_omml },
+    { to: "sz_cs", names: ["szCs"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTHpsMeasure_omml },
+    { to: "highlight", names: ["highlight"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTHighlight_omml },
+    { to: "u", names: ["u"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTUnderline_omml },
+    { to: "effect", names: ["effect"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTTextEffect_omml },
+    { to: "bdr", names: ["bdr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTBorder_omml },
+    { to: "shd", names: ["shd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTShd_omml },
+    { to: "fit_text", names: ["fitText"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTFitText_omml },
+    { to: "vert_align", names: ["vertAlign"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTVerticalAlignRun_omml },
+    { to: "rtl", names: ["rtl"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
+    { to: "cs", names: ["cs"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
+    { to: "em", names: ["em"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTEm_omml },
+    { to: "lang", names: ["lang"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTLanguage_omml },
+    { to: "east_asian_layout", names: ["eastAsianLayout"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTEastAsianLayout_omml },
+    { to: "spec_vanish", names: ["specVanish"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
+    { to: "o_math", names: ["oMath"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
   ],
   content: null,
 };
@@ -4385,7 +4387,7 @@ const WSPEC_OmmlModelsCTRPr_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTRPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTRPr_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTRPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTRPr_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTRPr_omml, v, name, ns, host);
 }
 
@@ -4400,7 +4402,7 @@ const RSPEC_OmmlModelsCTRPrChange_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "r_pr", names: ["rPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTRPrOriginal_omml, absentList: true },
+    { to: "r_pr", names: ["rPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTRPrOriginal_omml, absentList: true },
   ],
   content: null,
 };
@@ -4423,7 +4425,7 @@ const WSPEC_OmmlModelsCTRPrChange_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTRPrChange_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTRPrChange_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTRPrChange_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTRPrChange_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTRPrChange_omml, v, name, ns, host);
 }
 
@@ -4435,45 +4437,45 @@ const RSPEC_OmmlModelsCTRPrOriginal_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "r_style", names: ["rStyle"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTString_omml },
-    { to: "r_fonts", names: ["rFonts"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTFonts_omml },
-    { to: "b", names: ["b"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
-    { to: "b_cs", names: ["bCs"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
-    { to: "i", names: ["i"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
-    { to: "i_cs", names: ["iCs"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
-    { to: "caps", names: ["caps"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
-    { to: "small_caps", names: ["smallCaps"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
-    { to: "strike", names: ["strike"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
-    { to: "dstrike", names: ["dstrike"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
-    { to: "outline", names: ["outline"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
-    { to: "shadow", names: ["shadow"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
-    { to: "emboss", names: ["emboss"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
-    { to: "imprint", names: ["imprint"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
-    { to: "no_proof", names: ["noProof"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
-    { to: "snap_to_grid", names: ["snapToGrid"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
-    { to: "vanish", names: ["vanish"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
-    { to: "web_hidden", names: ["webHidden"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
-    { to: "color", names: ["color"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTColor_omml },
-    { to: "spacing", names: ["spacing"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTSignedTwipsMeasure_omml },
-    { to: "w", names: ["w"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTTextScale_omml },
-    { to: "kern", names: ["kern"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTHpsMeasure_omml },
-    { to: "position", names: ["position"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTSignedHpsMeasure_omml },
-    { to: "sz", names: ["sz"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTHpsMeasure_omml },
-    { to: "sz_cs", names: ["szCs"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTHpsMeasure_omml },
-    { to: "highlight", names: ["highlight"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTHighlight_omml },
-    { to: "u", names: ["u"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTUnderline_omml },
-    { to: "effect", names: ["effect"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTTextEffect_omml },
-    { to: "bdr", names: ["bdr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTBorder_omml },
-    { to: "shd", names: ["shd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTShd_omml },
-    { to: "fit_text", names: ["fitText"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTFitText_omml },
-    { to: "vert_align", names: ["vertAlign"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTVerticalAlignRun_omml },
-    { to: "rtl", names: ["rtl"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
-    { to: "cs", names: ["cs"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
-    { to: "em", names: ["em"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTEm_omml },
-    { to: "lang", names: ["lang"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTLanguage_omml },
-    { to: "east_asian_layout", names: ["eastAsianLayout"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTEastAsianLayout_omml },
-    { to: "spec_vanish", names: ["specVanish"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
-    { to: "o_math", names: ["oMath"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
+    { to: "r_style", names: ["rStyle"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTString_omml },
+    { to: "r_fonts", names: ["rFonts"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTFonts_omml },
+    { to: "b", names: ["b"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
+    { to: "b_cs", names: ["bCs"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
+    { to: "i", names: ["i"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
+    { to: "i_cs", names: ["iCs"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
+    { to: "caps", names: ["caps"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
+    { to: "small_caps", names: ["smallCaps"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
+    { to: "strike", names: ["strike"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
+    { to: "dstrike", names: ["dstrike"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
+    { to: "outline", names: ["outline"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
+    { to: "shadow", names: ["shadow"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
+    { to: "emboss", names: ["emboss"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
+    { to: "imprint", names: ["imprint"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
+    { to: "no_proof", names: ["noProof"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
+    { to: "snap_to_grid", names: ["snapToGrid"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
+    { to: "vanish", names: ["vanish"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
+    { to: "web_hidden", names: ["webHidden"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
+    { to: "color", names: ["color"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTColor_omml },
+    { to: "spacing", names: ["spacing"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTSignedTwipsMeasure_omml },
+    { to: "w", names: ["w"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTTextScale_omml },
+    { to: "kern", names: ["kern"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTHpsMeasure_omml },
+    { to: "position", names: ["position"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTSignedHpsMeasure_omml },
+    { to: "sz", names: ["sz"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTHpsMeasure_omml },
+    { to: "sz_cs", names: ["szCs"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTHpsMeasure_omml },
+    { to: "highlight", names: ["highlight"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTHighlight_omml },
+    { to: "u", names: ["u"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTUnderline_omml },
+    { to: "effect", names: ["effect"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTTextEffect_omml },
+    { to: "bdr", names: ["bdr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTBorder_omml },
+    { to: "shd", names: ["shd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTShd_omml },
+    { to: "fit_text", names: ["fitText"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTFitText_omml },
+    { to: "vert_align", names: ["vertAlign"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTVerticalAlignRun_omml },
+    { to: "rtl", names: ["rtl"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
+    { to: "cs", names: ["cs"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
+    { to: "em", names: ["em"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTEm_omml },
+    { to: "lang", names: ["lang"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTLanguage_omml },
+    { to: "east_asian_layout", names: ["eastAsianLayout"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTEastAsianLayout_omml },
+    { to: "spec_vanish", names: ["specVanish"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
+    { to: "o_math", names: ["oMath"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingOnOff_omml, absentList: true },
   ],
   content: null,
 };
@@ -4531,7 +4533,7 @@ const WSPEC_OmmlModelsCTRPrOriginal_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTRPrOriginal_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTRPrOriginal_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTRPrOriginal_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTRPrOriginal_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTRPrOriginal_omml, v, name, ns, host);
 }
 
@@ -4543,9 +4545,9 @@ const RSPEC_OmmlModelsCTRad_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "rad_pr", names: ["radPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTRadPr_omml },
-    { to: "deg", names: ["deg"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTOMathArg_omml },
-    { to: "e", names: ["e"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTOMathArg_omml },
+    { to: "rad_pr", names: ["radPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTRadPr_omml },
+    { to: "deg", names: ["deg"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTOMathArg_omml },
+    { to: "e", names: ["e"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTOMathArg_omml },
   ],
   content: null,
 };
@@ -4567,7 +4569,7 @@ const WSPEC_OmmlModelsCTRad_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTRad_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTRad_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTRad_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTRad_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTRad_omml, v, name, ns, host);
 }
 
@@ -4579,8 +4581,8 @@ const RSPEC_OmmlModelsCTRadPr_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "deg_hide", names: ["degHide"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTOnOff_omml },
-    { to: "ctrl_pr", names: ["ctrlPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTCtrlPr_omml },
+    { to: "deg_hide", names: ["degHide"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTOnOff_omml },
+    { to: "ctrl_pr", names: ["ctrlPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTCtrlPr_omml },
   ],
   content: null,
 };
@@ -4601,7 +4603,7 @@ const WSPEC_OmmlModelsCTRadPr_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTRadPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTRadPr_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTRadPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTRadPr_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTRadPr_omml, v, name, ns, host);
 }
 
@@ -4633,7 +4635,7 @@ const WSPEC_OmmlModelsCTRel_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTRel_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTRel_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTRel_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTRel_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTRel_omml, v, name, ns, host);
 }
 
@@ -4645,9 +4647,9 @@ const RSPEC_OmmlModelsCTRuby_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "ruby_pr", names: ["rubyPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTRubyPr_omml },
-    { to: "rt", names: ["rt"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTRubyContent_omml },
-    { to: "ruby_base", names: ["rubyBase"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTRubyContent_omml },
+    { to: "ruby_pr", names: ["rubyPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTRubyPr_omml },
+    { to: "rt", names: ["rt"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTRubyContent_omml },
+    { to: "ruby_base", names: ["rubyBase"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTRubyContent_omml },
   ],
   content: null,
 };
@@ -4669,7 +4671,7 @@ const WSPEC_OmmlModelsCTRuby_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTRuby_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTRuby_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTRuby_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTRuby_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTRuby_omml, v, name, ns, host);
 }
 
@@ -4701,7 +4703,7 @@ const WSPEC_OmmlModelsCTRubyAlign_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTRubyAlign_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTRubyAlign_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTRubyAlign_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTRubyAlign_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTRubyAlign_omml, v, name, ns, host);
 }
 
@@ -4731,7 +4733,7 @@ const WSPEC_OmmlModelsCTRubyContent_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTRubyContent_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTRubyContent_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTRubyContent_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTRubyContent_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTRubyContent_omml, v, name, ns, host);
 }
 
@@ -4743,12 +4745,12 @@ const RSPEC_OmmlModelsCTRubyPr_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "ruby_align", names: ["rubyAlign"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTRubyAlign_omml },
-    { to: "hps", names: ["hps"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTHpsMeasure_omml },
-    { to: "hps_raise", names: ["hpsRaise"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTHpsMeasure_omml },
-    { to: "hps_base_text", names: ["hpsBaseText"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTHpsMeasure_omml },
-    { to: "lid", names: ["lid"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTLang_omml },
-    { to: "dirty", names: ["dirty"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTOnOff_omml },
+    { to: "ruby_align", names: ["rubyAlign"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTRubyAlign_omml },
+    { to: "hps", names: ["hps"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTHpsMeasure_omml },
+    { to: "hps_raise", names: ["hpsRaise"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTHpsMeasure_omml },
+    { to: "hps_base_text", names: ["hpsBaseText"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTHpsMeasure_omml },
+    { to: "lid", names: ["lid"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTLang_omml },
+    { to: "dirty", names: ["dirty"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTOnOff_omml },
   ],
   content: null,
 };
@@ -4773,7 +4775,7 @@ const WSPEC_OmmlModelsCTRubyPr_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTRubyPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTRubyPr_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTRubyPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTRubyPr_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTRubyPr_omml, v, name, ns, host);
 }
 
@@ -4809,7 +4811,7 @@ const WSPEC_OmmlModelsCTRunTrackChange_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTRunTrackChange_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTRunTrackChange_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTRunTrackChange_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTRunTrackChange_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTRunTrackChange_omml, v, name, ns, host);
 }
 
@@ -4821,10 +4823,10 @@ const RSPEC_OmmlModelsCTSPre_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "s_pre_pr", names: ["sPrePr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTSPrePr_omml },
-    { to: "sub", names: ["sub"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTOMathArg_omml },
-    { to: "sup", names: ["sup"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTOMathArg_omml },
-    { to: "e", names: ["e"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTOMathArg_omml },
+    { to: "s_pre_pr", names: ["sPrePr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTSPrePr_omml },
+    { to: "sub", names: ["sub"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTOMathArg_omml },
+    { to: "sup", names: ["sup"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTOMathArg_omml },
+    { to: "e", names: ["e"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTOMathArg_omml },
   ],
   content: null,
 };
@@ -4847,7 +4849,7 @@ const WSPEC_OmmlModelsCTSPre_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTSPre_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTSPre_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTSPre_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTSPre_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTSPre_omml, v, name, ns, host);
 }
 
@@ -4859,7 +4861,7 @@ const RSPEC_OmmlModelsCTSPrePr_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "ctrl_pr", names: ["ctrlPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTCtrlPr_omml },
+    { to: "ctrl_pr", names: ["ctrlPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTCtrlPr_omml },
   ],
   content: null,
 };
@@ -4879,7 +4881,7 @@ const WSPEC_OmmlModelsCTSPrePr_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTSPrePr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTSPrePr_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTSPrePr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTSPrePr_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTSPrePr_omml, v, name, ns, host);
 }
 
@@ -4891,9 +4893,9 @@ const RSPEC_OmmlModelsCTSSub_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "s_sub_pr", names: ["sSubPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTSSubPr_omml },
-    { to: "e", names: ["e"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTOMathArg_omml },
-    { to: "sub", names: ["sub"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTOMathArg_omml },
+    { to: "s_sub_pr", names: ["sSubPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTSSubPr_omml },
+    { to: "e", names: ["e"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTOMathArg_omml },
+    { to: "sub", names: ["sub"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTOMathArg_omml },
   ],
   content: null,
 };
@@ -4915,7 +4917,7 @@ const WSPEC_OmmlModelsCTSSub_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTSSub_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTSSub_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTSSub_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTSSub_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTSSub_omml, v, name, ns, host);
 }
 
@@ -4927,7 +4929,7 @@ const RSPEC_OmmlModelsCTSSubPr_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "ctrl_pr", names: ["ctrlPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTCtrlPr_omml },
+    { to: "ctrl_pr", names: ["ctrlPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTCtrlPr_omml },
   ],
   content: null,
 };
@@ -4947,7 +4949,7 @@ const WSPEC_OmmlModelsCTSSubPr_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTSSubPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTSSubPr_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTSSubPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTSSubPr_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTSSubPr_omml, v, name, ns, host);
 }
 
@@ -4959,10 +4961,10 @@ const RSPEC_OmmlModelsCTSSubSup_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "s_sub_sup_pr", names: ["sSubSupPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTSSubSupPr_omml },
-    { to: "e", names: ["e"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTOMathArg_omml },
-    { to: "sub", names: ["sub"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTOMathArg_omml },
-    { to: "sup", names: ["sup"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTOMathArg_omml },
+    { to: "s_sub_sup_pr", names: ["sSubSupPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTSSubSupPr_omml },
+    { to: "e", names: ["e"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTOMathArg_omml },
+    { to: "sub", names: ["sub"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTOMathArg_omml },
+    { to: "sup", names: ["sup"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTOMathArg_omml },
   ],
   content: null,
 };
@@ -4985,7 +4987,7 @@ const WSPEC_OmmlModelsCTSSubSup_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTSSubSup_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTSSubSup_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTSSubSup_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTSSubSup_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTSSubSup_omml, v, name, ns, host);
 }
 
@@ -4997,8 +4999,8 @@ const RSPEC_OmmlModelsCTSSubSupPr_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "aln_scr", names: ["alnScr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTOnOff_omml },
-    { to: "ctrl_pr", names: ["ctrlPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTCtrlPr_omml },
+    { to: "aln_scr", names: ["alnScr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTOnOff_omml },
+    { to: "ctrl_pr", names: ["ctrlPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTCtrlPr_omml },
   ],
   content: null,
 };
@@ -5019,7 +5021,7 @@ const WSPEC_OmmlModelsCTSSubSupPr_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTSSubSupPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTSSubSupPr_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTSSubSupPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTSSubSupPr_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTSSubSupPr_omml, v, name, ns, host);
 }
 
@@ -5031,9 +5033,9 @@ const RSPEC_OmmlModelsCTSSup_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "s_sup_pr", names: ["sSupPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTSSupPr_omml },
-    { to: "e", names: ["e"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTOMathArg_omml },
-    { to: "sup", names: ["sup"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTOMathArg_omml },
+    { to: "s_sup_pr", names: ["sSupPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTSSupPr_omml },
+    { to: "e", names: ["e"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTOMathArg_omml },
+    { to: "sup", names: ["sup"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTOMathArg_omml },
   ],
   content: null,
 };
@@ -5055,7 +5057,7 @@ const WSPEC_OmmlModelsCTSSup_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTSSup_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTSSup_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTSSup_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTSSup_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTSSup_omml, v, name, ns, host);
 }
 
@@ -5067,7 +5069,7 @@ const RSPEC_OmmlModelsCTSSupPr_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "ctrl_pr", names: ["ctrlPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTCtrlPr_omml },
+    { to: "ctrl_pr", names: ["ctrlPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTCtrlPr_omml },
   ],
   content: null,
 };
@@ -5087,7 +5089,7 @@ const WSPEC_OmmlModelsCTSSupPr_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTSSupPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTSSupPr_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTSSupPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTSSupPr_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTSSupPr_omml, v, name, ns, host);
 }
 
@@ -5119,7 +5121,7 @@ const WSPEC_OmmlModelsCTScript_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTScript_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTScript_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTScript_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTScript_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTScript_omml, v, name, ns, host);
 }
 
@@ -5132,7 +5134,7 @@ const RSPEC_OmmlModelsCTSdtComboBox_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "list_item", names: ["listItem"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTSdtListItem_omml },
+    { to: "list_item", names: ["listItem"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTSdtListItem_omml },
   ],
   content: null,
 };
@@ -5153,7 +5155,7 @@ const WSPEC_OmmlModelsCTSdtComboBox_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTSdtComboBox_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTSdtComboBox_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTSdtComboBox_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTSdtComboBox_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTSdtComboBox_omml, v, name, ns, host);
 }
 
@@ -5183,7 +5185,7 @@ const WSPEC_OmmlModelsCTSdtContentRun_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTSdtContentRun_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTSdtContentRun_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTSdtContentRun_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTSdtContentRun_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTSdtContentRun_omml, v, name, ns, host);
 }
 
@@ -5196,10 +5198,10 @@ const RSPEC_OmmlModelsCTSdtDate_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "date_format", names: ["dateFormat"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTString_omml },
-    { to: "lid", names: ["lid"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTLang_omml },
-    { to: "store_mapped_data_as", names: ["storeMappedDataAs"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTSdtDateMappingType_omml },
-    { to: "calendar", names: ["calendar"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTCalendarType_omml },
+    { to: "date_format", names: ["dateFormat"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTString_omml },
+    { to: "lid", names: ["lid"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTLang_omml },
+    { to: "store_mapped_data_as", names: ["storeMappedDataAs"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTSdtDateMappingType_omml },
+    { to: "calendar", names: ["calendar"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTCalendarType_omml },
   ],
   content: null,
 };
@@ -5223,7 +5225,7 @@ const WSPEC_OmmlModelsCTSdtDate_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTSdtDate_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTSdtDate_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTSdtDate_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTSdtDate_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTSdtDate_omml, v, name, ns, host);
 }
 
@@ -5255,7 +5257,7 @@ const WSPEC_OmmlModelsCTSdtDateMappingType_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTSdtDateMappingType_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTSdtDateMappingType_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTSdtDateMappingType_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTSdtDateMappingType_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTSdtDateMappingType_omml, v, name, ns, host);
 }
 
@@ -5267,9 +5269,9 @@ const RSPEC_OmmlModelsCTSdtDocPart_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "doc_part_gallery", names: ["docPartGallery"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTString_omml },
-    { to: "doc_part_category", names: ["docPartCategory"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTString_omml },
-    { to: "doc_part_unique", names: ["docPartUnique"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTOnOff_omml },
+    { to: "doc_part_gallery", names: ["docPartGallery"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTString_omml },
+    { to: "doc_part_category", names: ["docPartCategory"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTString_omml },
+    { to: "doc_part_unique", names: ["docPartUnique"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTOnOff_omml },
   ],
   content: null,
 };
@@ -5291,7 +5293,7 @@ const WSPEC_OmmlModelsCTSdtDocPart_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTSdtDocPart_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTSdtDocPart_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTSdtDocPart_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTSdtDocPart_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTSdtDocPart_omml, v, name, ns, host);
 }
 
@@ -5304,7 +5306,7 @@ const RSPEC_OmmlModelsCTSdtDropDownList_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "list_item", names: ["listItem"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTSdtListItem_omml },
+    { to: "list_item", names: ["listItem"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTSdtListItem_omml },
   ],
   content: null,
 };
@@ -5325,7 +5327,7 @@ const WSPEC_OmmlModelsCTSdtDropDownList_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTSdtDropDownList_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTSdtDropDownList_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTSdtDropDownList_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTSdtDropDownList_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTSdtDropDownList_omml, v, name, ns, host);
 }
 
@@ -5337,7 +5339,7 @@ const RSPEC_OmmlModelsCTSdtEndPr_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "r_pr", names: ["rPr"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTRPr_omml },
+    { to: "r_pr", names: ["rPr"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTRPr_omml },
   ],
   content: null,
 };
@@ -5357,7 +5359,7 @@ const WSPEC_OmmlModelsCTSdtEndPr_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTSdtEndPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTSdtEndPr_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTSdtEndPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTSdtEndPr_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTSdtEndPr_omml, v, name, ns, host);
 }
 
@@ -5391,7 +5393,7 @@ const WSPEC_OmmlModelsCTSdtListItem_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTSdtListItem_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTSdtListItem_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTSdtListItem_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTSdtListItem_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTSdtListItem_omml, v, name, ns, host);
 }
 
@@ -5403,27 +5405,27 @@ const RSPEC_OmmlModelsCTSdtPr_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "r_pr", names: ["rPr"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTRPr_omml },
-    { to: "alias", names: ["alias"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTString_omml },
-    { to: "lock", names: ["lock"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTLock_omml },
-    { to: "placeholder", names: ["placeholder"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTPlaceholder_omml },
-    { to: "showing_plc_hdr", names: ["showingPlcHdr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTOnOff_omml },
-    { to: "data_binding", names: ["dataBinding"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTDataBinding_omml },
-    { to: "temporary", names: ["temporary"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTOnOff_omml },
-    { to: "id", names: ["id"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTDecimalNumber_omml },
-    { to: "tag", names: ["tag"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTString_omml },
-    { to: "equation", names: ["equation"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTEmpty_omml },
-    { to: "combo_box", names: ["comboBox"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTSdtComboBox_omml },
-    { to: "date", names: ["date"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTSdtDate_omml },
-    { to: "doc_part_obj", names: ["docPartObj"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTSdtDocPart_omml },
-    { to: "doc_part_list", names: ["docPartList"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTSdtDocPart_omml },
-    { to: "drop_down_list", names: ["dropDownList"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTSdtDropDownList_omml },
-    { to: "picture", names: ["picture"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTEmpty_omml },
-    { to: "rich_text", names: ["richText"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTEmpty_omml },
-    { to: "text", names: ["text"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTSdtText_omml },
-    { to: "citation", names: ["citation"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTEmpty_omml },
-    { to: "group", names: ["group"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTEmpty_omml },
-    { to: "bibliography", names: ["bibliography"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTEmpty_omml },
+    { to: "r_pr", names: ["rPr"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTRPr_omml },
+    { to: "alias", names: ["alias"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTString_omml },
+    { to: "lock", names: ["lock"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTLock_omml },
+    { to: "placeholder", names: ["placeholder"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTPlaceholder_omml },
+    { to: "showing_plc_hdr", names: ["showingPlcHdr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTOnOff_omml },
+    { to: "data_binding", names: ["dataBinding"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTDataBinding_omml },
+    { to: "temporary", names: ["temporary"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTOnOff_omml },
+    { to: "id", names: ["id"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTDecimalNumber_omml },
+    { to: "tag", names: ["tag"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTString_omml },
+    { to: "equation", names: ["equation"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTEmpty_omml },
+    { to: "combo_box", names: ["comboBox"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTSdtComboBox_omml },
+    { to: "date", names: ["date"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTSdtDate_omml },
+    { to: "doc_part_obj", names: ["docPartObj"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTSdtDocPart_omml },
+    { to: "doc_part_list", names: ["docPartList"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTSdtDocPart_omml },
+    { to: "drop_down_list", names: ["dropDownList"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTSdtDropDownList_omml },
+    { to: "picture", names: ["picture"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTEmpty_omml },
+    { to: "rich_text", names: ["richText"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTEmpty_omml },
+    { to: "text", names: ["text"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTSdtText_omml },
+    { to: "citation", names: ["citation"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTEmpty_omml },
+    { to: "group", names: ["group"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTEmpty_omml },
+    { to: "bibliography", names: ["bibliography"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTEmpty_omml },
   ],
   content: null,
 };
@@ -5463,7 +5465,7 @@ const WSPEC_OmmlModelsCTSdtPr_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTSdtPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTSdtPr_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTSdtPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTSdtPr_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTSdtPr_omml, v, name, ns, host);
 }
 
@@ -5475,9 +5477,9 @@ const RSPEC_OmmlModelsCTSdtRun_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "sdt_pr", names: ["sdtPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTSdtPr_omml },
-    { to: "sdt_end_pr", names: ["sdtEndPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTSdtEndPr_omml },
-    { to: "sdt_content", names: ["sdtContent"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTSdtContentRun_omml },
+    { to: "sdt_pr", names: ["sdtPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTSdtPr_omml },
+    { to: "sdt_end_pr", names: ["sdtEndPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTSdtEndPr_omml },
+    { to: "sdt_content", names: ["sdtContent"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTSdtContentRun_omml },
   ],
   content: null,
 };
@@ -5499,7 +5501,7 @@ const WSPEC_OmmlModelsCTSdtRun_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTSdtRun_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTSdtRun_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTSdtRun_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTSdtRun_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTSdtRun_omml, v, name, ns, host);
 }
 
@@ -5531,7 +5533,7 @@ const WSPEC_OmmlModelsCTSdtText_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTSdtText_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTSdtText_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTSdtText_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTSdtText_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTSdtText_omml, v, name, ns, host);
 }
 
@@ -5543,12 +5545,12 @@ const RSPEC_OmmlModelsCTShd_omml: x.ModelSpec = {
     { to: "val", names: ["val"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: x.dStr },
     { to: "color", names: ["color"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: x.dStr },
     { to: "theme_color", names: ["themeColor"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: x.dStr },
-    { to: "theme_tint", names: ["themeTint"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: x.dStr },
-    { to: "theme_shade", names: ["themeShade"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: x.dStr },
+    { to: "theme_tint", names: ["themeTint"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: (s) => x.dBound(s, _b1_parse) },
+    { to: "theme_shade", names: ["themeShade"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: (s) => x.dBound(s, _b1_parse) },
     { to: "fill", names: ["fill"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: x.dStr },
     { to: "theme_fill", names: ["themeFill"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: x.dStr },
-    { to: "theme_fill_tint", names: ["themeFillTint"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: x.dStr },
-    { to: "theme_fill_shade", names: ["themeFillShade"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: x.dStr },
+    { to: "theme_fill_tint", names: ["themeFillTint"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: (s) => x.dBound(s, _b1_parse) },
+    { to: "theme_fill_shade", names: ["themeFillShade"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: (s) => x.dBound(s, _b1_parse) },
   ],
   any: null,
   elems: [
@@ -5566,12 +5568,12 @@ const WSPEC_OmmlModelsCTShd_omml: x.WSpec = {
     { to: "val", name: "val", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: x.eStr, nil: "omit", empty: "omit" },
     { to: "color", name: "color", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: x.eStr, nil: "omit", empty: "omit" },
     { to: "theme_color", name: "themeColor", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: x.eStr, nil: "omit", empty: "omit" },
-    { to: "theme_tint", name: "themeTint", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: x.eStr, nil: "omit", empty: "omit" },
-    { to: "theme_shade", name: "themeShade", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: x.eStr, nil: "omit", empty: "omit" },
+    { to: "theme_tint", name: "themeTint", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: (v) => x.eBound(v, _b1_format), nil: "omit", empty: "omit" },
+    { to: "theme_shade", name: "themeShade", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: (v) => x.eBound(v, _b1_format), nil: "omit", empty: "omit" },
     { to: "fill", name: "fill", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: x.eStr, nil: "omit", empty: "omit" },
     { to: "theme_fill", name: "themeFill", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: x.eStr, nil: "omit", empty: "omit" },
-    { to: "theme_fill_tint", name: "themeFillTint", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: x.eStr, nil: "omit", empty: "omit" },
-    { to: "theme_fill_shade", name: "themeFillShade", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: x.eStr, nil: "omit", empty: "omit" },
+    { to: "theme_fill_tint", name: "themeFillTint", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: (v) => x.eBound(v, _b1_format), nil: "omit", empty: "omit" },
+    { to: "theme_fill_shade", name: "themeFillShade", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: (v) => x.eBound(v, _b1_format), nil: "omit", empty: "omit" },
   ],
   any: null,
   elems: [
@@ -5579,7 +5581,7 @@ const WSPEC_OmmlModelsCTShd_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTShd_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTShd_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTShd_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTShd_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTShd_omml, v, name, ns, host);
 }
 
@@ -5611,7 +5613,7 @@ const WSPEC_OmmlModelsCTShp_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTShp_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTShp_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTShp_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTShp_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTShp_omml, v, name, ns, host);
 }
 
@@ -5643,7 +5645,7 @@ const WSPEC_OmmlModelsCTSignedHpsMeasure_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTSignedHpsMeasure_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTSignedHpsMeasure_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTSignedHpsMeasure_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTSignedHpsMeasure_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTSignedHpsMeasure_omml, v, name, ns, host);
 }
 
@@ -5675,7 +5677,7 @@ const WSPEC_OmmlModelsCTSignedTwipsMeasure_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTSignedTwipsMeasure_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTSignedTwipsMeasure_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTSignedTwipsMeasure_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTSignedTwipsMeasure_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTSignedTwipsMeasure_omml, v, name, ns, host);
 }
 
@@ -5690,39 +5692,39 @@ const RSPEC_OmmlModelsCTSimpleField_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "fld_data", names: ["fldData"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTText_omml },
-    { to: "fld_simple", names: ["fldSimple"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTSimpleField_omml },
-    { to: "hyperlink", names: ["hyperlink"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTHyperlink_omml },
-    { to: "sub_doc", names: ["subDoc"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTRel_omml },
-    { to: "custom_xml", names: ["customXml"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTCustomXmlRun_omml },
-    { to: "smart_tag", names: ["smartTag"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTSmartTagRun_omml },
-    { to: "sdt", names: ["sdt"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTSdtRun_omml },
-    { to: "r", names: ["r"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTR_omml },
-    { to: "proof_err", names: ["proofErr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTProofErr_omml },
-    { to: "perm_start", names: ["permStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTPermStart_omml },
-    { to: "perm_end", names: ["permEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTPerm_omml },
-    { to: "ins", names: ["ins"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTRunTrackChange_omml },
-    { to: "del", names: ["del"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTRunTrackChange_omml },
-    { to: "move_from", names: ["moveFrom"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTRunTrackChange_omml },
-    { to: "move_to", names: ["moveTo"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTRunTrackChange_omml },
-    { to: "bookmark_start", names: ["bookmarkStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTBookmark_omml },
-    { to: "bookmark_end", names: ["bookmarkEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkupRange_omml },
-    { to: "move_from_range_start", names: ["moveFromRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMoveBookmark_omml },
-    { to: "move_from_range_end", names: ["moveFromRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkupRange_omml },
-    { to: "move_to_range_start", names: ["moveToRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMoveBookmark_omml },
-    { to: "move_to_range_end", names: ["moveToRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkupRange_omml },
-    { to: "comment_range_start", names: ["commentRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkupRange_omml },
-    { to: "comment_range_end", names: ["commentRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkupRange_omml },
-    { to: "custom_xml_ins_range_start", names: ["customXmlInsRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTTrackChange_omml },
-    { to: "custom_xml_ins_range_end", names: ["customXmlInsRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkup_omml },
-    { to: "custom_xml_del_range_start", names: ["customXmlDelRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTTrackChange_omml },
-    { to: "custom_xml_del_range_end", names: ["customXmlDelRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkup_omml },
-    { to: "custom_xml_move_from_range_start", names: ["customXmlMoveFromRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTTrackChange_omml },
-    { to: "custom_xml_move_from_range_end", names: ["customXmlMoveFromRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkup_omml },
-    { to: "custom_xml_move_to_range_start", names: ["customXmlMoveToRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTTrackChange_omml },
-    { to: "custom_xml_move_to_range_end", names: ["customXmlMoveToRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkup_omml },
-    { to: "o_math_para", names: ["oMathPara"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTOMathPara_omml },
-    { to: "o_math", names: ["oMath"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTOMath_omml },
+    { to: "fld_data", names: ["fldData"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTText_omml },
+    { to: "fld_simple", names: ["fldSimple"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTSimpleField_omml },
+    { to: "hyperlink", names: ["hyperlink"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTHyperlink_omml },
+    { to: "sub_doc", names: ["subDoc"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTRel_omml },
+    { to: "custom_xml", names: ["customXml"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTCustomXmlRun_omml },
+    { to: "smart_tag", names: ["smartTag"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTSmartTagRun_omml },
+    { to: "sdt", names: ["sdt"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTSdtRun_omml },
+    { to: "r", names: ["r"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTR_omml },
+    { to: "proof_err", names: ["proofErr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTProofErr_omml },
+    { to: "perm_start", names: ["permStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTPermStart_omml },
+    { to: "perm_end", names: ["permEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTPerm_omml },
+    { to: "ins", names: ["ins"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTRunTrackChange_omml },
+    { to: "del", names: ["del"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTRunTrackChange_omml },
+    { to: "move_from", names: ["moveFrom"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTRunTrackChange_omml },
+    { to: "move_to", names: ["moveTo"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTRunTrackChange_omml },
+    { to: "bookmark_start", names: ["bookmarkStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTBookmark_omml },
+    { to: "bookmark_end", names: ["bookmarkEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkupRange_omml },
+    { to: "move_from_range_start", names: ["moveFromRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMoveBookmark_omml },
+    { to: "move_from_range_end", names: ["moveFromRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkupRange_omml },
+    { to: "move_to_range_start", names: ["moveToRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMoveBookmark_omml },
+    { to: "move_to_range_end", names: ["moveToRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkupRange_omml },
+    { to: "comment_range_start", names: ["commentRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkupRange_omml },
+    { to: "comment_range_end", names: ["commentRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkupRange_omml },
+    { to: "custom_xml_ins_range_start", names: ["customXmlInsRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTTrackChange_omml },
+    { to: "custom_xml_ins_range_end", names: ["customXmlInsRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkup_omml },
+    { to: "custom_xml_del_range_start", names: ["customXmlDelRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTTrackChange_omml },
+    { to: "custom_xml_del_range_end", names: ["customXmlDelRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkup_omml },
+    { to: "custom_xml_move_from_range_start", names: ["customXmlMoveFromRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTTrackChange_omml },
+    { to: "custom_xml_move_from_range_end", names: ["customXmlMoveFromRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkup_omml },
+    { to: "custom_xml_move_to_range_start", names: ["customXmlMoveToRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTTrackChange_omml },
+    { to: "custom_xml_move_to_range_end", names: ["customXmlMoveToRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkup_omml },
+    { to: "o_math_para", names: ["oMathPara"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTOMathPara_omml },
+    { to: "o_math", names: ["oMath"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTOMath_omml },
   ],
   content: null,
 };
@@ -5777,7 +5779,7 @@ const WSPEC_OmmlModelsCTSimpleField_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTSimpleField_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTSimpleField_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTSimpleField_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTSimpleField_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTSimpleField_omml, v, name, ns, host);
 }
 
@@ -5789,7 +5791,7 @@ const RSPEC_OmmlModelsCTSmartTagPr_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "attr", names: ["attr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTAttr_omml },
+    { to: "attr", names: ["attr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTAttr_omml },
   ],
   content: null,
 };
@@ -5809,7 +5811,7 @@ const WSPEC_OmmlModelsCTSmartTagPr_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTSmartTagPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTSmartTagPr_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTSmartTagPr_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTSmartTagPr_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTSmartTagPr_omml, v, name, ns, host);
 }
 
@@ -5823,39 +5825,39 @@ const RSPEC_OmmlModelsCTSmartTagRun_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "smart_tag_pr", names: ["smartTagPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTSmartTagPr_omml },
-    { to: "fld_simple", names: ["fldSimple"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTSimpleField_omml },
-    { to: "hyperlink", names: ["hyperlink"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTHyperlink_omml },
-    { to: "sub_doc", names: ["subDoc"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTRel_omml },
-    { to: "custom_xml", names: ["customXml"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTCustomXmlRun_omml },
-    { to: "smart_tag", names: ["smartTag"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTSmartTagRun_omml },
-    { to: "sdt", names: ["sdt"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTSdtRun_omml },
-    { to: "r", names: ["r"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTR_omml },
-    { to: "proof_err", names: ["proofErr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTProofErr_omml },
-    { to: "perm_start", names: ["permStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTPermStart_omml },
-    { to: "perm_end", names: ["permEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTPerm_omml },
-    { to: "ins", names: ["ins"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTRunTrackChange_omml },
-    { to: "del", names: ["del"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTRunTrackChange_omml },
-    { to: "move_from", names: ["moveFrom"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTRunTrackChange_omml },
-    { to: "move_to", names: ["moveTo"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTRunTrackChange_omml },
-    { to: "bookmark_start", names: ["bookmarkStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTBookmark_omml },
-    { to: "bookmark_end", names: ["bookmarkEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkupRange_omml },
-    { to: "move_from_range_start", names: ["moveFromRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMoveBookmark_omml },
-    { to: "move_from_range_end", names: ["moveFromRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkupRange_omml },
-    { to: "move_to_range_start", names: ["moveToRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMoveBookmark_omml },
-    { to: "move_to_range_end", names: ["moveToRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkupRange_omml },
-    { to: "comment_range_start", names: ["commentRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkupRange_omml },
-    { to: "comment_range_end", names: ["commentRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkupRange_omml },
-    { to: "custom_xml_ins_range_start", names: ["customXmlInsRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTTrackChange_omml },
-    { to: "custom_xml_ins_range_end", names: ["customXmlInsRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkup_omml },
-    { to: "custom_xml_del_range_start", names: ["customXmlDelRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTTrackChange_omml },
-    { to: "custom_xml_del_range_end", names: ["customXmlDelRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkup_omml },
-    { to: "custom_xml_move_from_range_start", names: ["customXmlMoveFromRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTTrackChange_omml },
-    { to: "custom_xml_move_from_range_end", names: ["customXmlMoveFromRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkup_omml },
-    { to: "custom_xml_move_to_range_start", names: ["customXmlMoveToRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTTrackChange_omml },
-    { to: "custom_xml_move_to_range_end", names: ["customXmlMoveToRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkup_omml },
-    { to: "o_math_para", names: ["oMathPara"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTOMathPara_omml },
-    { to: "o_math", names: ["oMath"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTOMath_omml },
+    { to: "smart_tag_pr", names: ["smartTagPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTSmartTagPr_omml },
+    { to: "fld_simple", names: ["fldSimple"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTSimpleField_omml },
+    { to: "hyperlink", names: ["hyperlink"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTHyperlink_omml },
+    { to: "sub_doc", names: ["subDoc"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTRel_omml },
+    { to: "custom_xml", names: ["customXml"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTCustomXmlRun_omml },
+    { to: "smart_tag", names: ["smartTag"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTSmartTagRun_omml },
+    { to: "sdt", names: ["sdt"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTSdtRun_omml },
+    { to: "r", names: ["r"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTR_omml },
+    { to: "proof_err", names: ["proofErr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTProofErr_omml },
+    { to: "perm_start", names: ["permStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTPermStart_omml },
+    { to: "perm_end", names: ["permEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTPerm_omml },
+    { to: "ins", names: ["ins"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTRunTrackChange_omml },
+    { to: "del", names: ["del"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTRunTrackChange_omml },
+    { to: "move_from", names: ["moveFrom"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTRunTrackChange_omml },
+    { to: "move_to", names: ["moveTo"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTRunTrackChange_omml },
+    { to: "bookmark_start", names: ["bookmarkStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTBookmark_omml },
+    { to: "bookmark_end", names: ["bookmarkEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkupRange_omml },
+    { to: "move_from_range_start", names: ["moveFromRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMoveBookmark_omml },
+    { to: "move_from_range_end", names: ["moveFromRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkupRange_omml },
+    { to: "move_to_range_start", names: ["moveToRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMoveBookmark_omml },
+    { to: "move_to_range_end", names: ["moveToRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkupRange_omml },
+    { to: "comment_range_start", names: ["commentRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkupRange_omml },
+    { to: "comment_range_end", names: ["commentRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkupRange_omml },
+    { to: "custom_xml_ins_range_start", names: ["customXmlInsRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTTrackChange_omml },
+    { to: "custom_xml_ins_range_end", names: ["customXmlInsRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkup_omml },
+    { to: "custom_xml_del_range_start", names: ["customXmlDelRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTTrackChange_omml },
+    { to: "custom_xml_del_range_end", names: ["customXmlDelRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkup_omml },
+    { to: "custom_xml_move_from_range_start", names: ["customXmlMoveFromRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTTrackChange_omml },
+    { to: "custom_xml_move_from_range_end", names: ["customXmlMoveFromRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkup_omml },
+    { to: "custom_xml_move_to_range_start", names: ["customXmlMoveToRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTTrackChange_omml },
+    { to: "custom_xml_move_to_range_end", names: ["customXmlMoveToRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkup_omml },
+    { to: "o_math_para", names: ["oMathPara"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTOMathPara_omml },
+    { to: "o_math", names: ["oMath"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTOMath_omml },
   ],
   content: null,
 };
@@ -5909,7 +5911,7 @@ const WSPEC_OmmlModelsCTSmartTagRun_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTSmartTagRun_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTSmartTagRun_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTSmartTagRun_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTSmartTagRun_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTSmartTagRun_omml, v, name, ns, host);
 }
 
@@ -5918,7 +5920,7 @@ export const codecOmmlModelsCTSmartTagRun_omml = x.xmlCodec<m.OmmlModelsCTSmartT
 const RSPEC_OmmlModelsCTSpacingRule_omml: x.ModelSpec = {
   id: "Omml::Models::CTSpacingRule@omml", root: "CT_SpacingRule", ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], ordered: false, mixed: false, tokens: false,
   attrs: [
-    { to: "val", names: ["val"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: (s) => x.dBound(s, _b7_parse) },
+    { to: "val", names: ["val"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: (s) => x.dBound(s, _b9_parse) },
   ],
   any: null,
   elems: [
@@ -5933,7 +5935,7 @@ export function readOmmlModelsCTSpacingRule_omml(el: x.El): m.OmmlModelsCTSpacin
 const WSPEC_OmmlModelsCTSpacingRule_omml: x.WSpec = {
   id: "Omml::Models::CTSpacingRule@omml", ordered: false, refusal: null,
   attrs: [
-    { to: "val", name: "val", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: (v) => x.eBound(v, _b7_format), nil: "omit", empty: "omit" },
+    { to: "val", name: "val", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: (v) => x.eBound(v, _b9_format), nil: "omit", empty: "omit" },
   ],
   any: null,
   elems: [
@@ -5941,7 +5943,7 @@ const WSPEC_OmmlModelsCTSpacingRule_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTSpacingRule_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTSpacingRule_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTSpacingRule_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTSpacingRule_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTSpacingRule_omml, v, name, ns, host);
 }
 
@@ -5973,7 +5975,7 @@ const WSPEC_OmmlModelsCTString_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTString_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTString_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTString_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTString_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTString_omml, v, name, ns, host);
 }
 
@@ -6005,7 +6007,7 @@ const WSPEC_OmmlModelsCTStyle_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTStyle_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTStyle_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTStyle_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTStyle_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTStyle_omml, v, name, ns, host);
 }
 
@@ -6015,7 +6017,7 @@ const RSPEC_OmmlModelsCTSym_omml: x.ModelSpec = {
   id: "Omml::Models::CTSym@omml", root: "CT_Sym", ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], ordered: false, mixed: false, tokens: false,
   attrs: [
     { to: "font", names: ["font"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: x.dStr },
-    { to: "char", names: ["char"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: x.dStr },
+    { to: "char", names: ["char"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: (s) => x.dBound(s, _b1_parse) },
   ],
   any: null,
   elems: [
@@ -6031,7 +6033,7 @@ const WSPEC_OmmlModelsCTSym_omml: x.WSpec = {
   id: "Omml::Models::CTSym@omml", ordered: false, refusal: null,
   attrs: [
     { to: "font", name: "font", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: x.eStr, nil: "omit", empty: "omit" },
-    { to: "char", name: "char", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: x.eStr, nil: "omit", empty: "omit" },
+    { to: "char", name: "char", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: (v) => x.eBound(v, _b1_format), nil: "omit", empty: "omit" },
   ],
   any: null,
   elems: [
@@ -6039,7 +6041,7 @@ const WSPEC_OmmlModelsCTSym_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTSym_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTSym_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTSym_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTSym_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTSym_omml, v, name, ns, host);
 }
 
@@ -6071,7 +6073,7 @@ const WSPEC_OmmlModelsCTText_omml: x.WSpec = {
   content: { to: "content", collection: false, cdata: false },
 };
 
-export function writeOmmlModelsCTText_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTText_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTText_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTText_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTText_omml, v, name, ns, host);
 }
 
@@ -6103,7 +6105,7 @@ const WSPEC_OmmlModelsCTTextEffect_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTTextEffect_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTTextEffect_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTTextEffect_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTTextEffect_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTTextEffect_omml, v, name, ns, host);
 }
 
@@ -6112,7 +6114,7 @@ export const codecOmmlModelsCTTextEffect_omml = x.xmlCodec<m.OmmlModelsCTTextEff
 const RSPEC_OmmlModelsCTTextScale_omml: x.ModelSpec = {
   id: "Omml::Models::CTTextScale@omml", root: "CT_TextScale", ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], ordered: false, mixed: false, tokens: false,
   attrs: [
-    { to: "val", names: ["val"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: (s) => x.dBound(s, _b8_parse) },
+    { to: "val", names: ["val"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: (s) => x.dBound(s, _b10_parse) },
   ],
   any: null,
   elems: [
@@ -6127,7 +6129,7 @@ export function readOmmlModelsCTTextScale_omml(el: x.El): m.OmmlModelsCTTextScal
 const WSPEC_OmmlModelsCTTextScale_omml: x.WSpec = {
   id: "Omml::Models::CTTextScale@omml", ordered: false, refusal: null,
   attrs: [
-    { to: "val", name: "val", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: (v) => x.eBound(v, _b8_format), nil: "omit", empty: "omit" },
+    { to: "val", name: "val", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: (v) => x.eBound(v, _b10_format), nil: "omit", empty: "omit" },
   ],
   any: null,
   elems: [
@@ -6135,7 +6137,7 @@ const WSPEC_OmmlModelsCTTextScale_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTTextScale_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTTextScale_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTTextScale_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTTextScale_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTTextScale_omml, v, name, ns, host);
 }
 
@@ -6167,7 +6169,7 @@ const WSPEC_OmmlModelsCTTopBot_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTTopBot_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTTopBot_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTTopBot_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTTopBot_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTTopBot_omml, v, name, ns, host);
 }
 
@@ -6203,7 +6205,7 @@ const WSPEC_OmmlModelsCTTrackChange_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTTrackChange_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTTrackChange_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTTrackChange_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTTrackChange_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTTrackChange_omml, v, name, ns, host);
 }
 
@@ -6241,7 +6243,7 @@ const WSPEC_OmmlModelsCTTrackChangeNumbering_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTTrackChangeNumbering_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTTrackChangeNumbering_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTTrackChangeNumbering_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTTrackChangeNumbering_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTTrackChangeNumbering_omml, v, name, ns, host);
 }
 
@@ -6273,7 +6275,7 @@ const WSPEC_OmmlModelsCTTwipsMeasure_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTTwipsMeasure_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTTwipsMeasure_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTTwipsMeasure_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTTwipsMeasure_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTTwipsMeasure_omml, v, name, ns, host);
 }
 
@@ -6305,7 +6307,7 @@ const WSPEC_OmmlModelsCTUnSignedInteger_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTUnSignedInteger_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTUnSignedInteger_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTUnSignedInteger_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTUnSignedInteger_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTUnSignedInteger_omml, v, name, ns, host);
 }
 
@@ -6317,8 +6319,8 @@ const RSPEC_OmmlModelsCTUnderline_omml: x.ModelSpec = {
     { to: "val", names: ["val"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: x.dStr },
     { to: "color", names: ["color"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: x.dStr },
     { to: "theme_color", names: ["themeColor"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: x.dStr },
-    { to: "theme_tint", names: ["themeTint"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: x.dStr },
-    { to: "theme_shade", names: ["themeShade"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: x.dStr },
+    { to: "theme_tint", names: ["themeTint"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: (s) => x.dBound(s, _b1_parse) },
+    { to: "theme_shade", names: ["themeShade"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math"], dec: (s) => x.dBound(s, _b1_parse) },
   ],
   any: null,
   elems: [
@@ -6336,8 +6338,8 @@ const WSPEC_OmmlModelsCTUnderline_omml: x.WSpec = {
     { to: "val", name: "val", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: x.eStr, nil: "omit", empty: "omit" },
     { to: "color", name: "color", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: x.eStr, nil: "omit", empty: "omit" },
     { to: "theme_color", name: "themeColor", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: x.eStr, nil: "omit", empty: "omit" },
-    { to: "theme_tint", name: "themeTint", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: x.eStr, nil: "omit", empty: "omit" },
-    { to: "theme_shade", name: "themeShade", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: x.eStr, nil: "omit", empty: "omit" },
+    { to: "theme_tint", name: "themeTint", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: (v) => x.eBound(v, _b1_format), nil: "omit", empty: "omit" },
+    { to: "theme_shade", name: "themeShade", ns: { uri: "http://schemas.openxmlformats.org/officeDocument/2006/math", prefix: "m" }, enc: (v) => x.eBound(v, _b1_format), nil: "omit", empty: "omit" },
   ],
   any: null,
   elems: [
@@ -6345,7 +6347,7 @@ const WSPEC_OmmlModelsCTUnderline_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTUnderline_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTUnderline_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTUnderline_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTUnderline_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTUnderline_omml, v, name, ns, host);
 }
 
@@ -6377,7 +6379,7 @@ const WSPEC_OmmlModelsCTVerticalAlignRun_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTVerticalAlignRun_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTVerticalAlignRun_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTVerticalAlignRun_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTVerticalAlignRun_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTVerticalAlignRun_omml, v, name, ns, host);
 }
 
@@ -6407,7 +6409,7 @@ const WSPEC_OmmlModelsCTWordprocessingEmpty_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTWordprocessingEmpty_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTWordprocessingEmpty_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTWordprocessingEmpty_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTWordprocessingEmpty_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTWordprocessingEmpty_omml, v, name, ns, host);
 }
 
@@ -6431,7 +6433,7 @@ export function readOmmlModelsCTWordprocessingOnOff_omml(el: x.El): m.OmmlModels
 const WSPEC_OmmlModelsCTWordprocessingOnOff_omml: x.WSpec = {
   id: "Omml::Models::CTWordprocessingOnOff@omml", ordered: false, refusal: null,
   attrs: [
-    { to: "val", name: "val", ns: { uri: "http://schemas.openxmlformats.org/wordprocessingml/2006/main", prefix: "w" }, enc: x.eStr, nil: "omit", empty: "omit" },
+    { to: "val", name: "val", ns: { uri: "http://schemas.openxmlformats.org/wordprocessingml/2006/main", prefix: "w" }, enc: x.eStr, nil: "omit", empty: "omit", skipApplied: true },
   ],
   any: null,
   elems: [
@@ -6439,7 +6441,7 @@ const WSPEC_OmmlModelsCTWordprocessingOnOff_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTWordprocessingOnOff_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTWordprocessingOnOff_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTWordprocessingOnOff_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTWordprocessingOnOff_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTWordprocessingOnOff_omml, v, name, ns, host);
 }
 
@@ -6471,7 +6473,7 @@ const WSPEC_OmmlModelsCTWordprocessingText_omml: x.WSpec = {
   content: { to: "content", collection: false, cdata: false },
 };
 
-export function writeOmmlModelsCTWordprocessingText_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTWordprocessingText_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTWordprocessingText_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTWordprocessingText_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTWordprocessingText_omml, v, name, ns, host);
 }
 
@@ -6501,7 +6503,7 @@ const WSPEC_OmmlModelsCTWrapNone_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTWrapNone_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTWrapNone_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTWrapNone_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTWrapNone_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTWrapNone_omml, v, name, ns, host);
 }
 
@@ -6514,8 +6516,8 @@ const RSPEC_OmmlModelsCTWrapPath_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "start", names: ["start"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTPoint2D_omml, absentList: true },
-    { to: "line_to", names: ["lineTo"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTPoint2D_omml, absentList: true },
+    { to: "start", names: ["start"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTPoint2D_omml, absentList: true },
+    { to: "line_to", names: ["lineTo"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTPoint2D_omml, absentList: true },
   ],
   content: null,
 };
@@ -6537,7 +6539,7 @@ const WSPEC_OmmlModelsCTWrapPath_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTWrapPath_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTWrapPath_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTWrapPath_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTWrapPath_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTWrapPath_omml, v, name, ns, host);
 }
 
@@ -6554,7 +6556,7 @@ const RSPEC_OmmlModelsCTWrapSquare_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "effect_extent", names: ["effectExtent"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTEffectExtent_omml },
+    { to: "effect_extent", names: ["effectExtent"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTEffectExtent_omml },
   ],
   content: null,
 };
@@ -6579,7 +6581,7 @@ const WSPEC_OmmlModelsCTWrapSquare_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTWrapSquare_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTWrapSquare_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTWrapSquare_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTWrapSquare_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTWrapSquare_omml, v, name, ns, host);
 }
 
@@ -6594,7 +6596,7 @@ const RSPEC_OmmlModelsCTWrapThrough_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "wrap_polygon", names: ["wrapPolygon"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTWrapPath_omml, absentList: true },
+    { to: "wrap_polygon", names: ["wrapPolygon"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTWrapPath_omml, absentList: true },
   ],
   content: null,
 };
@@ -6617,7 +6619,7 @@ const WSPEC_OmmlModelsCTWrapThrough_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTWrapThrough_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTWrapThrough_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTWrapThrough_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTWrapThrough_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTWrapThrough_omml, v, name, ns, host);
 }
 
@@ -6632,7 +6634,7 @@ const RSPEC_OmmlModelsCTWrapTight_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "wrap_polygon", names: ["wrapPolygon"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTWrapPath_omml, absentList: true },
+    { to: "wrap_polygon", names: ["wrapPolygon"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTWrapPath_omml, absentList: true },
   ],
   content: null,
 };
@@ -6655,7 +6657,7 @@ const WSPEC_OmmlModelsCTWrapTight_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTWrapTight_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTWrapTight_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTWrapTight_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTWrapTight_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTWrapTight_omml, v, name, ns, host);
 }
 
@@ -6669,7 +6671,7 @@ const RSPEC_OmmlModelsCTWrapTopBottom_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "effect_extent", names: ["effectExtent"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTEffectExtent_omml },
+    { to: "effect_extent", names: ["effectExtent"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTEffectExtent_omml },
   ],
   content: null,
 };
@@ -6691,7 +6693,7 @@ const WSPEC_OmmlModelsCTWrapTopBottom_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTWrapTopBottom_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTWrapTopBottom_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTWrapTopBottom_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTWrapTopBottom_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTWrapTopBottom_omml, v, name, ns, host);
 }
 
@@ -6723,7 +6725,7 @@ const WSPEC_OmmlModelsCTXAlign_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTXAlign_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTXAlign_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTXAlign_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTXAlign_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTXAlign_omml, v, name, ns, host);
 }
 
@@ -6755,7 +6757,7 @@ const WSPEC_OmmlModelsCTYAlign_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsCTYAlign_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTYAlign_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsCTYAlign_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsCTYAlign_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsCTYAlign_omml, v, name, ns, host);
 }
 
@@ -6767,10 +6769,10 @@ const RSPEC_OmmlModelsEGContentRunContent_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "custom_xml", names: ["customXml"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTCustomXmlRun_omml },
-    { to: "smart_tag", names: ["smartTag"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTSmartTagRun_omml },
-    { to: "sdt", names: ["sdt"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTSdtRun_omml },
-    { to: "r", names: ["r"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTR_omml },
+    { to: "custom_xml", names: ["customXml"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTCustomXmlRun_omml },
+    { to: "smart_tag", names: ["smartTag"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTSmartTagRun_omml },
+    { to: "sdt", names: ["sdt"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTSdtRun_omml },
+    { to: "r", names: ["r"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTR_omml },
   ],
   content: null,
 };
@@ -6793,7 +6795,7 @@ const WSPEC_OmmlModelsEGContentRunContent_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsEGContentRunContent_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsEGContentRunContent_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsEGContentRunContent_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsEGContentRunContent_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsEGContentRunContent_omml, v, name, ns, host);
 }
 
@@ -6805,8 +6807,8 @@ const RSPEC_OmmlModelsEGMathContent_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "o_math_para", names: ["oMathPara"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTOMathPara_omml },
-    { to: "o_math", names: ["oMath"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTOMath_omml },
+    { to: "o_math_para", names: ["oMathPara"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTOMathPara_omml },
+    { to: "o_math", names: ["oMath"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTOMath_omml },
   ],
   content: null,
 };
@@ -6827,7 +6829,7 @@ const WSPEC_OmmlModelsEGMathContent_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsEGMathContent_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsEGMathContent_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsEGMathContent_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsEGMathContent_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsEGMathContent_omml, v, name, ns, host);
 }
 
@@ -6857,7 +6859,7 @@ const WSPEC_OmmlModelsEGOMathElements_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsEGOMathElements_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsEGOMathElements_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsEGOMathElements_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsEGOMathElements_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsEGOMathElements_omml, v, name, ns, host);
 }
 
@@ -6869,26 +6871,26 @@ const RSPEC_OmmlModelsEGOMathMathElements_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "acc", names: ["acc"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTAcc_omml },
-    { to: "bar", names: ["bar"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTBar_omml },
-    { to: "box", names: ["box"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTBox_omml },
-    { to: "border_box", names: ["borderBox"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTBorderBox_omml },
-    { to: "d", names: ["d"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTD_omml },
-    { to: "eq_arr", names: ["eqArr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTEqArr_omml },
-    { to: "f", names: ["f"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTF_omml },
-    { to: "func", names: ["func"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTFunc_omml },
-    { to: "group_chr", names: ["groupChr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTGroupChr_omml },
-    { to: "lim_low", names: ["limLow"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTLimLow_omml },
-    { to: "lim_upp", names: ["limUpp"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTLimUpp_omml },
-    { to: "m", names: ["m"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTM_omml },
-    { to: "nary", names: ["nary"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTNary_omml },
-    { to: "phant", names: ["phant"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTPhant_omml },
-    { to: "rad", names: ["rad"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTRad_omml },
-    { to: "s_pre", names: ["sPre"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTSPre_omml },
-    { to: "s_sub", names: ["sSub"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTSSub_omml },
-    { to: "s_sub_sup", names: ["sSubSup"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTSSubSup_omml },
-    { to: "s_sup", names: ["sSup"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTSSup_omml },
-    { to: "r", names: ["r"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTR_omml },
+    { to: "acc", names: ["acc"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTAcc_omml },
+    { to: "bar", names: ["bar"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTBar_omml },
+    { to: "box", names: ["box"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTBox_omml },
+    { to: "border_box", names: ["borderBox"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTBorderBox_omml },
+    { to: "d", names: ["d"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTD_omml },
+    { to: "eq_arr", names: ["eqArr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTEqArr_omml },
+    { to: "f", names: ["f"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTF_omml },
+    { to: "func", names: ["func"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTFunc_omml },
+    { to: "group_chr", names: ["groupChr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTGroupChr_omml },
+    { to: "lim_low", names: ["limLow"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTLimLow_omml },
+    { to: "lim_upp", names: ["limUpp"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTLimUpp_omml },
+    { to: "m", names: ["m"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTM_omml },
+    { to: "nary", names: ["nary"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTNary_omml },
+    { to: "phant", names: ["phant"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTPhant_omml },
+    { to: "rad", names: ["rad"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTRad_omml },
+    { to: "s_pre", names: ["sPre"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTSPre_omml },
+    { to: "s_sub", names: ["sSub"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTSSub_omml },
+    { to: "s_sub_sup", names: ["sSubSup"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTSSubSup_omml },
+    { to: "s_sup", names: ["sSup"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTSSup_omml },
+    { to: "r", names: ["r"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTR_omml },
   ],
   content: null,
 };
@@ -6927,7 +6929,7 @@ const WSPEC_OmmlModelsEGOMathMathElements_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsEGOMathMathElements_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsEGOMathMathElements_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsEGOMathMathElements_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsEGOMathMathElements_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsEGOMathMathElements_omml, v, name, ns, host);
 }
 
@@ -6939,9 +6941,9 @@ const RSPEC_OmmlModelsEGPContent_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "fld_simple", names: ["fldSimple"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTSimpleField_omml },
-    { to: "hyperlink", names: ["hyperlink"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTHyperlink_omml },
-    { to: "sub_doc", names: ["subDoc"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTRel_omml },
+    { to: "fld_simple", names: ["fldSimple"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTSimpleField_omml },
+    { to: "hyperlink", names: ["hyperlink"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTHyperlink_omml },
+    { to: "sub_doc", names: ["subDoc"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTRel_omml },
   ],
   content: null,
 };
@@ -6963,7 +6965,7 @@ const WSPEC_OmmlModelsEGPContent_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsEGPContent_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsEGPContent_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsEGPContent_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsEGPContent_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsEGPContent_omml, v, name, ns, host);
 }
 
@@ -6975,8 +6977,8 @@ const RSPEC_OmmlModelsEGRPrMath_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "ins", names: ["ins"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: false, dec: readOmmlModelsCTRPrChange_omml },
-    { to: "del", names: ["del"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: false, dec: readOmmlModelsCTRPrChange_omml },
+    { to: "ins", names: ["ins"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: false, leaf: false, dec: readOmmlModelsCTRPrChange_omml },
+    { to: "del", names: ["del"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: false, leaf: false, dec: readOmmlModelsCTRPrChange_omml },
   ],
   content: null,
 };
@@ -6997,7 +6999,7 @@ const WSPEC_OmmlModelsEGRPrMath_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsEGRPrMath_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsEGRPrMath_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsEGRPrMath_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsEGRPrMath_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsEGRPrMath_omml, v, name, ns, host);
 }
 
@@ -7009,22 +7011,22 @@ const RSPEC_OmmlModelsEGRangeMarkupElements_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "bookmark_start", names: ["bookmarkStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTBookmark_omml },
-    { to: "bookmark_end", names: ["bookmarkEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkupRange_omml },
-    { to: "move_from_range_start", names: ["moveFromRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMoveBookmark_omml },
-    { to: "move_from_range_end", names: ["moveFromRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkupRange_omml },
-    { to: "move_to_range_start", names: ["moveToRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMoveBookmark_omml },
-    { to: "move_to_range_end", names: ["moveToRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkupRange_omml },
-    { to: "comment_range_start", names: ["commentRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkupRange_omml },
-    { to: "comment_range_end", names: ["commentRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkupRange_omml },
-    { to: "custom_xml_ins_range_start", names: ["customXmlInsRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTTrackChange_omml },
-    { to: "custom_xml_ins_range_end", names: ["customXmlInsRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkup_omml },
-    { to: "custom_xml_del_range_start", names: ["customXmlDelRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTTrackChange_omml },
-    { to: "custom_xml_del_range_end", names: ["customXmlDelRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkup_omml },
-    { to: "custom_xml_move_from_range_start", names: ["customXmlMoveFromRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTTrackChange_omml },
-    { to: "custom_xml_move_from_range_end", names: ["customXmlMoveFromRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkup_omml },
-    { to: "custom_xml_move_to_range_start", names: ["customXmlMoveToRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTTrackChange_omml },
-    { to: "custom_xml_move_to_range_end", names: ["customXmlMoveToRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkup_omml },
+    { to: "bookmark_start", names: ["bookmarkStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTBookmark_omml },
+    { to: "bookmark_end", names: ["bookmarkEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkupRange_omml },
+    { to: "move_from_range_start", names: ["moveFromRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMoveBookmark_omml },
+    { to: "move_from_range_end", names: ["moveFromRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkupRange_omml },
+    { to: "move_to_range_start", names: ["moveToRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMoveBookmark_omml },
+    { to: "move_to_range_end", names: ["moveToRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkupRange_omml },
+    { to: "comment_range_start", names: ["commentRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkupRange_omml },
+    { to: "comment_range_end", names: ["commentRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkupRange_omml },
+    { to: "custom_xml_ins_range_start", names: ["customXmlInsRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTTrackChange_omml },
+    { to: "custom_xml_ins_range_end", names: ["customXmlInsRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkup_omml },
+    { to: "custom_xml_del_range_start", names: ["customXmlDelRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTTrackChange_omml },
+    { to: "custom_xml_del_range_end", names: ["customXmlDelRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkup_omml },
+    { to: "custom_xml_move_from_range_start", names: ["customXmlMoveFromRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTTrackChange_omml },
+    { to: "custom_xml_move_from_range_end", names: ["customXmlMoveFromRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkup_omml },
+    { to: "custom_xml_move_to_range_start", names: ["customXmlMoveToRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTTrackChange_omml },
+    { to: "custom_xml_move_to_range_end", names: ["customXmlMoveToRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkup_omml },
   ],
   content: null,
 };
@@ -7059,7 +7061,7 @@ const WSPEC_OmmlModelsEGRangeMarkupElements_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsEGRangeMarkupElements_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsEGRangeMarkupElements_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsEGRangeMarkupElements_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsEGRangeMarkupElements_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsEGRangeMarkupElements_omml, v, name, ns, host);
 }
 
@@ -7071,7 +7073,7 @@ const RSPEC_OmmlModelsEGRubyContent_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "r", names: ["r"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTR_omml },
+    { to: "r", names: ["r"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTR_omml },
   ],
   content: null,
 };
@@ -7091,7 +7093,7 @@ const WSPEC_OmmlModelsEGRubyContent_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsEGRubyContent_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsEGRubyContent_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsEGRubyContent_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsEGRubyContent_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsEGRubyContent_omml, v, name, ns, host);
 }
 
@@ -7103,7 +7105,7 @@ const RSPEC_OmmlModelsEGRunInnerContent_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "t", names: ["t"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTText_omml },
+    { to: "t", names: ["t"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTText_omml },
   ],
   content: null,
 };
@@ -7123,7 +7125,7 @@ const WSPEC_OmmlModelsEGRunInnerContent_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsEGRunInnerContent_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsEGRunInnerContent_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsEGRunInnerContent_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsEGRunInnerContent_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsEGRunInnerContent_omml, v, name, ns, host);
 }
 
@@ -7135,13 +7137,13 @@ const RSPEC_OmmlModelsEGRunLevelElts_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "proof_err", names: ["proofErr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTProofErr_omml },
-    { to: "perm_start", names: ["permStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTPermStart_omml },
-    { to: "perm_end", names: ["permEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTPerm_omml },
-    { to: "ins", names: ["ins"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTRunTrackChange_omml },
-    { to: "del", names: ["del"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTRunTrackChange_omml },
-    { to: "move_from", names: ["moveFrom"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTRunTrackChange_omml },
-    { to: "move_to", names: ["moveTo"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTRunTrackChange_omml },
+    { to: "proof_err", names: ["proofErr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTProofErr_omml },
+    { to: "perm_start", names: ["permStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTPermStart_omml },
+    { to: "perm_end", names: ["permEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTPerm_omml },
+    { to: "ins", names: ["ins"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTRunTrackChange_omml },
+    { to: "del", names: ["del"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTRunTrackChange_omml },
+    { to: "move_from", names: ["moveFrom"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTRunTrackChange_omml },
+    { to: "move_to", names: ["moveTo"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTRunTrackChange_omml },
   ],
   content: null,
 };
@@ -7167,7 +7169,7 @@ const WSPEC_OmmlModelsEGRunLevelElts_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsEGRunLevelElts_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsEGRunLevelElts_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsEGRunLevelElts_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsEGRunLevelElts_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsEGRunLevelElts_omml, v, name, ns, host);
 }
 
@@ -7179,37 +7181,37 @@ const RSPEC_OmmlModelsEGWordRunInnerContent_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "br", names: ["br"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTBr_omml },
-    { to: "del_text", names: ["delText"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingText_omml },
-    { to: "instr_text", names: ["instrText"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingText_omml },
-    { to: "del_instr_text", names: ["delInstrText"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingText_omml },
-    { to: "no_break_hyphen", names: ["noBreakHyphen"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingEmpty_omml },
-    { to: "soft_hyphen", names: ["softHyphen"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingEmpty_omml },
-    { to: "day_short", names: ["dayShort"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingEmpty_omml },
-    { to: "month_short", names: ["monthShort"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingEmpty_omml },
-    { to: "year_short", names: ["yearShort"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingEmpty_omml },
-    { to: "day_long", names: ["dayLong"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingEmpty_omml },
-    { to: "month_long", names: ["monthLong"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingEmpty_omml },
-    { to: "year_long", names: ["yearLong"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingEmpty_omml },
-    { to: "annotation_ref", names: ["annotationRef"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingEmpty_omml },
-    { to: "footnote_ref", names: ["footnoteRef"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingEmpty_omml },
-    { to: "endnote_ref", names: ["endnoteRef"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingEmpty_omml },
-    { to: "separator", names: ["separator"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingEmpty_omml },
-    { to: "continuation_separator", names: ["continuationSeparator"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingEmpty_omml },
-    { to: "sym", names: ["sym"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTSym_omml },
-    { to: "pg_num", names: ["pgNum"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingEmpty_omml },
-    { to: "cr", names: ["cr"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingEmpty_omml },
-    { to: "tab", names: ["tab"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingEmpty_omml },
-    { to: "object", names: ["object"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTObject_omml },
-    { to: "pict", names: ["pict"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTPicture_omml },
-    { to: "fld_char", names: ["fldChar"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTFldChar_omml },
-    { to: "ruby", names: ["ruby"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTRuby_omml },
-    { to: "footnote_reference", names: ["footnoteReference"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTFtnEdnRef_omml },
-    { to: "endnote_reference", names: ["endnoteReference"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTFtnEdnRef_omml },
-    { to: "comment_reference", names: ["commentReference"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTMarkup_omml },
-    { to: "drawing", names: ["drawing"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTDrawing_omml },
-    { to: "ptab", names: ["ptab"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTPTab_omml },
-    { to: "last_rendered_page_break", names: ["lastRenderedPageBreak"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, dec: readOmmlModelsCTWordprocessingEmpty_omml },
+    { to: "br", names: ["br"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTBr_omml },
+    { to: "del_text", names: ["delText"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingText_omml },
+    { to: "instr_text", names: ["instrText"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingText_omml },
+    { to: "del_instr_text", names: ["delInstrText"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingText_omml },
+    { to: "no_break_hyphen", names: ["noBreakHyphen"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingEmpty_omml },
+    { to: "soft_hyphen", names: ["softHyphen"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingEmpty_omml },
+    { to: "day_short", names: ["dayShort"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingEmpty_omml },
+    { to: "month_short", names: ["monthShort"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingEmpty_omml },
+    { to: "year_short", names: ["yearShort"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingEmpty_omml },
+    { to: "day_long", names: ["dayLong"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingEmpty_omml },
+    { to: "month_long", names: ["monthLong"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingEmpty_omml },
+    { to: "year_long", names: ["yearLong"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingEmpty_omml },
+    { to: "annotation_ref", names: ["annotationRef"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingEmpty_omml },
+    { to: "footnote_ref", names: ["footnoteRef"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingEmpty_omml },
+    { to: "endnote_ref", names: ["endnoteRef"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingEmpty_omml },
+    { to: "separator", names: ["separator"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingEmpty_omml },
+    { to: "continuation_separator", names: ["continuationSeparator"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingEmpty_omml },
+    { to: "sym", names: ["sym"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTSym_omml },
+    { to: "pg_num", names: ["pgNum"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingEmpty_omml },
+    { to: "cr", names: ["cr"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingEmpty_omml },
+    { to: "tab", names: ["tab"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingEmpty_omml },
+    { to: "object", names: ["object"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTObject_omml },
+    { to: "pict", names: ["pict"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTPicture_omml },
+    { to: "fld_char", names: ["fldChar"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTFldChar_omml },
+    { to: "ruby", names: ["ruby"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTRuby_omml },
+    { to: "footnote_reference", names: ["footnoteReference"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTFtnEdnRef_omml },
+    { to: "endnote_reference", names: ["endnoteReference"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTFtnEdnRef_omml },
+    { to: "comment_reference", names: ["commentReference"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTMarkup_omml },
+    { to: "drawing", names: ["drawing"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTDrawing_omml },
+    { to: "ptab", names: ["ptab"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTPTab_omml },
+    { to: "last_rendered_page_break", names: ["lastRenderedPageBreak"], ns: ["http://schemas.openxmlformats.org/wordprocessingml/2006/main", ""], collection: true, leaf: false, dec: readOmmlModelsCTWordprocessingEmpty_omml },
   ],
   content: null,
 };
@@ -7259,7 +7261,7 @@ const WSPEC_OmmlModelsEGWordRunInnerContent_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsEGWordRunInnerContent_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsEGWordRunInnerContent_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsEGWordRunInnerContent_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsEGWordRunInnerContent_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsEGWordRunInnerContent_omml, v, name, ns, host);
 }
 
@@ -7271,11 +7273,11 @@ const RSPEC_OmmlModelsEGWrapType_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "wrap_none", names: ["wrapNone"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTWrapNone_omml },
-    { to: "wrap_square", names: ["wrapSquare"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTWrapSquare_omml },
-    { to: "wrap_tight", names: ["wrapTight"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTWrapTight_omml },
-    { to: "wrap_through", names: ["wrapThrough"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTWrapThrough_omml },
-    { to: "wrap_top_and_bottom", names: ["wrapTopAndBottom"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTWrapTopBottom_omml },
+    { to: "wrap_none", names: ["wrapNone"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTWrapNone_omml },
+    { to: "wrap_square", names: ["wrapSquare"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTWrapSquare_omml },
+    { to: "wrap_tight", names: ["wrapTight"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTWrapTight_omml },
+    { to: "wrap_through", names: ["wrapThrough"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTWrapThrough_omml },
+    { to: "wrap_top_and_bottom", names: ["wrapTopAndBottom"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTWrapTopBottom_omml },
   ],
   content: null,
 };
@@ -7299,7 +7301,7 @@ const WSPEC_OmmlModelsEGWrapType_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsEGWrapType_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsEGWrapType_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsEGWrapType_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsEGWrapType_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsEGWrapType_omml, v, name, ns, host);
 }
 
@@ -7311,51 +7313,51 @@ const RSPEC_OmmlModelsOMath_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "acc", names: ["acc"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTAcc_omml, absentList: true },
-    { to: "bar", names: ["bar"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTBar_omml, absentList: true },
-    { to: "box", names: ["box"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTBox_omml, absentList: true },
-    { to: "border_box", names: ["borderBox"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTBorderBox_omml, absentList: true },
-    { to: "d", names: ["d"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTD_omml, absentList: true },
-    { to: "eq_arr", names: ["eqArr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTEqArr_omml, absentList: true },
-    { to: "f", names: ["f"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTF_omml, absentList: true },
-    { to: "func", names: ["func"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTFunc_omml, absentList: true },
-    { to: "group_chr", names: ["groupChr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTGroupChr_omml, absentList: true },
-    { to: "lim_low", names: ["limLow"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTLimLow_omml, absentList: true },
-    { to: "lim_upp", names: ["limUpp"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTLimUpp_omml, absentList: true },
-    { to: "m", names: ["m"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTM_omml, absentList: true },
-    { to: "nary", names: ["nary"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTNary_omml, absentList: true },
-    { to: "phant", names: ["phant"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTPhant_omml, absentList: true },
-    { to: "rad", names: ["rad"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTRad_omml, absentList: true },
-    { to: "s_pre", names: ["sPre"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTSPre_omml, absentList: true },
-    { to: "s_sub", names: ["sSub"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTSSub_omml, absentList: true },
-    { to: "s_sub_sup", names: ["sSubSup"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTSSubSup_omml, absentList: true },
-    { to: "s_sup", names: ["sSup"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTSSup_omml, absentList: true },
-    { to: "r", names: ["r"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTR_omml, absentList: true },
-    { to: "proof_err", names: ["proofErr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTProofErr_omml },
-    { to: "perm_start", names: ["permStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTPermStart_omml },
-    { to: "perm_end", names: ["permEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTPerm_omml },
-    { to: "ins", names: ["ins"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTRunTrackChange_omml },
-    { to: "del", names: ["del"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTRunTrackChange_omml },
-    { to: "move_from", names: ["moveFrom"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTRunTrackChange_omml },
-    { to: "move_to", names: ["moveTo"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTRunTrackChange_omml },
-    { to: "bookmark_start", names: ["bookmarkStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTBookmark_omml },
-    { to: "bookmark_end", names: ["bookmarkEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkupRange_omml },
-    { to: "move_from_range_start", names: ["moveFromRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMoveBookmark_omml },
-    { to: "move_from_range_end", names: ["moveFromRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkupRange_omml },
-    { to: "move_to_range_start", names: ["moveToRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMoveBookmark_omml },
-    { to: "move_to_range_end", names: ["moveToRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkupRange_omml },
-    { to: "comment_range_start", names: ["commentRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkupRange_omml },
-    { to: "comment_range_end", names: ["commentRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkupRange_omml },
-    { to: "custom_xml_ins_range_start", names: ["customXmlInsRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTTrackChange_omml },
-    { to: "custom_xml_ins_range_end", names: ["customXmlInsRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkup_omml },
-    { to: "custom_xml_del_range_start", names: ["customXmlDelRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTTrackChange_omml },
-    { to: "custom_xml_del_range_end", names: ["customXmlDelRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkup_omml },
-    { to: "custom_xml_move_from_range_start", names: ["customXmlMoveFromRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTTrackChange_omml },
-    { to: "custom_xml_move_from_range_end", names: ["customXmlMoveFromRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkup_omml },
-    { to: "custom_xml_move_to_range_start", names: ["customXmlMoveToRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTTrackChange_omml },
-    { to: "custom_xml_move_to_range_end", names: ["customXmlMoveToRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTMarkup_omml },
-    { to: "o_math_para", names: ["oMathPara"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTOMathPara_omml },
-    { to: "o_math", names: ["oMath"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, dec: readOmmlModelsCTOMath_omml },
+    { to: "acc", names: ["acc"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTAcc_omml, absentList: true },
+    { to: "bar", names: ["bar"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTBar_omml, absentList: true },
+    { to: "box", names: ["box"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTBox_omml, absentList: true },
+    { to: "border_box", names: ["borderBox"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTBorderBox_omml, absentList: true },
+    { to: "d", names: ["d"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTD_omml, absentList: true },
+    { to: "eq_arr", names: ["eqArr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTEqArr_omml, absentList: true },
+    { to: "f", names: ["f"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTF_omml, absentList: true },
+    { to: "func", names: ["func"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTFunc_omml, absentList: true },
+    { to: "group_chr", names: ["groupChr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTGroupChr_omml, absentList: true },
+    { to: "lim_low", names: ["limLow"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTLimLow_omml, absentList: true },
+    { to: "lim_upp", names: ["limUpp"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTLimUpp_omml, absentList: true },
+    { to: "m", names: ["m"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTM_omml, absentList: true },
+    { to: "nary", names: ["nary"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTNary_omml, absentList: true },
+    { to: "phant", names: ["phant"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTPhant_omml, absentList: true },
+    { to: "rad", names: ["rad"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTRad_omml, absentList: true },
+    { to: "s_pre", names: ["sPre"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTSPre_omml, absentList: true },
+    { to: "s_sub", names: ["sSub"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTSSub_omml, absentList: true },
+    { to: "s_sub_sup", names: ["sSubSup"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTSSubSup_omml, absentList: true },
+    { to: "s_sup", names: ["sSup"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTSSup_omml, absentList: true },
+    { to: "r", names: ["r"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTR_omml, absentList: true },
+    { to: "proof_err", names: ["proofErr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTProofErr_omml },
+    { to: "perm_start", names: ["permStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTPermStart_omml },
+    { to: "perm_end", names: ["permEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTPerm_omml },
+    { to: "ins", names: ["ins"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTRunTrackChange_omml },
+    { to: "del", names: ["del"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTRunTrackChange_omml },
+    { to: "move_from", names: ["moveFrom"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTRunTrackChange_omml },
+    { to: "move_to", names: ["moveTo"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTRunTrackChange_omml },
+    { to: "bookmark_start", names: ["bookmarkStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTBookmark_omml },
+    { to: "bookmark_end", names: ["bookmarkEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkupRange_omml },
+    { to: "move_from_range_start", names: ["moveFromRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMoveBookmark_omml },
+    { to: "move_from_range_end", names: ["moveFromRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkupRange_omml },
+    { to: "move_to_range_start", names: ["moveToRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMoveBookmark_omml },
+    { to: "move_to_range_end", names: ["moveToRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkupRange_omml },
+    { to: "comment_range_start", names: ["commentRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkupRange_omml },
+    { to: "comment_range_end", names: ["commentRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkupRange_omml },
+    { to: "custom_xml_ins_range_start", names: ["customXmlInsRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTTrackChange_omml },
+    { to: "custom_xml_ins_range_end", names: ["customXmlInsRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkup_omml },
+    { to: "custom_xml_del_range_start", names: ["customXmlDelRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTTrackChange_omml },
+    { to: "custom_xml_del_range_end", names: ["customXmlDelRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkup_omml },
+    { to: "custom_xml_move_from_range_start", names: ["customXmlMoveFromRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTTrackChange_omml },
+    { to: "custom_xml_move_from_range_end", names: ["customXmlMoveFromRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkup_omml },
+    { to: "custom_xml_move_to_range_start", names: ["customXmlMoveToRangeStart"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTTrackChange_omml },
+    { to: "custom_xml_move_to_range_end", names: ["customXmlMoveToRangeEnd"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTMarkup_omml },
+    { to: "o_math_para", names: ["oMathPara"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTOMathPara_omml },
+    { to: "o_math", names: ["oMath"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: false, leaf: false, dec: readOmmlModelsCTOMath_omml },
   ],
   content: null,
 };
@@ -7419,7 +7421,7 @@ const WSPEC_OmmlModelsOMath_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsOMath_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsOMath_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsOMath_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsOMath_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsOMath_omml, v, name, ns, host);
 }
 
@@ -7431,9 +7433,9 @@ const RSPEC_OmmlModelsOMathPara_omml: x.ModelSpec = {
   ],
   any: null,
   elems: [
-    { to: "o_math_para_pr", names: ["oMathParaPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTOMathParaPr_omml },
-    { to: "o_math", names: ["oMath"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTOMath_omml, absentList: true },
-    { to: "r", names: ["r"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, dec: readOmmlModelsCTR_omml, absentList: true },
+    { to: "o_math_para_pr", names: ["oMathParaPr"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTOMathParaPr_omml },
+    { to: "o_math", names: ["oMath"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTOMath_omml, absentList: true },
+    { to: "r", names: ["r"], ns: ["http://schemas.openxmlformats.org/officeDocument/2006/math", ""], collection: true, leaf: false, dec: readOmmlModelsCTR_omml, absentList: true },
   ],
   content: null,
 };
@@ -7455,7 +7457,7 @@ const WSPEC_OmmlModelsOMathPara_omml: x.WSpec = {
   content: null,
 };
 
-export function writeOmmlModelsOMathPara_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsOMathPara_omml, name: string, ns: x.NsOut | null) {
+export async function writeOmmlModelsOMathPara_omml(w: x.Writer, host: Node | null, v: m.OmmlModelsOMathPara_omml, name: string, ns: x.NsOut | null): Promise<Node> {
   return x.writeModel(w, WSPEC_OmmlModelsOMathPara_omml, v, name, ns, host);
 }
 

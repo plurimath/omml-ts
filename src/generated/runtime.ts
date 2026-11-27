@@ -258,6 +258,33 @@ function present(o: Rec, name: string): unknown {
   return value === undefined ? ABSENT : value;
 }
 
+/**
+ * Which members of a model instance were filled by their declared default. This is nonserialized provenance (Ruby:
+ * \`using_default?\`): a weak side table, never a field, so it cannot collide with a member and is invisible to dumps,
+ * equality and Object.keys. An explicit value that merely equals the default is NOT applied.
+ */
+const APPLIED = new WeakMap<object, ReadonlySet<string>>();
+
+export function markApplied(model: object, names: readonly string[]): void {
+  if (names.length > 0) APPLIED.set(model, new Set(names));
+}
+
+/** True when the member's value is the default the constructor applied (render.default:false suppresses it on write). */
+export function wasApplied(model: object, name: string): boolean {
+  return APPLIED.get(model)?.has(name) === true;
+}
+
+/**
+ * True when the model holds a member the caller set explicitly: not absent, not null and not a default the
+ * constructor applied. Such a model that still writes as {} (its values are all empty) keeps the {}; a model with
+ * nothing set, or only applied defaults, is an empty hash and follows the empty policy.
+ */
+export function hasExplicitMember(model: object): boolean {
+  const names = (model.constructor as { memberNames?: readonly string[] }).memberNames ?? [];
+  const record = model as Record<string, unknown>;
+  return names.some((name) => record[name] !== ABSENT && record[name] != null && !wasApplied(model, name));
+}
+
 export interface AttrSpec {
   readonly name: string;
   readonly required: boolean;
