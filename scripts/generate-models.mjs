@@ -10,8 +10,8 @@ const sdk = resolve(sdkArg), source = resolve(sourceArg);
 const root = fileURLToPath(new URL("../", import.meta.url));
 const manifest = JSON.parse(readFileSync(join(root, "model/provenance.json")));
 const head = (repo) => execFileSync("git", ["-C", repo, "rev-parse", "HEAD"], { encoding: "utf8" }).trim();
-// model/provenance.json source.lutaml_ts is the head of lutaml/lutaml-ts#1 (includes the merged #8:
-// comment/PI writing and {} for explicitly empty models). Re-pin to the merge commit once #1 lands.
+// model/provenance.json source.lutaml_ts is the head of lutaml/lutaml-ts#9 (on top of #1 and the merged #8:
+// comment/PI writing, {} for empty models, sequence-only members). Re-pin to the merge commit once #1 and #9 land.
 if (head(sdk) !== manifest.source.lutaml_ts) throw new Error("LutaML source revision mismatch");
 execFileSync("git", ["-C", source, "cat-file", "-e", manifest.source.omml + "^{commit}"]);
 const sdkStatus = execFileSync("git", ["-C", sdk, "status", "--porcelain", "--", "src"], { encoding: "utf8" });
