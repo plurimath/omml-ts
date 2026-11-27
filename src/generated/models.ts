@@ -2,69 +2,73 @@
 
 import * as rt from "./runtime.js";
 import { type UnsignedInt as _b0, isUnsignedInt as _b0_is } from "./integer.js";
-import { type UnsignedLong as _b1, isUnsignedLong as _b1_is } from "./integer.js";
-import { type STCoordinate as _b2, isSTCoordinate as _b2_is } from "./coordinate.js";
-import { type Token as _b3, isToken as _b3_is } from "./token.js";
-import { type STInteger255 as _b4, isSTInteger255 as _b4_is } from "./integer.js";
-import { type STInteger2 as _b5, isSTInteger2 as _b5_is } from "./integer.js";
-import { type STPositiveCoordinate as _b6, isSTPositiveCoordinate as _b6_is } from "./coordinate.js";
-import { type STSpacingRule as _b7, isSTSpacingRule as _b7_is } from "./integer.js";
-import { type STTextScale as _b8, isSTTextScale as _b8_is } from "./integer.js";
+import { type HexBinary as _b1, isHexBinary as _b1_is } from "./plain-string.js";
+import { type UnsignedLong as _b2, isUnsignedLong as _b2_is } from "./integer.js";
+import { type STCoordinate as _b3, isSTCoordinate as _b3_is } from "./coordinate.js";
+import { type Token as _b4, isToken as _b4_is } from "./token.js";
+import { type STInteger255 as _b5, isSTInteger255 as _b5_is } from "./integer.js";
+import { type STInteger2 as _b6, isSTInteger2 as _b6_is } from "./integer.js";
+import { type STLang as _b7, isSTLang as _b7_is } from "./plain-string.js";
+import { type STPositiveCoordinate as _b8, isSTPositiveCoordinate as _b8_is } from "./coordinate.js";
+import { type STSpacingRule as _b9, isSTSpacingRule as _b9_is } from "./integer.js";
+import { type STTextScale as _b10, isSTTextScale as _b10_is } from "./integer.js";
 
 const _vt0 = rt.guard(_b0_is, "Omml::Models::UnsignedInt@omml");
 const _vt1 = rt.oneOf(["next", "prev", ""]);
 const _vt2 = rt.oneOf(["nil", "none", "single", "thick", "double", "dotted", "dashed", "dotDash", "dotDotDash", "triple", "thinThickSmallGap", "thickThinSmallGap", "thinThickThinSmallGap", "thinThickMediumGap", "thickThinMediumGap", "thinThickThinMediumGap", "thinThickLargeGap", "thickThinLargeGap", "thinThickThinLargeGap", "wave", "doubleWave", "dashSmallGap", "dashDotStroked", "threeDEmboss", "threeDEngrave", "outset", "inset", "apples", "archedScallops", "babyPacifier", "babyRattle", "balloons3Colors", "balloonsHotAir", "basicBlackDashes", "basicBlackDots", "basicBlackSquares", "basicThinLines", "basicWhiteDashes", "basicWhiteDots", "basicWhiteSquares", "basicWideInline", "basicWideMidline", "basicWideOutline", "bats", "birds", "birdsFlight", "cabins", "cakeSlice", "candyCorn", "celticKnotwork", "certificateBanner", "chainLink", "champagneBottle", "checkedBarBlack", "checkedBarColor", "checkered", "christmasTree", "circlesLines", "circlesRectangles", "classicalWave", "clocks", "compass", "confetti", "confettiGrays", "confettiOutline", "confettiStreamers", "confettiWhite", "cornerTriangles", "couponCutoutDashes", "couponCutoutDots", "crazyMaze", "creaturesButterfly", "creaturesFish", "creaturesInsects", "creaturesLadyBug", "crossStitch", "cup", "decoArch", "decoArchColor", "decoBlocks", "diamondsGray", "doubleD", "doubleDiamonds", "earth1", "earth2", "eclipsingSquares1", "eclipsingSquares2", "eggsBlack", "fans", "film", "firecrackers", "flowersBlockPrint", "flowersDaisies", "flowersModern1", "flowersModern2", "flowersPansy", "flowersRedRose", "flowersRoses", "flowersTeacup", "flowersTiny", "gems", "gingerbreadMan", "gradient", "handmade1", "handmade2", "heartBalloon", "heartGray", "hearts", "heebieJeebies", "holly", "houseFunky", "hypnotic", "iceCreamCones", "lightBulb", "lightning1", "lightning2", "mapPins", "mapleLeaf", "mapleMuffins", "marquee", "marqueeToothed", "moons", "mosaic", "musicNotes", "northwest", "ovals", "packages", "palmsBlack", "palmsColor", "paperClips", "papyrus", "partyFavor", "partyGlass", "pencils", "people", "peopleWaving", "peopleHats", "poinsettias", "postageStamp", "pumpkin1", "pushPinNote2", "pushPinNote1", "pyramids", "pyramidsAbove", "quadrants", "rings", "safari", "sawtooth", "sawtoothGray", "scaredCat", "seattle", "shadowedSquares", "sharksTeeth", "shorebirdTracks", "skyrocket", "snowflakeFancy", "snowflakes", "sombrero", "southwest", "stars", "starsTop", "stars3d", "starsBlack", "starsShadowed", "sun", "swirligig", "tornPaper", "tornPaperBlack", "trees", "triangleParty", "triangles", "tribal1", "tribal2", "tribal3", "tribal4", "tribal5", "tribal6", "twistedLines1", "twistedLines2", "vine", "waveline", "weavingAngles", "weavingBraid", "weavingRibbon", "weavingStrips", "whiteFlowers", "woodwork", "xIllusions", "zanyTriangles", "zigZag", "zigZagStitch", ""]);
 const _vt3 = rt.oneOf(["auto", ""]);
 const _vt4 = rt.oneOf(["dark1", "light1", "dark2", "light2", "accent1", "accent2", "accent3", "accent4", "accent5", "accent6", "hyperlink", "followedHyperlink", "none", "background1", "text1", "background2", "text2", ""]);
-const _vt5 = rt.guard(_b1_is, "Omml::Models::UnsignedLong@omml");
-const _vt6 = rt.oneOf(["0", "1", "on", "off", "true", "false", ""]);
-const _vt7 = rt.oneOf(["page", "column", "textWrapping", ""]);
-const _vt8 = rt.oneOf(["none", "left", "right", "all", ""]);
-const _vt9 = rt.oneOf(["before", "after", "repeat", ""]);
-const _vt10 = rt.oneOf(["--", "-+", "+-", ""]);
-const _vt11 = rt.oneOf(["gregorian", "hijri", "hebrew", "taiwan", "japan", "thai", "korea", "saka", "gregorianXlitEnglish", "gregorianXlitFrench", ""]);
-const _vt12 = rt.oneOf(["none", "round", "square", "angle", "curly", ""]);
-const _vt13 = rt.guard(_b2_is, "Omml::Models::STCoordinate@omml");
-const _vt14 = rt.oneOf(["none", "dot", "comma", "circle", "underDot", ""]);
-const _vt15 = rt.oneOf(["text", "autoText", ""]);
-const _vt16 = rt.oneOf(["regular", "number", "date", "currentTime", "currentDate", "calculated", ""]);
-const _vt17 = rt.oneOf(["bar", "skw", "lin", "noBar", ""]);
-const _vt18 = rt.oneOf(["begin", "separate", "end", ""]);
-const _vt19 = rt.oneOf(["default", "eastAsia", "cs", ""]);
-const _vt20 = rt.oneOf(["majorEastAsia", "majorBidi", "majorAscii", "majorHAnsi", "minorEastAsia", "minorBidi", "minorAscii", "minorHAnsi", ""]);
-const _vt21 = rt.guard(_b3_is, "Omml::Models::Token@omml");
-const _vt22 = rt.oneOf(["black", "blue", "cyan", "green", "magenta", "red", "yellow", "white", "darkBlue", "darkCyan", "darkGreen", "darkMagenta", "darkRed", "darkYellow", "darkGray", "lightGray", "none", ""]);
-const _vt23 = rt.guard(_b4_is, "Omml::Models::STInteger255@omml");
-const _vt24 = rt.guard(_b5_is, "Omml::Models::STInteger2@omml");
-const _vt25 = rt.oneOf(["undOvr", "subSup", ""]);
-const _vt26 = rt.oneOf(["sdtLocked", "contentLocked", "unlocked", "sdtContentLocked", ""]);
-const _vt27 = rt.oneOf(["left", "right", "center", "centerGroup", ""]);
-const _vt28 = rt.oneOf(["left", "center", "right", ""]);
-const _vt29 = rt.oneOf(["margin", "indent", ""]);
-const _vt30 = rt.oneOf(["none", "dot", "hyphen", "underscore", "middleDot", ""]);
-const _vt31 = rt.oneOf(["none", "everyone", "administrators", "contributors", "editors", "owners", "current", ""]);
-const _vt32 = rt.oneOf(["left", "right", "center", "inside", "outside", ""]);
-const _vt33 = rt.oneOf(["margin", "page", "column", "character", "leftMargin", "rightMargin", "insideMargin", "outsideMargin", ""]);
-const _vt34 = rt.oneOf(["top", "bottom", "center", "inside", "outside", ""]);
-const _vt35 = rt.oneOf(["margin", "page", "paragraph", "line", "topMargin", "bottomMargin", "insideMargin", "outsideMargin", ""]);
-const _vt36 = rt.guard(_b6_is, "Omml::Models::STPositiveCoordinate@omml");
-const _vt37 = rt.oneOf(["spellStart", "spellEnd", "gramStart", "gramEnd", ""]);
-const _vt38 = rt.oneOf(["center", "distributeLetter", "distributeSpace", "left", "right", "rightVertical", ""]);
-const _vt39 = rt.oneOf(["roman", "script", "fraktur", "double-struck", "sans-serif", "monospace", ""]);
-const _vt40 = rt.oneOf(["text", "date", "dateTime", ""]);
-const _vt41 = rt.oneOf(["nil", "clear", "solid", "horzStripe", "vertStripe", "reverseDiagStripe", "diagStripe", "horzCross", "diagCross", "thinHorzStripe", "thinVertStripe", "thinReverseDiagStripe", "thinDiagStripe", "thinHorzCross", "thinDiagCross", "pct5", "pct10", "pct12", "pct15", "pct20", "pct25", "pct30", "pct35", "pct37", "pct40", "pct45", "pct50", "pct55", "pct60", "pct62", "pct65", "pct70", "pct75", "pct80", "pct85", "pct87", "pct90", "pct95", ""]);
-const _vt42 = rt.oneOf(["centered", "match", ""]);
-const _vt43 = rt.guard(_b7_is, "Omml::Models::STSpacingRule@omml");
-const _vt44 = rt.oneOf(["p", "b", "i", "bi", ""]);
-const _vt45 = rt.oneOf(["default", "preserve"]);
-const _vt46 = rt.oneOf(["blinkBackground", "lights", "antsBlack", "antsRed", "shimmer", "sparkle", "none", ""]);
-const _vt47 = rt.guard(_b8_is, "Omml::Models::STTextScale@omml");
-const _vt48 = rt.oneOf(["top", "bot", ""]);
-const _vt49 = rt.oneOf(["single", "words", "double", "thick", "dotted", "dottedHeavy", "dash", "dashedHeavy", "dashLong", "dashLongHeavy", "dotDash", "dashDotHeavy", "dotDotDash", "dashDotDotHeavy", "wave", "wavyHeavy", "wavyDouble", "none", ""]);
-const _vt50 = rt.oneOf(["baseline", "superscript", "subscript", ""]);
-const _vt51 = rt.oneOf(["bothSides", "left", "right", "largest", ""]);
-const _vt52 = rt.oneOf(["left", "center", "right", ""]);
-const _vt53 = rt.oneOf(["top", "center", "bot", ""]);
+const _vt5 = rt.guard(_b1_is, "Omml::Models::HexBinary@omml");
+const _vt6 = rt.guard(_b2_is, "Omml::Models::UnsignedLong@omml");
+const _vt7 = rt.oneOf(["0", "1", "on", "off", "true", "false", ""]);
+const _vt8 = rt.oneOf(["page", "column", "textWrapping", ""]);
+const _vt9 = rt.oneOf(["none", "left", "right", "all", ""]);
+const _vt10 = rt.oneOf(["before", "after", "repeat", ""]);
+const _vt11 = rt.oneOf(["--", "-+", "+-", ""]);
+const _vt12 = rt.oneOf(["gregorian", "hijri", "hebrew", "taiwan", "japan", "thai", "korea", "saka", "gregorianXlitEnglish", "gregorianXlitFrench", ""]);
+const _vt13 = rt.oneOf(["none", "round", "square", "angle", "curly", ""]);
+const _vt14 = rt.guard(_b3_is, "Omml::Models::STCoordinate@omml");
+const _vt15 = rt.oneOf(["none", "dot", "comma", "circle", "underDot", ""]);
+const _vt16 = rt.oneOf(["text", "autoText", ""]);
+const _vt17 = rt.oneOf(["regular", "number", "date", "currentTime", "currentDate", "calculated", ""]);
+const _vt18 = rt.oneOf(["bar", "skw", "lin", "noBar", ""]);
+const _vt19 = rt.oneOf(["begin", "separate", "end", ""]);
+const _vt20 = rt.oneOf(["default", "eastAsia", "cs", ""]);
+const _vt21 = rt.oneOf(["majorEastAsia", "majorBidi", "majorAscii", "majorHAnsi", "minorEastAsia", "minorBidi", "minorAscii", "minorHAnsi", ""]);
+const _vt22 = rt.guard(_b4_is, "Omml::Models::Token@omml");
+const _vt23 = rt.oneOf(["black", "blue", "cyan", "green", "magenta", "red", "yellow", "white", "darkBlue", "darkCyan", "darkGreen", "darkMagenta", "darkRed", "darkYellow", "darkGray", "lightGray", "none", ""]);
+const _vt24 = rt.guard(_b5_is, "Omml::Models::STInteger255@omml");
+const _vt25 = rt.guard(_b6_is, "Omml::Models::STInteger2@omml");
+const _vt26 = rt.guard(_b7_is, "Omml::Models::STLang@omml");
+const _vt27 = rt.oneOf(["undOvr", "subSup", ""]);
+const _vt28 = rt.oneOf(["sdtLocked", "contentLocked", "unlocked", "sdtContentLocked", ""]);
+const _vt29 = rt.oneOf(["left", "right", "center", "centerGroup", ""]);
+const _vt30 = rt.oneOf(["left", "center", "right", ""]);
+const _vt31 = rt.oneOf(["margin", "indent", ""]);
+const _vt32 = rt.oneOf(["none", "dot", "hyphen", "underscore", "middleDot", ""]);
+const _vt33 = rt.oneOf(["none", "everyone", "administrators", "contributors", "editors", "owners", "current", ""]);
+const _vt34 = rt.oneOf(["left", "right", "center", "inside", "outside", ""]);
+const _vt35 = rt.oneOf(["margin", "page", "column", "character", "leftMargin", "rightMargin", "insideMargin", "outsideMargin", ""]);
+const _vt36 = rt.oneOf(["top", "bottom", "center", "inside", "outside", ""]);
+const _vt37 = rt.oneOf(["margin", "page", "paragraph", "line", "topMargin", "bottomMargin", "insideMargin", "outsideMargin", ""]);
+const _vt38 = rt.guard(_b8_is, "Omml::Models::STPositiveCoordinate@omml");
+const _vt39 = rt.oneOf(["spellStart", "spellEnd", "gramStart", "gramEnd", ""]);
+const _vt40 = rt.oneOf(["center", "distributeLetter", "distributeSpace", "left", "right", "rightVertical", ""]);
+const _vt41 = rt.oneOf(["roman", "script", "fraktur", "double-struck", "sans-serif", "monospace", ""]);
+const _vt42 = rt.oneOf(["text", "date", "dateTime", ""]);
+const _vt43 = rt.oneOf(["nil", "clear", "solid", "horzStripe", "vertStripe", "reverseDiagStripe", "diagStripe", "horzCross", "diagCross", "thinHorzStripe", "thinVertStripe", "thinReverseDiagStripe", "thinDiagStripe", "thinHorzCross", "thinDiagCross", "pct5", "pct10", "pct12", "pct15", "pct20", "pct25", "pct30", "pct35", "pct37", "pct40", "pct45", "pct50", "pct55", "pct60", "pct62", "pct65", "pct70", "pct75", "pct80", "pct85", "pct87", "pct90", "pct95", ""]);
+const _vt44 = rt.oneOf(["centered", "match", ""]);
+const _vt45 = rt.guard(_b9_is, "Omml::Models::STSpacingRule@omml");
+const _vt46 = rt.oneOf(["p", "b", "i", "bi", ""]);
+const _vt47 = rt.oneOf(["default", "preserve"]);
+const _vt48 = rt.oneOf(["blinkBackground", "lights", "antsBlack", "antsRed", "shimmer", "sparkle", "none", ""]);
+const _vt49 = rt.guard(_b10_is, "Omml::Models::STTextScale@omml");
+const _vt50 = rt.oneOf(["top", "bot", ""]);
+const _vt51 = rt.oneOf(["single", "words", "double", "thick", "dotted", "dottedHeavy", "dash", "dashedHeavy", "dashLong", "dashLongHeavy", "dotDash", "dashDotHeavy", "dotDotDash", "dashDotDotHeavy", "wave", "wavyHeavy", "wavyDouble", "none", ""]);
+const _vt52 = rt.oneOf(["baseline", "superscript", "subscript", ""]);
+const _vt53 = rt.oneOf(["bothSides", "left", "right", "largest", ""]);
+const _vt54 = rt.oneOf(["left", "center", "right", ""]);
+const _vt55 = rt.oneOf(["top", "center", "bot", ""]);
 
 export interface OmmlModelsCTAcc_ommlInit {
   readonly acc_pr?: readonly OmmlModelsCTAccPr_omml[] | null | rt.Absent;
@@ -478,10 +482,10 @@ export interface OmmlModelsCTBorder_ommlInit {
   readonly val?: "nil" | "none" | "single" | "thick" | "double" | "dotted" | "dashed" | "dotDash" | "dotDotDash" | "triple" | "thinThickSmallGap" | "thickThinSmallGap" | "thinThickThinSmallGap" | "thinThickMediumGap" | "thickThinMediumGap" | "thinThickThinMediumGap" | "thinThickLargeGap" | "thickThinLargeGap" | "thinThickThinLargeGap" | "wave" | "doubleWave" | "dashSmallGap" | "dashDotStroked" | "threeDEmboss" | "threeDEngrave" | "outset" | "inset" | "apples" | "archedScallops" | "babyPacifier" | "babyRattle" | "balloons3Colors" | "balloonsHotAir" | "basicBlackDashes" | "basicBlackDots" | "basicBlackSquares" | "basicThinLines" | "basicWhiteDashes" | "basicWhiteDots" | "basicWhiteSquares" | "basicWideInline" | "basicWideMidline" | "basicWideOutline" | "bats" | "birds" | "birdsFlight" | "cabins" | "cakeSlice" | "candyCorn" | "celticKnotwork" | "certificateBanner" | "chainLink" | "champagneBottle" | "checkedBarBlack" | "checkedBarColor" | "checkered" | "christmasTree" | "circlesLines" | "circlesRectangles" | "classicalWave" | "clocks" | "compass" | "confetti" | "confettiGrays" | "confettiOutline" | "confettiStreamers" | "confettiWhite" | "cornerTriangles" | "couponCutoutDashes" | "couponCutoutDots" | "crazyMaze" | "creaturesButterfly" | "creaturesFish" | "creaturesInsects" | "creaturesLadyBug" | "crossStitch" | "cup" | "decoArch" | "decoArchColor" | "decoBlocks" | "diamondsGray" | "doubleD" | "doubleDiamonds" | "earth1" | "earth2" | "eclipsingSquares1" | "eclipsingSquares2" | "eggsBlack" | "fans" | "film" | "firecrackers" | "flowersBlockPrint" | "flowersDaisies" | "flowersModern1" | "flowersModern2" | "flowersPansy" | "flowersRedRose" | "flowersRoses" | "flowersTeacup" | "flowersTiny" | "gems" | "gingerbreadMan" | "gradient" | "handmade1" | "handmade2" | "heartBalloon" | "heartGray" | "hearts" | "heebieJeebies" | "holly" | "houseFunky" | "hypnotic" | "iceCreamCones" | "lightBulb" | "lightning1" | "lightning2" | "mapPins" | "mapleLeaf" | "mapleMuffins" | "marquee" | "marqueeToothed" | "moons" | "mosaic" | "musicNotes" | "northwest" | "ovals" | "packages" | "palmsBlack" | "palmsColor" | "paperClips" | "papyrus" | "partyFavor" | "partyGlass" | "pencils" | "people" | "peopleWaving" | "peopleHats" | "poinsettias" | "postageStamp" | "pumpkin1" | "pushPinNote2" | "pushPinNote1" | "pyramids" | "pyramidsAbove" | "quadrants" | "rings" | "safari" | "sawtooth" | "sawtoothGray" | "scaredCat" | "seattle" | "shadowedSquares" | "sharksTeeth" | "shorebirdTracks" | "skyrocket" | "snowflakeFancy" | "snowflakes" | "sombrero" | "southwest" | "stars" | "starsTop" | "stars3d" | "starsBlack" | "starsShadowed" | "sun" | "swirligig" | "tornPaper" | "tornPaperBlack" | "trees" | "triangleParty" | "triangles" | "tribal1" | "tribal2" | "tribal3" | "tribal4" | "tribal5" | "tribal6" | "twistedLines1" | "twistedLines2" | "vine" | "waveline" | "weavingAngles" | "weavingBraid" | "weavingRibbon" | "weavingStrips" | "whiteFlowers" | "woodwork" | "xIllusions" | "zanyTriangles" | "zigZag" | "zigZagStitch" | "" | null | rt.Absent;
   readonly color?: "auto" | "" | null | rt.Absent;
   readonly theme_color?: "dark1" | "light1" | "dark2" | "light2" | "accent1" | "accent2" | "accent3" | "accent4" | "accent5" | "accent6" | "hyperlink" | "followedHyperlink" | "none" | "background1" | "text1" | "background2" | "text2" | "" | null | rt.Absent;
-  readonly theme_tint?: string | null | rt.Absent;
-  readonly theme_shade?: string | null | rt.Absent;
-  readonly sz?: _b1 | null | rt.Absent;
-  readonly space?: _b1 | null | rt.Absent;
+  readonly theme_tint?: _b1 | null | rt.Absent;
+  readonly theme_shade?: _b1 | null | rt.Absent;
+  readonly sz?: _b2 | null | rt.Absent;
+  readonly space?: _b2 | null | rt.Absent;
   readonly shadow?: "0" | "1" | "on" | "off" | "true" | "false" | "" | null | rt.Absent;
   readonly frame?: "0" | "1" | "on" | "off" | "true" | "false" | "" | null | rt.Absent;
 }
@@ -493,10 +497,10 @@ export class OmmlModelsCTBorder_omml {
   readonly val: rt.Maybe<"nil" | "none" | "single" | "thick" | "double" | "dotted" | "dashed" | "dotDash" | "dotDotDash" | "triple" | "thinThickSmallGap" | "thickThinSmallGap" | "thinThickThinSmallGap" | "thinThickMediumGap" | "thickThinMediumGap" | "thinThickThinMediumGap" | "thinThickLargeGap" | "thickThinLargeGap" | "thinThickThinLargeGap" | "wave" | "doubleWave" | "dashSmallGap" | "dashDotStroked" | "threeDEmboss" | "threeDEngrave" | "outset" | "inset" | "apples" | "archedScallops" | "babyPacifier" | "babyRattle" | "balloons3Colors" | "balloonsHotAir" | "basicBlackDashes" | "basicBlackDots" | "basicBlackSquares" | "basicThinLines" | "basicWhiteDashes" | "basicWhiteDots" | "basicWhiteSquares" | "basicWideInline" | "basicWideMidline" | "basicWideOutline" | "bats" | "birds" | "birdsFlight" | "cabins" | "cakeSlice" | "candyCorn" | "celticKnotwork" | "certificateBanner" | "chainLink" | "champagneBottle" | "checkedBarBlack" | "checkedBarColor" | "checkered" | "christmasTree" | "circlesLines" | "circlesRectangles" | "classicalWave" | "clocks" | "compass" | "confetti" | "confettiGrays" | "confettiOutline" | "confettiStreamers" | "confettiWhite" | "cornerTriangles" | "couponCutoutDashes" | "couponCutoutDots" | "crazyMaze" | "creaturesButterfly" | "creaturesFish" | "creaturesInsects" | "creaturesLadyBug" | "crossStitch" | "cup" | "decoArch" | "decoArchColor" | "decoBlocks" | "diamondsGray" | "doubleD" | "doubleDiamonds" | "earth1" | "earth2" | "eclipsingSquares1" | "eclipsingSquares2" | "eggsBlack" | "fans" | "film" | "firecrackers" | "flowersBlockPrint" | "flowersDaisies" | "flowersModern1" | "flowersModern2" | "flowersPansy" | "flowersRedRose" | "flowersRoses" | "flowersTeacup" | "flowersTiny" | "gems" | "gingerbreadMan" | "gradient" | "handmade1" | "handmade2" | "heartBalloon" | "heartGray" | "hearts" | "heebieJeebies" | "holly" | "houseFunky" | "hypnotic" | "iceCreamCones" | "lightBulb" | "lightning1" | "lightning2" | "mapPins" | "mapleLeaf" | "mapleMuffins" | "marquee" | "marqueeToothed" | "moons" | "mosaic" | "musicNotes" | "northwest" | "ovals" | "packages" | "palmsBlack" | "palmsColor" | "paperClips" | "papyrus" | "partyFavor" | "partyGlass" | "pencils" | "people" | "peopleWaving" | "peopleHats" | "poinsettias" | "postageStamp" | "pumpkin1" | "pushPinNote2" | "pushPinNote1" | "pyramids" | "pyramidsAbove" | "quadrants" | "rings" | "safari" | "sawtooth" | "sawtoothGray" | "scaredCat" | "seattle" | "shadowedSquares" | "sharksTeeth" | "shorebirdTracks" | "skyrocket" | "snowflakeFancy" | "snowflakes" | "sombrero" | "southwest" | "stars" | "starsTop" | "stars3d" | "starsBlack" | "starsShadowed" | "sun" | "swirligig" | "tornPaper" | "tornPaperBlack" | "trees" | "triangleParty" | "triangles" | "tribal1" | "tribal2" | "tribal3" | "tribal4" | "tribal5" | "tribal6" | "twistedLines1" | "twistedLines2" | "vine" | "waveline" | "weavingAngles" | "weavingBraid" | "weavingRibbon" | "weavingStrips" | "whiteFlowers" | "woodwork" | "xIllusions" | "zanyTriangles" | "zigZag" | "zigZagStitch" | "">;
   readonly color: rt.Maybe<"auto" | "">;
   readonly theme_color: rt.Maybe<"dark1" | "light1" | "dark2" | "light2" | "accent1" | "accent2" | "accent3" | "accent4" | "accent5" | "accent6" | "hyperlink" | "followedHyperlink" | "none" | "background1" | "text1" | "background2" | "text2" | "">;
-  readonly theme_tint: rt.Maybe<string>;
-  readonly theme_shade: rt.Maybe<string>;
-  readonly sz: rt.Maybe<_b1>;
-  readonly space: rt.Maybe<_b1>;
+  readonly theme_tint: rt.Maybe<_b1>;
+  readonly theme_shade: rt.Maybe<_b1>;
+  readonly sz: rt.Maybe<_b2>;
+  readonly space: rt.Maybe<_b2>;
   readonly shadow: rt.Maybe<"0" | "1" | "on" | "off" | "true" | "false" | "">;
   readonly frame: rt.Maybe<"0" | "1" | "on" | "off" | "true" | "false" | "">;
 
@@ -524,12 +528,12 @@ export class OmmlModelsCTBorder_omml {
     rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt2 });
     rt.attr(out, o, { name: "color", required: false, filled: false, collection: null, item: _vt3 });
     rt.attr(out, o, { name: "theme_color", required: false, filled: false, collection: null, item: _vt4 });
-    rt.attr(out, o, { name: "theme_tint", required: false, filled: false, collection: null, item: rt.str });
-    rt.attr(out, o, { name: "theme_shade", required: false, filled: false, collection: null, item: rt.str });
-    rt.attr(out, o, { name: "sz", required: false, filled: false, collection: null, item: _vt5 });
-    rt.attr(out, o, { name: "space", required: false, filled: false, collection: null, item: _vt5 });
-    rt.attr(out, o, { name: "shadow", required: false, filled: false, collection: null, item: _vt6 });
-    rt.attr(out, o, { name: "frame", required: false, filled: false, collection: null, item: _vt6 });
+    rt.attr(out, o, { name: "theme_tint", required: false, filled: false, collection: null, item: _vt5 });
+    rt.attr(out, o, { name: "theme_shade", required: false, filled: false, collection: null, item: _vt5 });
+    rt.attr(out, o, { name: "sz", required: false, filled: false, collection: null, item: _vt6 });
+    rt.attr(out, o, { name: "space", required: false, filled: false, collection: null, item: _vt6 });
+    rt.attr(out, o, { name: "shadow", required: false, filled: false, collection: null, item: _vt7 });
+    rt.attr(out, o, { name: "frame", required: false, filled: false, collection: null, item: _vt7 });
     return out;
   }
   /** Explicit validation includes deferred choices and nested model validation. */
@@ -796,8 +800,8 @@ export class OmmlModelsCTBr_omml {
     const o = rt.record(input, out);
     if (o === null) return out;
     rt.knownMembers(o, OmmlModelsCTBr_omml.memberNames, out);
-    rt.attr(out, o, { name: "type", required: false, filled: false, collection: null, item: _vt7 });
-    rt.attr(out, o, { name: "clear", required: false, filled: false, collection: null, item: _vt8 });
+    rt.attr(out, o, { name: "type", required: false, filled: false, collection: null, item: _vt8 });
+    rt.attr(out, o, { name: "clear", required: false, filled: false, collection: null, item: _vt9 });
     return out;
   }
   /** Explicit validation includes deferred choices and nested model validation. */
@@ -837,7 +841,7 @@ export class OmmlModelsCTBreakBin_omml {
     const o = rt.record(input, out);
     if (o === null) return out;
     rt.knownMembers(o, OmmlModelsCTBreakBin_omml.memberNames, out);
-    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt9 });
+    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt10 });
     return out;
   }
   /** Explicit validation includes deferred choices and nested model validation. */
@@ -877,7 +881,7 @@ export class OmmlModelsCTBreakBinSub_omml {
     const o = rt.record(input, out);
     if (o === null) return out;
     rt.knownMembers(o, OmmlModelsCTBreakBinSub_omml.memberNames, out);
-    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt10 });
+    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt11 });
     return out;
   }
   /** Explicit validation includes deferred choices and nested model validation. */
@@ -917,7 +921,7 @@ export class OmmlModelsCTCalendarType_omml {
     const o = rt.record(input, out);
     if (o === null) return out;
     rt.knownMembers(o, OmmlModelsCTCalendarType_omml.memberNames, out);
-    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt11 });
+    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt12 });
     return out;
   }
   /** Explicit validation includes deferred choices and nested model validation. */
@@ -977,8 +981,8 @@ export class OmmlModelsCTChar_omml {
 export interface OmmlModelsCTColor_ommlInit {
   readonly val?: "auto" | "" | null | rt.Absent;
   readonly theme_color?: "dark1" | "light1" | "dark2" | "light2" | "accent1" | "accent2" | "accent3" | "accent4" | "accent5" | "accent6" | "hyperlink" | "followedHyperlink" | "none" | "background1" | "text1" | "background2" | "text2" | "" | null | rt.Absent;
-  readonly theme_tint?: string | null | rt.Absent;
-  readonly theme_shade?: string | null | rt.Absent;
+  readonly theme_tint?: _b1 | null | rt.Absent;
+  readonly theme_shade?: _b1 | null | rt.Absent;
 }
 
 export class OmmlModelsCTColor_omml {
@@ -987,8 +991,8 @@ export class OmmlModelsCTColor_omml {
 
   readonly val: rt.Maybe<"auto" | "">;
   readonly theme_color: rt.Maybe<"dark1" | "light1" | "dark2" | "light2" | "accent1" | "accent2" | "accent3" | "accent4" | "accent5" | "accent6" | "hyperlink" | "followedHyperlink" | "none" | "background1" | "text1" | "background2" | "text2" | "">;
-  readonly theme_tint: rt.Maybe<string>;
-  readonly theme_shade: rt.Maybe<string>;
+  readonly theme_tint: rt.Maybe<_b1>;
+  readonly theme_shade: rt.Maybe<_b1>;
 
   constructor(init: OmmlModelsCTColor_ommlInit = {}) {
     const problems = OmmlModelsCTColor_omml.validateShape(init);
@@ -1008,8 +1012,8 @@ export class OmmlModelsCTColor_omml {
     rt.knownMembers(o, OmmlModelsCTColor_omml.memberNames, out);
     rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt3 });
     rt.attr(out, o, { name: "theme_color", required: false, filled: false, collection: null, item: _vt4 });
-    rt.attr(out, o, { name: "theme_tint", required: false, filled: false, collection: null, item: rt.str });
-    rt.attr(out, o, { name: "theme_shade", required: false, filled: false, collection: null, item: rt.str });
+    rt.attr(out, o, { name: "theme_tint", required: false, filled: false, collection: null, item: _vt5 });
+    rt.attr(out, o, { name: "theme_shade", required: false, filled: false, collection: null, item: _vt5 });
     return out;
   }
   /** Explicit validation includes deferred choices and nested model validation. */
@@ -1622,10 +1626,10 @@ export class OmmlModelsCTEastAsianLayout_omml {
     if (o === null) return out;
     rt.knownMembers(o, OmmlModelsCTEastAsianLayout_omml.memberNames, out);
     rt.attr(out, o, { name: "id", required: false, filled: false, collection: null, item: rt.int });
-    rt.attr(out, o, { name: "combine", required: false, filled: false, collection: null, item: _vt6 });
-    rt.attr(out, o, { name: "combine_brackets", required: false, filled: false, collection: null, item: _vt12 });
-    rt.attr(out, o, { name: "vert", required: false, filled: false, collection: null, item: _vt6 });
-    rt.attr(out, o, { name: "vert_compress", required: false, filled: false, collection: null, item: _vt6 });
+    rt.attr(out, o, { name: "combine", required: false, filled: false, collection: null, item: _vt7 });
+    rt.attr(out, o, { name: "combine_brackets", required: false, filled: false, collection: null, item: _vt13 });
+    rt.attr(out, o, { name: "vert", required: false, filled: false, collection: null, item: _vt7 });
+    rt.attr(out, o, { name: "vert_compress", required: false, filled: false, collection: null, item: _vt7 });
     return out;
   }
   /** Explicit validation includes deferred choices and nested model validation. */
@@ -1643,20 +1647,20 @@ export class OmmlModelsCTEastAsianLayout_omml {
 }
 
 export interface OmmlModelsCTEffectExtent_ommlInit {
-  readonly l?: _b2 | null | rt.Absent;
-  readonly t?: _b2 | null | rt.Absent;
-  readonly r?: _b2 | null | rt.Absent;
-  readonly b?: _b2 | null | rt.Absent;
+  readonly l?: _b3 | null | rt.Absent;
+  readonly t?: _b3 | null | rt.Absent;
+  readonly r?: _b3 | null | rt.Absent;
+  readonly b?: _b3 | null | rt.Absent;
 }
 
 export class OmmlModelsCTEffectExtent_omml {
   static readonly modelId = "Omml::Models::CTEffectExtent@omml";
   static readonly memberNames: readonly string[] = ["l","t","r","b"];
 
-  readonly l: rt.Maybe<_b2>;
-  readonly t: rt.Maybe<_b2>;
-  readonly r: rt.Maybe<_b2>;
-  readonly b: rt.Maybe<_b2>;
+  readonly l: rt.Maybe<_b3>;
+  readonly t: rt.Maybe<_b3>;
+  readonly r: rt.Maybe<_b3>;
+  readonly b: rt.Maybe<_b3>;
 
   constructor(init: OmmlModelsCTEffectExtent_ommlInit = {}) {
     const problems = OmmlModelsCTEffectExtent_omml.validateShape(init);
@@ -1674,10 +1678,10 @@ export class OmmlModelsCTEffectExtent_omml {
     const o = rt.record(input, out);
     if (o === null) return out;
     rt.knownMembers(o, OmmlModelsCTEffectExtent_omml.memberNames, out);
-    rt.attr(out, o, { name: "l", required: false, filled: false, collection: null, item: _vt13 });
-    rt.attr(out, o, { name: "t", required: false, filled: false, collection: null, item: _vt13 });
-    rt.attr(out, o, { name: "r", required: false, filled: false, collection: null, item: _vt13 });
-    rt.attr(out, o, { name: "b", required: false, filled: false, collection: null, item: _vt13 });
+    rt.attr(out, o, { name: "l", required: false, filled: false, collection: null, item: _vt14 });
+    rt.attr(out, o, { name: "t", required: false, filled: false, collection: null, item: _vt14 });
+    rt.attr(out, o, { name: "r", required: false, filled: false, collection: null, item: _vt14 });
+    rt.attr(out, o, { name: "b", required: false, filled: false, collection: null, item: _vt14 });
     return out;
   }
   /** Explicit validation includes deferred choices and nested model validation. */
@@ -1717,7 +1721,7 @@ export class OmmlModelsCTEm_omml {
     const o = rt.record(input, out);
     if (o === null) return out;
     rt.knownMembers(o, OmmlModelsCTEm_omml.memberNames, out);
-    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt14 });
+    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt15 });
     return out;
   }
   /** Explicit validation includes deferred choices and nested model validation. */
@@ -2124,7 +2128,7 @@ export class OmmlModelsCTFFHelpText_omml {
     const o = rt.record(input, out);
     if (o === null) return out;
     rt.knownMembers(o, OmmlModelsCTFFHelpText_omml.memberNames, out);
-    rt.attr(out, o, { name: "type", required: false, filled: false, collection: null, item: _vt15 });
+    rt.attr(out, o, { name: "type", required: false, filled: false, collection: null, item: _vt16 });
     rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: rt.str });
     return out;
   }
@@ -2208,7 +2212,7 @@ export class OmmlModelsCTFFStatusText_omml {
     const o = rt.record(input, out);
     if (o === null) return out;
     rt.knownMembers(o, OmmlModelsCTFFStatusText_omml.memberNames, out);
-    rt.attr(out, o, { name: "type", required: false, filled: false, collection: null, item: _vt15 });
+    rt.attr(out, o, { name: "type", required: false, filled: false, collection: null, item: _vt16 });
     rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: rt.str });
     return out;
   }
@@ -2301,7 +2305,7 @@ export class OmmlModelsCTFFTextType_omml {
     const o = rt.record(input, out);
     if (o === null) return out;
     rt.knownMembers(o, OmmlModelsCTFFTextType_omml.memberNames, out);
-    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt16 });
+    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt17 });
     return out;
   }
   /** Explicit validation includes deferred choices and nested model validation. */
@@ -2385,7 +2389,7 @@ export class OmmlModelsCTFType_omml {
     const o = rt.record(input, out);
     if (o === null) return out;
     rt.knownMembers(o, OmmlModelsCTFType_omml.memberNames, out);
-    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt17 });
+    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt18 });
     return out;
   }
   /** Explicit validation includes deferred choices and nested model validation. */
@@ -2487,9 +2491,9 @@ export class OmmlModelsCTFldChar_omml {
     rt.attr(out, o, { name: "fld_data", required: false, filled: false, collection: { min: 0, max: 1 }, item: rt.instanceOf(OmmlModelsCTText_omml, "OmmlModelsCTText_omml"), choice: true });
     rt.attr(out, o, { name: "ff_data", required: false, filled: false, collection: { min: 0, max: 1 }, item: rt.instanceOf(OmmlModelsCTFFData_omml, "OmmlModelsCTFFData_omml"), choice: true });
     rt.attr(out, o, { name: "numbering_change", required: false, filled: false, collection: { min: 0, max: 1 }, item: rt.instanceOf(OmmlModelsCTTrackChangeNumbering_omml, "OmmlModelsCTTrackChangeNumbering_omml"), choice: true });
-    rt.attr(out, o, { name: "fld_char_type", required: false, filled: false, collection: null, item: _vt18 });
-    rt.attr(out, o, { name: "fld_lock", required: false, filled: false, collection: null, item: _vt6 });
-    rt.attr(out, o, { name: "dirty", required: false, filled: false, collection: null, item: _vt6 });
+    rt.attr(out, o, { name: "fld_char_type", required: false, filled: false, collection: null, item: _vt19 });
+    rt.attr(out, o, { name: "fld_lock", required: false, filled: false, collection: null, item: _vt7 });
+    rt.attr(out, o, { name: "dirty", required: false, filled: false, collection: null, item: _vt7 });
     return out;
   }
   /** Explicit validation includes deferred choices and nested model validation. */
@@ -2553,15 +2557,15 @@ export class OmmlModelsCTFonts_omml {
     const o = rt.record(input, out);
     if (o === null) return out;
     rt.knownMembers(o, OmmlModelsCTFonts_omml.memberNames, out);
-    rt.attr(out, o, { name: "hint", required: false, filled: false, collection: null, item: _vt19 });
+    rt.attr(out, o, { name: "hint", required: false, filled: false, collection: null, item: _vt20 });
     rt.attr(out, o, { name: "ascii", required: false, filled: false, collection: null, item: rt.str });
     rt.attr(out, o, { name: "h_ansi", required: false, filled: false, collection: null, item: rt.str });
     rt.attr(out, o, { name: "east_asia", required: false, filled: false, collection: null, item: rt.str });
     rt.attr(out, o, { name: "cs", required: false, filled: false, collection: null, item: rt.str });
-    rt.attr(out, o, { name: "ascii_theme", required: false, filled: false, collection: null, item: _vt20 });
-    rt.attr(out, o, { name: "h_ansi_theme", required: false, filled: false, collection: null, item: _vt20 });
-    rt.attr(out, o, { name: "east_asia_theme", required: false, filled: false, collection: null, item: _vt20 });
-    rt.attr(out, o, { name: "cstheme", required: false, filled: false, collection: null, item: _vt20 });
+    rt.attr(out, o, { name: "ascii_theme", required: false, filled: false, collection: null, item: _vt21 });
+    rt.attr(out, o, { name: "h_ansi_theme", required: false, filled: false, collection: null, item: _vt21 });
+    rt.attr(out, o, { name: "east_asia_theme", required: false, filled: false, collection: null, item: _vt21 });
+    rt.attr(out, o, { name: "cstheme", required: false, filled: false, collection: null, item: _vt21 });
     return out;
   }
   /** Explicit validation includes deferred choices and nested model validation. */
@@ -2604,7 +2608,7 @@ export class OmmlModelsCTFtnEdnRef_omml {
     const o = rt.record(input, out);
     if (o === null) return out;
     rt.knownMembers(o, OmmlModelsCTFtnEdnRef_omml.memberNames, out);
-    rt.attr(out, o, { name: "custom_mark_follows", required: false, filled: false, collection: null, item: _vt6 });
+    rt.attr(out, o, { name: "custom_mark_follows", required: false, filled: false, collection: null, item: _vt7 });
     rt.attr(out, o, { name: "id", required: false, filled: false, collection: null, item: rt.int });
     return out;
   }
@@ -2755,14 +2759,14 @@ export class OmmlModelsCTGraphicalObject_omml {
 }
 
 export interface OmmlModelsCTGraphicalObjectData_ommlInit {
-  readonly uri?: _b3 | null | rt.Absent;
+  readonly uri?: _b4 | null | rt.Absent;
 }
 
 export class OmmlModelsCTGraphicalObjectData_omml {
   static readonly modelId = "Omml::Models::CTGraphicalObjectData@omml";
   static readonly memberNames: readonly string[] = ["uri"];
 
-  readonly uri: rt.Maybe<_b3>;
+  readonly uri: rt.Maybe<_b4>;
 
   constructor(init: OmmlModelsCTGraphicalObjectData_ommlInit = {}) {
     const problems = OmmlModelsCTGraphicalObjectData_omml.validateShape(init);
@@ -2777,7 +2781,7 @@ export class OmmlModelsCTGraphicalObjectData_omml {
     const o = rt.record(input, out);
     if (o === null) return out;
     rt.knownMembers(o, OmmlModelsCTGraphicalObjectData_omml.memberNames, out);
-    rt.attr(out, o, { name: "uri", required: false, filled: false, collection: null, item: _vt21 });
+    rt.attr(out, o, { name: "uri", required: false, filled: false, collection: null, item: _vt22 });
     return out;
   }
   /** Explicit validation includes deferred choices and nested model validation. */
@@ -2977,7 +2981,7 @@ export class OmmlModelsCTHighlight_omml {
     const o = rt.record(input, out);
     if (o === null) return out;
     rt.knownMembers(o, OmmlModelsCTHighlight_omml.memberNames, out);
-    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt22 });
+    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt23 });
     return out;
   }
   /** Explicit validation includes deferred choices and nested model validation. */
@@ -2995,14 +2999,14 @@ export class OmmlModelsCTHighlight_omml {
 }
 
 export interface OmmlModelsCTHpsMeasure_ommlInit {
-  readonly val?: _b1 | null | rt.Absent;
+  readonly val?: _b2 | null | rt.Absent;
 }
 
 export class OmmlModelsCTHpsMeasure_omml {
   static readonly modelId = "Omml::Models::CTHpsMeasure@omml";
   static readonly memberNames: readonly string[] = ["val"];
 
-  readonly val: rt.Maybe<_b1>;
+  readonly val: rt.Maybe<_b2>;
 
   constructor(init: OmmlModelsCTHpsMeasure_ommlInit = {}) {
     const problems = OmmlModelsCTHpsMeasure_omml.validateShape(init);
@@ -3017,7 +3021,7 @@ export class OmmlModelsCTHpsMeasure_omml {
     const o = rt.record(input, out);
     if (o === null) return out;
     rt.knownMembers(o, OmmlModelsCTHpsMeasure_omml.memberNames, out);
-    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt5 });
+    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt6 });
     return out;
   }
   /** Explicit validation includes deferred choices and nested model validation. */
@@ -3171,7 +3175,7 @@ export class OmmlModelsCTHyperlink_omml {
     rt.attr(out, o, { name: "tgt_frame", required: false, filled: false, collection: null, item: rt.str });
     rt.attr(out, o, { name: "tooltip", required: false, filled: false, collection: null, item: rt.str });
     rt.attr(out, o, { name: "doc_location", required: false, filled: false, collection: null, item: rt.str });
-    rt.attr(out, o, { name: "history", required: false, filled: false, collection: null, item: _vt6 });
+    rt.attr(out, o, { name: "history", required: false, filled: false, collection: null, item: _vt7 });
     rt.attr(out, o, { name: "anchor", required: false, filled: false, collection: null, item: rt.str });
     rt.attr(out, o, { name: "id", required: false, filled: false, collection: null, item: rt.str });
     rt.attr(out, o, { name: "fld_simple", required: false, filled: false, collection: { min: 0, max: null }, item: rt.instanceOf(OmmlModelsCTSimpleField_omml, "OmmlModelsCTSimpleField_omml") });
@@ -3295,14 +3299,14 @@ export class OmmlModelsCTInline_omml {
 }
 
 export interface OmmlModelsCTInteger255_ommlInit {
-  readonly val?: _b4 | null | rt.Absent;
+  readonly val?: _b5 | null | rt.Absent;
 }
 
 export class OmmlModelsCTInteger255_omml {
   static readonly modelId = "Omml::Models::CTInteger255@omml";
   static readonly memberNames: readonly string[] = ["val"];
 
-  readonly val: rt.Maybe<_b4>;
+  readonly val: rt.Maybe<_b5>;
 
   constructor(init: OmmlModelsCTInteger255_ommlInit = {}) {
     const problems = OmmlModelsCTInteger255_omml.validateShape(init);
@@ -3317,7 +3321,7 @@ export class OmmlModelsCTInteger255_omml {
     const o = rt.record(input, out);
     if (o === null) return out;
     rt.knownMembers(o, OmmlModelsCTInteger255_omml.memberNames, out);
-    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt23 });
+    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt24 });
     return out;
   }
   /** Explicit validation includes deferred choices and nested model validation. */
@@ -3335,14 +3339,14 @@ export class OmmlModelsCTInteger255_omml {
 }
 
 export interface OmmlModelsCTInteger2_ommlInit {
-  readonly val?: _b5 | null | rt.Absent;
+  readonly val?: _b6 | null | rt.Absent;
 }
 
 export class OmmlModelsCTInteger2_omml {
   static readonly modelId = "Omml::Models::CTInteger2@omml";
   static readonly memberNames: readonly string[] = ["val"];
 
-  readonly val: rt.Maybe<_b5>;
+  readonly val: rt.Maybe<_b6>;
 
   constructor(init: OmmlModelsCTInteger2_ommlInit = {}) {
     const problems = OmmlModelsCTInteger2_omml.validateShape(init);
@@ -3357,7 +3361,7 @@ export class OmmlModelsCTInteger2_omml {
     const o = rt.record(input, out);
     if (o === null) return out;
     rt.knownMembers(o, OmmlModelsCTInteger2_omml.memberNames, out);
-    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt24 });
+    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt25 });
     return out;
   }
   /** Explicit validation includes deferred choices and nested model validation. */
@@ -3375,14 +3379,14 @@ export class OmmlModelsCTInteger2_omml {
 }
 
 export interface OmmlModelsCTLang_ommlInit {
-  readonly val?: string | null | rt.Absent;
+  readonly val?: _b7 | null | rt.Absent;
 }
 
 export class OmmlModelsCTLang_omml {
   static readonly modelId = "Omml::Models::CTLang@omml";
   static readonly memberNames: readonly string[] = ["val"];
 
-  readonly val: rt.Maybe<string>;
+  readonly val: rt.Maybe<_b7>;
 
   constructor(init: OmmlModelsCTLang_ommlInit = {}) {
     const problems = OmmlModelsCTLang_omml.validateShape(init);
@@ -3397,7 +3401,7 @@ export class OmmlModelsCTLang_omml {
     const o = rt.record(input, out);
     if (o === null) return out;
     rt.knownMembers(o, OmmlModelsCTLang_omml.memberNames, out);
-    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: rt.str });
+    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt26 });
     return out;
   }
   /** Explicit validation includes deferred choices and nested model validation. */
@@ -3415,18 +3419,18 @@ export class OmmlModelsCTLang_omml {
 }
 
 export interface OmmlModelsCTLanguage_ommlInit {
-  readonly val?: string | null | rt.Absent;
-  readonly east_asia?: string | null | rt.Absent;
-  readonly bidi?: string | null | rt.Absent;
+  readonly val?: _b7 | null | rt.Absent;
+  readonly east_asia?: _b7 | null | rt.Absent;
+  readonly bidi?: _b7 | null | rt.Absent;
 }
 
 export class OmmlModelsCTLanguage_omml {
   static readonly modelId = "Omml::Models::CTLanguage@omml";
   static readonly memberNames: readonly string[] = ["val","east_asia","bidi"];
 
-  readonly val: rt.Maybe<string>;
-  readonly east_asia: rt.Maybe<string>;
-  readonly bidi: rt.Maybe<string>;
+  readonly val: rt.Maybe<_b7>;
+  readonly east_asia: rt.Maybe<_b7>;
+  readonly bidi: rt.Maybe<_b7>;
 
   constructor(init: OmmlModelsCTLanguage_ommlInit = {}) {
     const problems = OmmlModelsCTLanguage_omml.validateShape(init);
@@ -3443,9 +3447,9 @@ export class OmmlModelsCTLanguage_omml {
     const o = rt.record(input, out);
     if (o === null) return out;
     rt.knownMembers(o, OmmlModelsCTLanguage_omml.memberNames, out);
-    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: rt.str });
-    rt.attr(out, o, { name: "east_asia", required: false, filled: false, collection: null, item: rt.str });
-    rt.attr(out, o, { name: "bidi", required: false, filled: false, collection: null, item: rt.str });
+    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt26 });
+    rt.attr(out, o, { name: "east_asia", required: false, filled: false, collection: null, item: _vt26 });
+    rt.attr(out, o, { name: "bidi", required: false, filled: false, collection: null, item: _vt26 });
     return out;
   }
   /** Explicit validation includes deferred choices and nested model validation. */
@@ -3485,7 +3489,7 @@ export class OmmlModelsCTLimLoc_omml {
     const o = rt.record(input, out);
     if (o === null) return out;
     rt.knownMembers(o, OmmlModelsCTLimLoc_omml.memberNames, out);
-    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt25 });
+    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt27 });
     return out;
   }
   /** Explicit validation includes deferred choices and nested model validation. */
@@ -3705,7 +3709,7 @@ export class OmmlModelsCTLock_omml {
     const o = rt.record(input, out);
     if (o === null) return out;
     rt.knownMembers(o, OmmlModelsCTLock_omml.memberNames, out);
-    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt26 });
+    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt28 });
     return out;
   }
   /** Explicit validation includes deferred choices and nested model validation. */
@@ -4043,14 +4047,14 @@ export class OmmlModelsCTMacroName_omml {
 }
 
 export interface OmmlModelsCTManualBreak_ommlInit {
-  readonly aln_at?: _b4 | null | rt.Absent;
+  readonly aln_at?: _b5 | null | rt.Absent;
 }
 
 export class OmmlModelsCTManualBreak_omml {
   static readonly modelId = "Omml::Models::CTManualBreak@omml";
   static readonly memberNames: readonly string[] = ["aln_at"];
 
-  readonly aln_at: rt.Maybe<_b4>;
+  readonly aln_at: rt.Maybe<_b5>;
 
   constructor(init: OmmlModelsCTManualBreak_ommlInit = {}) {
     const problems = OmmlModelsCTManualBreak_omml.validateShape(init);
@@ -4065,7 +4069,7 @@ export class OmmlModelsCTManualBreak_omml {
     const o = rt.record(input, out);
     if (o === null) return out;
     rt.knownMembers(o, OmmlModelsCTManualBreak_omml.memberNames, out);
-    rt.attr(out, o, { name: "aln_at", required: false, filled: false, collection: null, item: _vt23 });
+    rt.attr(out, o, { name: "aln_at", required: false, filled: false, collection: null, item: _vt24 });
     return out;
   }
   /** Explicit validation includes deferred choices and nested model validation. */
@@ -5065,7 +5069,7 @@ export class OmmlModelsCTOMathJc_omml {
     const o = rt.record(input, out);
     if (o === null) return out;
     rt.knownMembers(o, OmmlModelsCTOMathJc_omml.memberNames, out);
-    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt27 });
+    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt29 });
     return out;
   }
   /** Explicit validation includes deferred choices and nested model validation. */
@@ -5223,14 +5227,14 @@ export class OmmlModelsCTObject_omml {
 }
 
 export interface OmmlModelsCTOfficeArtExtension_ommlInit {
-  readonly uri?: _b3 | null | rt.Absent;
+  readonly uri?: _b4 | null | rt.Absent;
 }
 
 export class OmmlModelsCTOfficeArtExtension_omml {
   static readonly modelId = "Omml::Models::CTOfficeArtExtension@omml";
   static readonly memberNames: readonly string[] = ["uri"];
 
-  readonly uri: rt.Maybe<_b3>;
+  readonly uri: rt.Maybe<_b4>;
 
   constructor(init: OmmlModelsCTOfficeArtExtension_ommlInit = {}) {
     const problems = OmmlModelsCTOfficeArtExtension_omml.validateShape(init);
@@ -5245,7 +5249,7 @@ export class OmmlModelsCTOfficeArtExtension_omml {
     const o = rt.record(input, out);
     if (o === null) return out;
     rt.knownMembers(o, OmmlModelsCTOfficeArtExtension_omml.memberNames, out);
-    rt.attr(out, o, { name: "uri", required: false, filled: false, collection: null, item: _vt21 });
+    rt.attr(out, o, { name: "uri", required: false, filled: false, collection: null, item: _vt22 });
     return out;
   }
   /** Explicit validation includes deferred choices and nested model validation. */
@@ -5315,9 +5319,11 @@ export class OmmlModelsCTOnOff_omml {
   constructor(init: OmmlModelsCTOnOff_ommlInit = {}) {
     const problems = OmmlModelsCTOnOff_omml.validateShape(init);
     if (problems.length > 0) throw new rt.ValidationError(OmmlModelsCTOnOff_omml.modelId, problems);
-    { const v = Object.hasOwn(init, "val") ? init.val : undefined; this.val = v === undefined || v === rt.ABSENT ? "on" : v; }
+    const applied: string[] = [];
+    { const v = Object.hasOwn(init, "val") ? init.val : undefined; if (v === undefined || v === rt.ABSENT) applied.push("val"); this.val = v === undefined || v === rt.ABSENT ? "on" : v; }
     const effective = OmmlModelsCTOnOff_omml.validateShape(this);
     if (effective.length > 0) throw new rt.ValidationError(OmmlModelsCTOnOff_omml.modelId, effective);
+    rt.markApplied(this, applied);
     Object.freeze(this);
   }
 
@@ -5327,7 +5333,7 @@ export class OmmlModelsCTOnOff_omml {
     const o = rt.record(input, out);
     if (o === null) return out;
     rt.knownMembers(o, OmmlModelsCTOnOff_omml.memberNames, out);
-    rt.attr(out, o, { name: "val", required: false, filled: true, collection: null, item: _vt6 });
+    rt.attr(out, o, { name: "val", required: false, filled: true, collection: null, item: _vt7 });
     return out;
   }
   /** Explicit validation includes deferred choices and nested model validation. */
@@ -5376,9 +5382,9 @@ export class OmmlModelsCTPTab_omml {
     const o = rt.record(input, out);
     if (o === null) return out;
     rt.knownMembers(o, OmmlModelsCTPTab_omml.memberNames, out);
-    rt.attr(out, o, { name: "alignment", required: false, filled: false, collection: null, item: _vt28 });
-    rt.attr(out, o, { name: "relative_to", required: false, filled: false, collection: null, item: _vt29 });
-    rt.attr(out, o, { name: "leader", required: false, filled: false, collection: null, item: _vt30 });
+    rt.attr(out, o, { name: "alignment", required: false, filled: false, collection: null, item: _vt30 });
+    rt.attr(out, o, { name: "relative_to", required: false, filled: false, collection: null, item: _vt31 });
+    rt.attr(out, o, { name: "leader", required: false, filled: false, collection: null, item: _vt32 });
     return out;
   }
   /** Explicit validation includes deferred choices and nested model validation. */
@@ -5479,7 +5485,7 @@ export class OmmlModelsCTPermStart_omml {
     rt.knownMembers(o, OmmlModelsCTPermStart_omml.memberNames, out);
     rt.attr(out, o, { name: "id", required: false, filled: false, collection: null, item: rt.str });
     rt.attr(out, o, { name: "displaced_by_custom_xml", required: false, filled: false, collection: null, item: _vt1 });
-    rt.attr(out, o, { name: "ed_grp", required: false, filled: false, collection: null, item: _vt31 });
+    rt.attr(out, o, { name: "ed_grp", required: false, filled: false, collection: null, item: _vt33 });
     rt.attr(out, o, { name: "ed", required: false, filled: false, collection: null, item: rt.str });
     rt.attr(out, o, { name: "col_first", required: false, filled: false, collection: null, item: rt.int });
     rt.attr(out, o, { name: "col_last", required: false, filled: false, collection: null, item: rt.int });
@@ -5688,16 +5694,16 @@ export class OmmlModelsCTPlaceholder_omml {
 }
 
 export interface OmmlModelsCTPoint2D_ommlInit {
-  readonly x?: _b2 | null | rt.Absent;
-  readonly y?: _b2 | null | rt.Absent;
+  readonly x?: _b3 | null | rt.Absent;
+  readonly y?: _b3 | null | rt.Absent;
 }
 
 export class OmmlModelsCTPoint2D_omml {
   static readonly modelId = "Omml::Models::CTPoint2D@omml";
   static readonly memberNames: readonly string[] = ["x","y"];
 
-  readonly x: rt.Maybe<_b2>;
-  readonly y: rt.Maybe<_b2>;
+  readonly x: rt.Maybe<_b3>;
+  readonly y: rt.Maybe<_b3>;
 
   constructor(init: OmmlModelsCTPoint2D_ommlInit = {}) {
     const problems = OmmlModelsCTPoint2D_omml.validateShape(init);
@@ -5713,8 +5719,8 @@ export class OmmlModelsCTPoint2D_omml {
     const o = rt.record(input, out);
     if (o === null) return out;
     rt.knownMembers(o, OmmlModelsCTPoint2D_omml.memberNames, out);
-    rt.attr(out, o, { name: "x", required: false, filled: false, collection: null, item: _vt13 });
-    rt.attr(out, o, { name: "y", required: false, filled: false, collection: null, item: _vt13 });
+    rt.attr(out, o, { name: "x", required: false, filled: false, collection: null, item: _vt14 });
+    rt.attr(out, o, { name: "y", required: false, filled: false, collection: null, item: _vt14 });
     return out;
   }
   /** Explicit validation includes deferred choices and nested model validation. */
@@ -5760,9 +5766,9 @@ export class OmmlModelsCTPosH_omml {
     const o = rt.record(input, out);
     if (o === null) return out;
     rt.knownMembers(o, OmmlModelsCTPosH_omml.memberNames, out);
-    rt.attr(out, o, { name: "align", required: false, filled: false, collection: { min: 1, max: 1 }, item: _vt32, choice: true });
+    rt.attr(out, o, { name: "align", required: false, filled: false, collection: { min: 1, max: 1 }, item: _vt34, choice: true });
     rt.attr(out, o, { name: "pos_offset", required: false, filled: false, collection: { min: 1, max: 1 }, item: rt.int, choice: true });
-    rt.attr(out, o, { name: "relative_from", required: false, filled: false, collection: null, item: _vt33 });
+    rt.attr(out, o, { name: "relative_from", required: false, filled: false, collection: null, item: _vt35 });
     return out;
   }
   /** Explicit validation includes deferred choices and nested model validation. */
@@ -5808,9 +5814,9 @@ export class OmmlModelsCTPosV_omml {
     const o = rt.record(input, out);
     if (o === null) return out;
     rt.knownMembers(o, OmmlModelsCTPosV_omml.memberNames, out);
-    rt.attr(out, o, { name: "align", required: false, filled: false, collection: { min: 1, max: 1 }, item: _vt34, choice: true });
+    rt.attr(out, o, { name: "align", required: false, filled: false, collection: { min: 1, max: 1 }, item: _vt36, choice: true });
     rt.attr(out, o, { name: "pos_offset", required: false, filled: false, collection: { min: 1, max: 1 }, item: rt.int, choice: true });
-    rt.attr(out, o, { name: "relative_from", required: false, filled: false, collection: null, item: _vt35 });
+    rt.attr(out, o, { name: "relative_from", required: false, filled: false, collection: null, item: _vt37 });
     return out;
   }
   /** Explicit validation includes deferred choices and nested model validation. */
@@ -5828,16 +5834,16 @@ export class OmmlModelsCTPosV_omml {
 }
 
 export interface OmmlModelsCTPositiveSize2D_ommlInit {
-  readonly cx?: _b6 | null | rt.Absent;
-  readonly cy?: _b6 | null | rt.Absent;
+  readonly cx?: _b8 | null | rt.Absent;
+  readonly cy?: _b8 | null | rt.Absent;
 }
 
 export class OmmlModelsCTPositiveSize2D_omml {
   static readonly modelId = "Omml::Models::CTPositiveSize2D@omml";
   static readonly memberNames: readonly string[] = ["cx","cy"];
 
-  readonly cx: rt.Maybe<_b6>;
-  readonly cy: rt.Maybe<_b6>;
+  readonly cx: rt.Maybe<_b8>;
+  readonly cy: rt.Maybe<_b8>;
 
   constructor(init: OmmlModelsCTPositiveSize2D_ommlInit = {}) {
     const problems = OmmlModelsCTPositiveSize2D_omml.validateShape(init);
@@ -5853,8 +5859,8 @@ export class OmmlModelsCTPositiveSize2D_omml {
     const o = rt.record(input, out);
     if (o === null) return out;
     rt.knownMembers(o, OmmlModelsCTPositiveSize2D_omml.memberNames, out);
-    rt.attr(out, o, { name: "cx", required: false, filled: false, collection: null, item: _vt36 });
-    rt.attr(out, o, { name: "cy", required: false, filled: false, collection: null, item: _vt36 });
+    rt.attr(out, o, { name: "cx", required: false, filled: false, collection: null, item: _vt38 });
+    rt.attr(out, o, { name: "cy", required: false, filled: false, collection: null, item: _vt38 });
     return out;
   }
   /** Explicit validation includes deferred choices and nested model validation. */
@@ -5894,7 +5900,7 @@ export class OmmlModelsCTProofErr_omml {
     const o = rt.record(input, out);
     if (o === null) return out;
     rt.knownMembers(o, OmmlModelsCTProofErr_omml.memberNames, out);
-    rt.attr(out, o, { name: "type", required: false, filled: false, collection: null, item: _vt37 });
+    rt.attr(out, o, { name: "type", required: false, filled: false, collection: null, item: _vt39 });
     return out;
   }
   /** Explicit validation includes deferred choices and nested model validation. */
@@ -6790,7 +6796,7 @@ export class OmmlModelsCTRubyAlign_omml {
     const o = rt.record(input, out);
     if (o === null) return out;
     rt.knownMembers(o, OmmlModelsCTRubyAlign_omml.memberNames, out);
-    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt38 });
+    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt40 });
     return out;
   }
   /** Explicit validation includes deferred choices and nested model validation. */
@@ -7642,7 +7648,7 @@ export class OmmlModelsCTScript_omml {
     const o = rt.record(input, out);
     if (o === null) return out;
     rt.knownMembers(o, OmmlModelsCTScript_omml.memberNames, out);
-    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt39 });
+    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt41 });
     return out;
   }
   /** Explicit validation includes deferred choices and nested model validation. */
@@ -7946,7 +7952,7 @@ export class OmmlModelsCTSdtDateMappingType_omml {
     const o = rt.record(input, out);
     if (o === null) return out;
     rt.knownMembers(o, OmmlModelsCTSdtDateMappingType_omml.memberNames, out);
-    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt40 });
+    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt42 });
     return out;
   }
   /** Explicit validation includes deferred choices and nested model validation. */
@@ -8330,7 +8336,7 @@ export class OmmlModelsCTSdtText_omml {
     const o = rt.record(input, out);
     if (o === null) return out;
     rt.knownMembers(o, OmmlModelsCTSdtText_omml.memberNames, out);
-    rt.attr(out, o, { name: "multi_line", required: false, filled: false, collection: null, item: _vt6 });
+    rt.attr(out, o, { name: "multi_line", required: false, filled: false, collection: null, item: _vt7 });
     return out;
   }
   /** Explicit validation includes deferred choices and nested model validation. */
@@ -8351,12 +8357,12 @@ export interface OmmlModelsCTShd_ommlInit {
   readonly val?: "nil" | "clear" | "solid" | "horzStripe" | "vertStripe" | "reverseDiagStripe" | "diagStripe" | "horzCross" | "diagCross" | "thinHorzStripe" | "thinVertStripe" | "thinReverseDiagStripe" | "thinDiagStripe" | "thinHorzCross" | "thinDiagCross" | "pct5" | "pct10" | "pct12" | "pct15" | "pct20" | "pct25" | "pct30" | "pct35" | "pct37" | "pct40" | "pct45" | "pct50" | "pct55" | "pct60" | "pct62" | "pct65" | "pct70" | "pct75" | "pct80" | "pct85" | "pct87" | "pct90" | "pct95" | "" | null | rt.Absent;
   readonly color?: "auto" | "" | null | rt.Absent;
   readonly theme_color?: "dark1" | "light1" | "dark2" | "light2" | "accent1" | "accent2" | "accent3" | "accent4" | "accent5" | "accent6" | "hyperlink" | "followedHyperlink" | "none" | "background1" | "text1" | "background2" | "text2" | "" | null | rt.Absent;
-  readonly theme_tint?: string | null | rt.Absent;
-  readonly theme_shade?: string | null | rt.Absent;
+  readonly theme_tint?: _b1 | null | rt.Absent;
+  readonly theme_shade?: _b1 | null | rt.Absent;
   readonly fill?: "auto" | "" | null | rt.Absent;
   readonly theme_fill?: "dark1" | "light1" | "dark2" | "light2" | "accent1" | "accent2" | "accent3" | "accent4" | "accent5" | "accent6" | "hyperlink" | "followedHyperlink" | "none" | "background1" | "text1" | "background2" | "text2" | "" | null | rt.Absent;
-  readonly theme_fill_tint?: string | null | rt.Absent;
-  readonly theme_fill_shade?: string | null | rt.Absent;
+  readonly theme_fill_tint?: _b1 | null | rt.Absent;
+  readonly theme_fill_shade?: _b1 | null | rt.Absent;
 }
 
 export class OmmlModelsCTShd_omml {
@@ -8366,12 +8372,12 @@ export class OmmlModelsCTShd_omml {
   readonly val: rt.Maybe<"nil" | "clear" | "solid" | "horzStripe" | "vertStripe" | "reverseDiagStripe" | "diagStripe" | "horzCross" | "diagCross" | "thinHorzStripe" | "thinVertStripe" | "thinReverseDiagStripe" | "thinDiagStripe" | "thinHorzCross" | "thinDiagCross" | "pct5" | "pct10" | "pct12" | "pct15" | "pct20" | "pct25" | "pct30" | "pct35" | "pct37" | "pct40" | "pct45" | "pct50" | "pct55" | "pct60" | "pct62" | "pct65" | "pct70" | "pct75" | "pct80" | "pct85" | "pct87" | "pct90" | "pct95" | "">;
   readonly color: rt.Maybe<"auto" | "">;
   readonly theme_color: rt.Maybe<"dark1" | "light1" | "dark2" | "light2" | "accent1" | "accent2" | "accent3" | "accent4" | "accent5" | "accent6" | "hyperlink" | "followedHyperlink" | "none" | "background1" | "text1" | "background2" | "text2" | "">;
-  readonly theme_tint: rt.Maybe<string>;
-  readonly theme_shade: rt.Maybe<string>;
+  readonly theme_tint: rt.Maybe<_b1>;
+  readonly theme_shade: rt.Maybe<_b1>;
   readonly fill: rt.Maybe<"auto" | "">;
   readonly theme_fill: rt.Maybe<"dark1" | "light1" | "dark2" | "light2" | "accent1" | "accent2" | "accent3" | "accent4" | "accent5" | "accent6" | "hyperlink" | "followedHyperlink" | "none" | "background1" | "text1" | "background2" | "text2" | "">;
-  readonly theme_fill_tint: rt.Maybe<string>;
-  readonly theme_fill_shade: rt.Maybe<string>;
+  readonly theme_fill_tint: rt.Maybe<_b1>;
+  readonly theme_fill_shade: rt.Maybe<_b1>;
 
   constructor(init: OmmlModelsCTShd_ommlInit = {}) {
     const problems = OmmlModelsCTShd_omml.validateShape(init);
@@ -8394,15 +8400,15 @@ export class OmmlModelsCTShd_omml {
     const o = rt.record(input, out);
     if (o === null) return out;
     rt.knownMembers(o, OmmlModelsCTShd_omml.memberNames, out);
-    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt41 });
+    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt43 });
     rt.attr(out, o, { name: "color", required: false, filled: false, collection: null, item: _vt3 });
     rt.attr(out, o, { name: "theme_color", required: false, filled: false, collection: null, item: _vt4 });
-    rt.attr(out, o, { name: "theme_tint", required: false, filled: false, collection: null, item: rt.str });
-    rt.attr(out, o, { name: "theme_shade", required: false, filled: false, collection: null, item: rt.str });
+    rt.attr(out, o, { name: "theme_tint", required: false, filled: false, collection: null, item: _vt5 });
+    rt.attr(out, o, { name: "theme_shade", required: false, filled: false, collection: null, item: _vt5 });
     rt.attr(out, o, { name: "fill", required: false, filled: false, collection: null, item: _vt3 });
     rt.attr(out, o, { name: "theme_fill", required: false, filled: false, collection: null, item: _vt4 });
-    rt.attr(out, o, { name: "theme_fill_tint", required: false, filled: false, collection: null, item: rt.str });
-    rt.attr(out, o, { name: "theme_fill_shade", required: false, filled: false, collection: null, item: rt.str });
+    rt.attr(out, o, { name: "theme_fill_tint", required: false, filled: false, collection: null, item: _vt5 });
+    rt.attr(out, o, { name: "theme_fill_shade", required: false, filled: false, collection: null, item: _vt5 });
     return out;
   }
   /** Explicit validation includes deferred choices and nested model validation. */
@@ -8442,7 +8448,7 @@ export class OmmlModelsCTShp_omml {
     const o = rt.record(input, out);
     if (o === null) return out;
     rt.knownMembers(o, OmmlModelsCTShp_omml.memberNames, out);
-    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt42 });
+    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt44 });
     return out;
   }
   /** Explicit validation includes deferred choices and nested model validation. */
@@ -8669,8 +8675,8 @@ export class OmmlModelsCTSimpleField_omml {
     rt.knownMembers(o, OmmlModelsCTSimpleField_omml.memberNames, out);
     rt.attr(out, o, { name: "fld_data", required: false, filled: false, collection: { min: 0, max: 1 }, item: rt.instanceOf(OmmlModelsCTText_omml, "OmmlModelsCTText_omml") });
     rt.attr(out, o, { name: "instr", required: false, filled: false, collection: null, item: rt.str });
-    rt.attr(out, o, { name: "fld_lock", required: false, filled: false, collection: null, item: _vt6 });
-    rt.attr(out, o, { name: "dirty", required: false, filled: false, collection: null, item: _vt6 });
+    rt.attr(out, o, { name: "fld_lock", required: false, filled: false, collection: null, item: _vt7 });
+    rt.attr(out, o, { name: "dirty", required: false, filled: false, collection: null, item: _vt7 });
     rt.attr(out, o, { name: "fld_simple", required: false, filled: false, collection: { min: 0, max: null }, item: rt.instanceOf(OmmlModelsCTSimpleField_omml, "OmmlModelsCTSimpleField_omml") });
     rt.attr(out, o, { name: "hyperlink", required: false, filled: false, collection: null, item: rt.instanceOf(OmmlModelsCTHyperlink_omml, "OmmlModelsCTHyperlink_omml") });
     rt.attr(out, o, { name: "sub_doc", required: false, filled: false, collection: null, item: rt.instanceOf(OmmlModelsCTRel_omml, "OmmlModelsCTRel_omml") });
@@ -8936,14 +8942,14 @@ export class OmmlModelsCTSmartTagRun_omml {
 }
 
 export interface OmmlModelsCTSpacingRule_ommlInit {
-  readonly val?: _b7 | null | rt.Absent;
+  readonly val?: _b9 | null | rt.Absent;
 }
 
 export class OmmlModelsCTSpacingRule_omml {
   static readonly modelId = "Omml::Models::CTSpacingRule@omml";
   static readonly memberNames: readonly string[] = ["val"];
 
-  readonly val: rt.Maybe<_b7>;
+  readonly val: rt.Maybe<_b9>;
 
   constructor(init: OmmlModelsCTSpacingRule_ommlInit = {}) {
     const problems = OmmlModelsCTSpacingRule_omml.validateShape(init);
@@ -8958,7 +8964,7 @@ export class OmmlModelsCTSpacingRule_omml {
     const o = rt.record(input, out);
     if (o === null) return out;
     rt.knownMembers(o, OmmlModelsCTSpacingRule_omml.memberNames, out);
-    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt43 });
+    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt45 });
     return out;
   }
   /** Explicit validation includes deferred choices and nested model validation. */
@@ -9038,7 +9044,7 @@ export class OmmlModelsCTStyle_omml {
     const o = rt.record(input, out);
     if (o === null) return out;
     rt.knownMembers(o, OmmlModelsCTStyle_omml.memberNames, out);
-    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt44 });
+    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt46 });
     return out;
   }
   /** Explicit validation includes deferred choices and nested model validation. */
@@ -9057,7 +9063,7 @@ export class OmmlModelsCTStyle_omml {
 
 export interface OmmlModelsCTSym_ommlInit {
   readonly font?: string | null | rt.Absent;
-  readonly char?: string | null | rt.Absent;
+  readonly char?: _b1 | null | rt.Absent;
 }
 
 export class OmmlModelsCTSym_omml {
@@ -9065,7 +9071,7 @@ export class OmmlModelsCTSym_omml {
   static readonly memberNames: readonly string[] = ["font","char"];
 
   readonly font: rt.Maybe<string>;
-  readonly char: rt.Maybe<string>;
+  readonly char: rt.Maybe<_b1>;
 
   constructor(init: OmmlModelsCTSym_ommlInit = {}) {
     const problems = OmmlModelsCTSym_omml.validateShape(init);
@@ -9082,7 +9088,7 @@ export class OmmlModelsCTSym_omml {
     if (o === null) return out;
     rt.knownMembers(o, OmmlModelsCTSym_omml.memberNames, out);
     rt.attr(out, o, { name: "font", required: false, filled: false, collection: null, item: rt.str });
-    rt.attr(out, o, { name: "char", required: false, filled: false, collection: null, item: rt.str });
+    rt.attr(out, o, { name: "char", required: false, filled: false, collection: null, item: _vt5 });
     return out;
   }
   /** Explicit validation includes deferred choices and nested model validation. */
@@ -9126,7 +9132,7 @@ export class OmmlModelsCTText_omml {
     if (o === null) return out;
     rt.knownMembers(o, OmmlModelsCTText_omml.memberNames, out);
     rt.attr(out, o, { name: "content", required: false, filled: false, collection: null, item: rt.str });
-    rt.attr(out, o, { name: "space", required: false, filled: false, collection: null, item: _vt45 });
+    rt.attr(out, o, { name: "space", required: false, filled: false, collection: null, item: _vt47 });
     return out;
   }
   /** Explicit validation includes deferred choices and nested model validation. */
@@ -9166,7 +9172,7 @@ export class OmmlModelsCTTextEffect_omml {
     const o = rt.record(input, out);
     if (o === null) return out;
     rt.knownMembers(o, OmmlModelsCTTextEffect_omml.memberNames, out);
-    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt46 });
+    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt48 });
     return out;
   }
   /** Explicit validation includes deferred choices and nested model validation. */
@@ -9184,14 +9190,14 @@ export class OmmlModelsCTTextEffect_omml {
 }
 
 export interface OmmlModelsCTTextScale_ommlInit {
-  readonly val?: _b8 | null | rt.Absent;
+  readonly val?: _b10 | null | rt.Absent;
 }
 
 export class OmmlModelsCTTextScale_omml {
   static readonly modelId = "Omml::Models::CTTextScale@omml";
   static readonly memberNames: readonly string[] = ["val"];
 
-  readonly val: rt.Maybe<_b8>;
+  readonly val: rt.Maybe<_b10>;
 
   constructor(init: OmmlModelsCTTextScale_ommlInit = {}) {
     const problems = OmmlModelsCTTextScale_omml.validateShape(init);
@@ -9206,7 +9212,7 @@ export class OmmlModelsCTTextScale_omml {
     const o = rt.record(input, out);
     if (o === null) return out;
     rt.knownMembers(o, OmmlModelsCTTextScale_omml.memberNames, out);
-    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt47 });
+    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt49 });
     return out;
   }
   /** Explicit validation includes deferred choices and nested model validation. */
@@ -9246,7 +9252,7 @@ export class OmmlModelsCTTopBot_omml {
     const o = rt.record(input, out);
     if (o === null) return out;
     rt.knownMembers(o, OmmlModelsCTTopBot_omml.memberNames, out);
-    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt48 });
+    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt50 });
     return out;
   }
   /** Explicit validation includes deferred choices and nested model validation. */
@@ -9447,8 +9453,8 @@ export interface OmmlModelsCTUnderline_ommlInit {
   readonly val?: "single" | "words" | "double" | "thick" | "dotted" | "dottedHeavy" | "dash" | "dashedHeavy" | "dashLong" | "dashLongHeavy" | "dotDash" | "dashDotHeavy" | "dotDotDash" | "dashDotDotHeavy" | "wave" | "wavyHeavy" | "wavyDouble" | "none" | "" | null | rt.Absent;
   readonly color?: "auto" | "" | null | rt.Absent;
   readonly theme_color?: "dark1" | "light1" | "dark2" | "light2" | "accent1" | "accent2" | "accent3" | "accent4" | "accent5" | "accent6" | "hyperlink" | "followedHyperlink" | "none" | "background1" | "text1" | "background2" | "text2" | "" | null | rt.Absent;
-  readonly theme_tint?: string | null | rt.Absent;
-  readonly theme_shade?: string | null | rt.Absent;
+  readonly theme_tint?: _b1 | null | rt.Absent;
+  readonly theme_shade?: _b1 | null | rt.Absent;
 }
 
 export class OmmlModelsCTUnderline_omml {
@@ -9458,8 +9464,8 @@ export class OmmlModelsCTUnderline_omml {
   readonly val: rt.Maybe<"single" | "words" | "double" | "thick" | "dotted" | "dottedHeavy" | "dash" | "dashedHeavy" | "dashLong" | "dashLongHeavy" | "dotDash" | "dashDotHeavy" | "dotDotDash" | "dashDotDotHeavy" | "wave" | "wavyHeavy" | "wavyDouble" | "none" | "">;
   readonly color: rt.Maybe<"auto" | "">;
   readonly theme_color: rt.Maybe<"dark1" | "light1" | "dark2" | "light2" | "accent1" | "accent2" | "accent3" | "accent4" | "accent5" | "accent6" | "hyperlink" | "followedHyperlink" | "none" | "background1" | "text1" | "background2" | "text2" | "">;
-  readonly theme_tint: rt.Maybe<string>;
-  readonly theme_shade: rt.Maybe<string>;
+  readonly theme_tint: rt.Maybe<_b1>;
+  readonly theme_shade: rt.Maybe<_b1>;
 
   constructor(init: OmmlModelsCTUnderline_ommlInit = {}) {
     const problems = OmmlModelsCTUnderline_omml.validateShape(init);
@@ -9478,11 +9484,11 @@ export class OmmlModelsCTUnderline_omml {
     const o = rt.record(input, out);
     if (o === null) return out;
     rt.knownMembers(o, OmmlModelsCTUnderline_omml.memberNames, out);
-    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt49 });
+    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt51 });
     rt.attr(out, o, { name: "color", required: false, filled: false, collection: null, item: _vt3 });
     rt.attr(out, o, { name: "theme_color", required: false, filled: false, collection: null, item: _vt4 });
-    rt.attr(out, o, { name: "theme_tint", required: false, filled: false, collection: null, item: rt.str });
-    rt.attr(out, o, { name: "theme_shade", required: false, filled: false, collection: null, item: rt.str });
+    rt.attr(out, o, { name: "theme_tint", required: false, filled: false, collection: null, item: _vt5 });
+    rt.attr(out, o, { name: "theme_shade", required: false, filled: false, collection: null, item: _vt5 });
     return out;
   }
   /** Explicit validation includes deferred choices and nested model validation. */
@@ -9522,7 +9528,7 @@ export class OmmlModelsCTVerticalAlignRun_omml {
     const o = rt.record(input, out);
     if (o === null) return out;
     rt.knownMembers(o, OmmlModelsCTVerticalAlignRun_omml.memberNames, out);
-    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt50 });
+    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt52 });
     return out;
   }
   /** Explicit validation includes deferred choices and nested model validation. */
@@ -9588,9 +9594,11 @@ export class OmmlModelsCTWordprocessingOnOff_omml {
   constructor(init: OmmlModelsCTWordprocessingOnOff_ommlInit = {}) {
     const problems = OmmlModelsCTWordprocessingOnOff_omml.validateShape(init);
     if (problems.length > 0) throw new rt.ValidationError(OmmlModelsCTWordprocessingOnOff_omml.modelId, problems);
-    { const v = Object.hasOwn(init, "val") ? init.val : undefined; this.val = v === undefined || v === rt.ABSENT ? "on" : v; }
+    const applied: string[] = [];
+    { const v = Object.hasOwn(init, "val") ? init.val : undefined; if (v === undefined || v === rt.ABSENT) applied.push("val"); this.val = v === undefined || v === rt.ABSENT ? "on" : v; }
     const effective = OmmlModelsCTWordprocessingOnOff_omml.validateShape(this);
     if (effective.length > 0) throw new rt.ValidationError(OmmlModelsCTWordprocessingOnOff_omml.modelId, effective);
+    rt.markApplied(this, applied);
     Object.freeze(this);
   }
 
@@ -9600,7 +9608,7 @@ export class OmmlModelsCTWordprocessingOnOff_omml {
     const o = rt.record(input, out);
     if (o === null) return out;
     rt.knownMembers(o, OmmlModelsCTWordprocessingOnOff_omml.memberNames, out);
-    rt.attr(out, o, { name: "val", required: false, filled: true, collection: null, item: _vt6 });
+    rt.attr(out, o, { name: "val", required: false, filled: true, collection: null, item: _vt7 });
     return out;
   }
   /** Explicit validation includes deferred choices and nested model validation. */
@@ -9647,7 +9655,7 @@ export class OmmlModelsCTWordprocessingText_omml {
     if (o === null) return out;
     rt.knownMembers(o, OmmlModelsCTWordprocessingText_omml.memberNames, out);
     rt.attr(out, o, { name: "content", required: false, filled: false, collection: null, item: rt.str });
-    rt.attr(out, o, { name: "space", required: false, filled: false, collection: null, item: _vt45 });
+    rt.attr(out, o, { name: "space", required: false, filled: false, collection: null, item: _vt47 });
     return out;
   }
   /** Explicit validation includes deferred choices and nested model validation. */
@@ -9787,7 +9795,7 @@ export class OmmlModelsCTWrapSquare_omml {
     if (o === null) return out;
     rt.knownMembers(o, OmmlModelsCTWrapSquare_omml.memberNames, out);
     rt.attr(out, o, { name: "effect_extent", required: false, filled: false, collection: { min: 0, max: 1 }, item: rt.instanceOf(OmmlModelsCTEffectExtent_omml, "OmmlModelsCTEffectExtent_omml") });
-    rt.attr(out, o, { name: "wrap_text", required: false, filled: false, collection: null, item: _vt51 });
+    rt.attr(out, o, { name: "wrap_text", required: false, filled: false, collection: null, item: _vt53 });
     rt.attr(out, o, { name: "dist_t", required: false, filled: false, collection: null, item: _vt0 });
     rt.attr(out, o, { name: "dist_b", required: false, filled: false, collection: null, item: _vt0 });
     rt.attr(out, o, { name: "dist_l", required: false, filled: false, collection: null, item: _vt0 });
@@ -9841,7 +9849,7 @@ export class OmmlModelsCTWrapThrough_omml {
     if (o === null) return out;
     rt.knownMembers(o, OmmlModelsCTWrapThrough_omml.memberNames, out);
     rt.attr(out, o, { name: "wrap_polygon", required: false, filled: false, collection: { min: 1, max: 1 }, item: rt.instanceOf(OmmlModelsCTWrapPath_omml, "OmmlModelsCTWrapPath_omml") });
-    rt.attr(out, o, { name: "wrap_text", required: false, filled: false, collection: null, item: _vt51 });
+    rt.attr(out, o, { name: "wrap_text", required: false, filled: false, collection: null, item: _vt53 });
     rt.attr(out, o, { name: "dist_l", required: false, filled: false, collection: null, item: _vt0 });
     rt.attr(out, o, { name: "dist_r", required: false, filled: false, collection: null, item: _vt0 });
     return out;
@@ -9893,7 +9901,7 @@ export class OmmlModelsCTWrapTight_omml {
     if (o === null) return out;
     rt.knownMembers(o, OmmlModelsCTWrapTight_omml.memberNames, out);
     rt.attr(out, o, { name: "wrap_polygon", required: false, filled: false, collection: { min: 1, max: 1 }, item: rt.instanceOf(OmmlModelsCTWrapPath_omml, "OmmlModelsCTWrapPath_omml") });
-    rt.attr(out, o, { name: "wrap_text", required: false, filled: false, collection: null, item: _vt51 });
+    rt.attr(out, o, { name: "wrap_text", required: false, filled: false, collection: null, item: _vt53 });
     rt.attr(out, o, { name: "dist_l", required: false, filled: false, collection: null, item: _vt0 });
     rt.attr(out, o, { name: "dist_r", required: false, filled: false, collection: null, item: _vt0 });
     return out;
@@ -9983,7 +9991,7 @@ export class OmmlModelsCTXAlign_omml {
     const o = rt.record(input, out);
     if (o === null) return out;
     rt.knownMembers(o, OmmlModelsCTXAlign_omml.memberNames, out);
-    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt52 });
+    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt54 });
     return out;
   }
   /** Explicit validation includes deferred choices and nested model validation. */
@@ -10023,7 +10031,7 @@ export class OmmlModelsCTYAlign_omml {
     const o = rt.record(input, out);
     if (o === null) return out;
     rt.knownMembers(o, OmmlModelsCTYAlign_omml.memberNames, out);
-    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt53 });
+    rt.attr(out, o, { name: "val", required: false, filled: false, collection: null, item: _vt55 });
     return out;
   }
   /** Explicit validation includes deferred choices and nested model validation. */

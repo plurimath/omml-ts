@@ -2,4 +2,4 @@
 
 export * from "./codecs.js";
 export { XmlError, xmlCodec } from "./runtime.js";
-export type { XmlCodec, El } from "./runtime.js";
+export type { XmlCodec, El, ReadOptions, WriteOptions, XmlReadContext, XmlWriteBuilder, XmlNode, XmlDocument } from "./runtime.js";

@@ -6,20 +6,21 @@
   "source": {
     "omml": "fc426cf6143e9dee24b723ca76b6e6107b58e77d",
     "lutaml_model": "eff859d0f6c2bb0936dd3add8ee252aea9dbaa17",
-    "lutaml_ts": "a05320c47c08be72131066c90da041cf0c687a83",
+    "lutaml_ts": "ef2a20e2d2b4c632e06db2c4b3887d8792c7f241",
     "moxml_ts": "216d56f93b733e6408772b607dbb4c5bbd489080"
   },
   "generated": {
-    "contracts-shim.ts": "cf2556171d30b77acc93897370af6b39e62b2f8a0f3b8eb198f9195a6c5965ad",
+    "contracts-shim.ts": "48b69cd82c9aa28e6504858bf35b9bc9deb9b59e64235c414f480cc7420f47d2",
     "coordinate.ts": "db508f7fc4aa07b0b99b001e6ef4c9cbe7463b70f3551da097965e092bc2081b",
     "index.ts": "0e9547057ec90b2c9a60887b279d0e0a952e150d6230f45223011c856e60ace2",
     "integer.ts": "84381b6d94127dd45098410c4bc750e735029df6c577311c9f6409dedab10036",
-    "models.ts": "6b4396349677bc480dcb30c85ba72b54795ce88386c249df19ec0a0593003451",
-    "runtime.ts": "430e8616edd3921ea4daa9666a68c98240b61ccadbfc08255d6b478fbcea8e58",
+    "models.ts": "3526c63b39283accf78c4c96a69960450cfe09cfb37eab620520c23c855ca196",
+    "plain-string.ts": "64ff1fadb743d480c6f6d7fc25253dbff6d0495fd201818f1fe9c57840790f44",
+    "runtime.ts": "38d9fbf5a12ed33a67343bf70fb1a37beb2218104365ff7065e17fe01aa52a03",
     "token.ts": "433ae76bb40597baf4898efe1366452c8c42de3bcf7fea3b3df391420e18d66e",
-    "xml/codecs.ts": "97904439958fbd2a7187d600b7f602546200b56c86ab2ba2c6b201e6a2c8338a",
-    "xml/index.ts": "5b0ae531b38d8555c81c93f32a887018ef64e56570154723fd678cf80476dcfd",
-    "xml/runtime.ts": "fa2aa076620451d71d678c7d13ac754f9b427aec8bfaf701da1b8a95b5eafefc"
+    "xml/codecs.ts": "daf8baa91f3a70df1b22bee7efb6547f6323853527e87193b371aee70ff532b3",
+    "xml/index.ts": "7081e4816772242846f05f1f26e7e5b5ba50c4a7f34be8cfce337befe73bf3d1",
+    "xml/runtime.ts": "56af1988e830ffe495fb9079d03676660836927148f4ce6b6d4ce7f2c0cf52bf"
   },
   "corpus": {
     "file": "test/formula-source.json",
